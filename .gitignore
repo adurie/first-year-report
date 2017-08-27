@@ -1,0 +1,4 @@
+*.log
+report*
+!report.tex
+!report.pdf
