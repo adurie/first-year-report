@@ -2,6 +2,7 @@
 \usepackage{siunitx}
 \usepackage[style=listdotted,toc,nopostdot,acronym,nomain]{glossaries}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{listliketab}
 \usepackage{listings}
 \usepackage{booktabs}
@@ -229,7 +230,7 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 			\Psi_{\bf k}({\bf R}) = \frac{1}{\sqrt{N}}\sum_j e^{i{\bf k\cdot R}_j}\psi({\bf R-R}_j)
 		\end{equation}
 		Where ${\bf R} = \sum_j^\chi n_j{\bf a}_i$ can describe the position of any lattice site with integers $n_j$, primitive translation vectors ${\bf a}_j$ and $\chi$ is equal to the dimension of $\bf R$ \\ 
-		At this stage the transformation from real space to Hilbert space is made
+		In order to diagonalise the matrix Hamiltonian, $\bf H$, the transformation from real space to Hilbert space is required
 		\begin{equation}\label{kkk}
 			|{\bf k}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf R = -\infty}^\infty e^{i{\bf k}\cdot \bf R} |\bf R\rangle
 		\end{equation}
@@ -242,35 +243,36 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 		\begin{equation}
 			\varepsilon({\bf k}) = \frac{\langle {\bf k}|{\bf H}|{\bf k} \rangle}{\langle\bf k|k\rangle}
 		\end{equation}
-Where 
+Where since 
+		\begin{equation}
+			\langle{\bf R}|{\bf \acute{R}}\rangle = \delta_{\bf R \acute{R}}
+		\end{equation}
+		It follows that
 		\begin{equation}
 			\label{kk}
 			\langle{\bf k}|{\bf \acute{k}}\rangle = \frac{1}{N}\sum_{\bf R \acute{R}} e^{-i{\bf k}\cdot{\bf R}}e^{i{\bf \acute{k}}\cdot{\bf \acute{R}}} \langle{\bf R | \acute{R}}\rangle \equiv \frac{1}{N}\sum_{\bf R} e^{-i{\bf R\cdot(k-\acute{k})}}=\delta_{\bf k \acute{k}}
 		\end{equation}
-		since 
-		\begin{equation}
-			\langle{\bf R}|{\bf \acute{R}}\rangle = \delta_{\bf R \acute{R}}.
-		\end{equation}
-		Assuming \gls{nn} overlap only, all elements of the Hamiltonian are zero, except
-		\begin{equation}\label{t}
-			\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle = \bf t
-		\end{equation}
-		where $\bf d$ is the set of vectors separating \gls{nn}'s, $\bf t$ is the hopping integral and 
+		Assuming a small set of nearby atoms overlap with non-negligable results, all elements of the Hamiltonian are zero, except
 		\begin{equation}\label{u}
 			\langle{\bf R}|{\bf H}|{\bf R}\rangle = \bf u
 		\end{equation}
-		is the onsite potential. Thus 
+		the onsite potential, and 
+		\begin{equation}\label{t}
+			\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle = \bf t
+		\end{equation}
+		where $\bf d$ is the set of position vectors of the all the non-negligable neighbouring terms. $\bf t$ is the set of hopping matrices who's strength varies depending on the binding distance to the onsite term. Models involving multiple energy bands or multiple bases per site require that $\bf t, u$ are matrices. 
+		\\\par Thus
 		\begin{equation}
-			\langle{\bf R}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf \acute{R}}\langle{\bf {R}}|{\bf H}|{\bf \acute{R}}\rangle e^{i\bf \acute{k}\cdot \acute{R}}= \frac{1}{\sqrt{N}}e^{i\bf \acute{k}\cdot R}\left({\bf u}+\sum_{{\bf d }\in {\rm nn}}e^{i{\bf k \cdot d}}\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle\right)
+			\langle{\bf R}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf \acute{R}}\langle{\bf {R}}|{\bf H}|{\bf \acute{R}}\rangle e^{i\bf \acute{k}\cdot \acute{R}}= \frac{1}{\sqrt{N}}e^{i\bf \acute{k}\cdot R}\left({\bf u}+\sum_{{\bf d }\in {\bf R}}e^{i{\bf k \cdot d}}\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle\right)
 		\end{equation}
 		and
 		\begin{equation}\label{sumtb}
-			\langle{\bf k}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{N}\sum_{\bf R} e^{i\bf R\cdot (\acute{k}-k)}\left( {\bf u + t}\sum_{{\bf d}\in {\rm nn}}e^{i{\bf k \cdot d}}\right) = \delta_{\bf k \acute{k}}\left( {\bf u + t}\sum_{{\bf d}\in {\rm nn}}e^{i{\bf k \cdot d}}\right)
+			\langle{\bf k}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{N}\sum_{\bf R} e^{i\bf R\cdot (\acute{k}-k)}\left( {\bf u} + \sum_{{\bf d}\in {\bf R}}e^{i{\bf k \cdot d}}\langle\bf 0|H|d\rangle\right) = \delta_{\bf k \acute{k}}\left( {\bf u} + \sum_{{\bf d}\in {\bf R}}e^{i{\bf k \cdot d}}\langle\bf 0|H|d\rangle\right)
 		\end{equation}
 		where Equation \eqref{kk} is used.
 		The energy eigenvalues are thus
 		\begin{equation}
-			\varepsilon({\bf k})= {\bf u + t}\sum_{{\bf d}\in {\rm nn}}e^{i{\bf k \cdot d}}
+			\varepsilon({\bf k})= {\bf u} + \sum_{{\bf d}\in {\bf R}}e^{i{\bf k \cdot d}}\langle\bf 0|H|d\rangle
 			\label{tight}
 		\end{equation}
 	\subsubsection{One-band model 1D example}
@@ -532,18 +534,18 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 \end{center}
 \caption{\footnotesize Depiction of an infinite square mesh of atoms in two bands separated by $a$ showing the self energy u, the band gap energy s, the hopping ground state energy t and hopping band energy $\tau$.}\label{squarechain}
 \end{figure}
-\par	As in the one band model, the Hamiltonian must be diagonalised. For nearest neighbour only interactions, Equations \eqref{t}, \eqref{u} may be used which in this case are the $2\times2$ matrices
+\par	In the two band model, the interaction between these two bands must also be considered. This means the potential of an electron associated with the onsite atom is now more complicated. Similarly, hopping to another atomic site is more complicated since there are multiple bands to hop to. Figure \ref{squarechain} indicates the origin of these terms. Nearest neighbour interactions are the only terms considered in this example, in this case Equations \eqref{t}, \eqref{u} may be used which are the $2\times2$ matrices
 	\begin{equation}
-		\bf u=\begin{pmatrix} \rm u&s\\s&\rm u \end{pmatrix} \qquad,\qquad \qquad \bf t=\begin{pmatrix} \rm t&\tau\\\tau^\dagger&\rm t\end{pmatrix}
+		\bf u=\begin{pmatrix} \rm u_1&s\\s&\rm u_2 \end{pmatrix} \qquad,\qquad \qquad \bf t=\begin{pmatrix} \rm t&\tau\\\tau^\dagger&\rm t\end{pmatrix}
 	\end{equation}
-	with $s$ being the energy required to raise (lower) an electron to a more (less) excited state on the same atom and $\tau$ is the hopping to an excited state on a neighbouring atom. In real space, the Hamiltonian is now block diagonalised
+	The self-energy is ${\rm u}_i$ for $i \in [1,2] \in \mathbb{Z}$ the two bands, and $s$ is the energy required to raise (lower) an electron to a more (less) excited state on the same atom. t is the energy required to hop to an equivalent excited state on a neighbouring atom, and $\tau$ is the hopping to a differently excited state on a neighbouring atom. In real space, the Hamiltonian is now block diagonalised
 	\begin{equation}
-	\bf	H = \begin{pmatrix} \bf u&\bf t& \bf 0&\bf 0\\\bf t^\dagger&\bf u &\ddots&\bf 0\\\bf 0&\ddots&\ddots&\bf t\\\bf 0&\bf 0&\bf t^\dagger&\bf u\end{pmatrix}
+	\bf	H = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &\bf t&\bf 0\\\bf 0&\bf t^\dagger&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
 	\end{equation}
 	The reciprocal space Hamiltonian $\mathcal{H}=\langle {\bf k}|\bf H|{\bf \acute{k}} \rangle$ is obtained using Equation \eqref{kkk} 
 
 	\begin{equation}
-		\mathcal{H} = \begin{pmatrix} \bf u&{\bf t}\sum_{\bf d}e^{i\bf k \cdot d}& \bf 0&\bf 0\\{\bf t}^\dagger\sum_{\bf d} e^{-i\bf k \cdot d}&\bf u &\ddots&\bf 0\\\bf 0&\ddots&\ddots&{\bf t}\sum_{\bf d} e^{i\bf k \cdot d}\\\bf 0&\bf 0&{\bf t}^\dagger\sum_{\bf d} e^{-i\bf k \cdot d}&\bf u\end{pmatrix}
+		\mathcal{H} = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &{\bf t}\sum_{\bf d} e^{i\bf k \cdot d}&\bf 0\\\bf 0&{\bf t}^\dagger\sum_{\bf d} e^{-i\bf k \cdot d}&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
 	\end{equation}
 
 	In the case of the square lattice the primitive position vectors are ${\bf a}_1 = a(0,1)$, \quad ${\bf a}_2 = a(1,0)$ and ${\bf d}$ is the set of nearest neighbours $\pm {\bf a}_1, \pm {\bf a}_2$.
