@@ -225,11 +225,12 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 	\subsection{Method of Tight Binding}
 	The Method of Tight Binding is a convenient framework to use in this context as it models very well the potentials arising in atoms in a regular periodic structure. 
 	In an infinite periodic structure a translation from one crystal site to another leaves the structure as a whole unchanged since each site is identical. A structure of this nature is referred to as Bloch-like\textsuperscript{\textcolor{blue}{\cite{kittel_1996}}}.
-	It is assumed there is one atom per basis and that the effect of one atom on another is small. The wavefunction of each isolated atom is $\psi(\bf R-R_{\mathnormal j})$, where $\bf R, R_{\mathnormal j}$ are the position vectors of the atomic sites. Then the approximate wavefunction for a crystal of $N$ atoms is
+	The position vector of each atomic site is given by $\bf R$,
+		where ${\bf R} = \sum_j^\chi n_j{\bf a}_i$ can describe the position of any lattice site with integers $n_j$, primitive translation vectors ${\bf a}_j$ and $\chi$ is equal to the dimension of $\bf R$ \\ 
+		\\In the tight binding formalism, the energy eigenvalues are given by 
 		\begin{equation}
-			\Psi_{\bf k}({\bf R}) = \frac{1}{\sqrt{N}}\sum_j e^{i{\bf k\cdot R}_j}\psi({\bf R-R}_j)
+			\varepsilon({\bf k}) = \frac{\langle {\bf k}|{\bf H}|{\bf k} \rangle}{\langle\bf k|k\rangle}
 		\end{equation}
-		Where ${\bf R} = \sum_j^\chi n_j{\bf a}_i$ can describe the position of any lattice site with integers $n_j$, primitive translation vectors ${\bf a}_j$ and $\chi$ is equal to the dimension of $\bf R$ \\ 
 		In order to diagonalise the matrix Hamiltonian, $\bf H$, the transformation from real space to Hilbert space is required
 		\begin{equation}\label{kkk}
 			|{\bf k}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf R = -\infty}^\infty e^{i{\bf k}\cdot \bf R} |\bf R\rangle
@@ -238,10 +239,6 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 		\begin{equation}
 		{\bf b}_i\cdot {\bf a}_j = 2\pi \delta_{i j}
 			\label{ab}
-		\end{equation}
-		\\The energy eigenvalues are given by 
-		\begin{equation}
-			\varepsilon({\bf k}) = \frac{\langle {\bf k}|{\bf H}|{\bf k} \rangle}{\langle\bf k|k\rangle}
 		\end{equation}
 Where since 
 		\begin{equation}
@@ -261,7 +258,7 @@ Where since
 			\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle = \bf t
 		\end{equation}
 		where $\bf d$ is the set of position vectors of the all the non-negligable neighbouring terms. $\bf t$ is the set of hopping matrices who's strength varies depending on the binding distance to the onsite term. Models involving multiple energy bands or multiple bases per site require that $\bf t, u$ are matrices. 
-		\\\par Thus
+		\\[2mm]Thus
 		\begin{equation}
 			\langle{\bf R}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf \acute{R}}\langle{\bf {R}}|{\bf H}|{\bf \acute{R}}\rangle e^{i\bf \acute{k}\cdot \acute{R}}= \frac{1}{\sqrt{N}}e^{i\bf \acute{k}\cdot R}\left({\bf u}+\sum_{{\bf d }\in {\bf R}}e^{i{\bf k \cdot d}}\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle\right)
 		\end{equation}
@@ -451,7 +448,7 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 		{\bf a}_1 = \frac{a}{2}(1,1,1),\qquad {\bf a}_2 = \frac{a}{2}(-1,1,1),\qquad {\bf a}_3=\frac{a}{2}(1,-1,1). 
 		\end{equation}
 		The position of any site in the reciprocal lattice is ${\bf k} = k_1{\bf b}_1 + k_2{\bf b}_2 + k_3{\bf b}_3$ with integers $k_1,k_2,k_3$ and primitive translation vectors ${\bf b}_1,{\bf b}_2,{\bf b}_3$. 
-		\par A general procedure for satisfying Equation \eqref{ab} in 3D is as follows\textsuperscript{\textcolor{blue}{\cite{datta}}}
+		\\A general procedure for satisfying Equation \eqref{ab} in 3D is as follows\textsuperscript{\textcolor{blue}{\cite{datta}}}
 		\begin{equation}
 			{\bf b}_1 = \frac{2\pi({\bf a}_2 \times {\bf a}_3)}{{\bf a}_1\cdot ({\bf a}_2 \times {\bf a}_3)}
 			\qquad {\bf b}_2 = \frac{2\pi({\bf a}_3 \times {\bf a}_1)}{{\bf a}_2\cdot ({\bf a}_3 \times {\bf a}_1)}
@@ -470,7 +467,7 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 		\begin{gather*}
 			\pm \frac{a}{2}(1,1,1) = \pm {\bf a}_1,\quad \pm\frac{a}{2}(-1,1,1)=\pm {\bf a}_2,\\\pm \frac{a}{2}(1,-1,1)=\pm {\bf a}_3,\quad \pm \frac{a}{2}(1,1,-1)=\pm({\bf a}_1-{\bf a}_2-{\bf a}_3)
 		\end{gather*}
-		\par and {\bf c} is the set of vectors 
+		and {\bf c} is the set of vectors 
 		\begin{equation*}
 			\pm a(1,0,0) = \pm ({\bf a}_1-{\bf a}_2), \quad\pm a(0,1,0)=\pm ({\bf a}_1-{\bf a}_3), \quad\pm a(0,0,1) =\pm ({\bf a}_2+{\bf a}_3)
 		\end{equation*}
@@ -488,14 +485,14 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 	\begin{figure}[H]
 	\begin{center}
 		\begin{tikzpicture}[scale=3, every node/.style={scale=1.5}]
-			\draw[shading=ball, opacity=0.4] (0,0) circle (3mm);
-			\draw[shading=ball, opacity=0.4] (1,0) circle (3mm);
+			\draw[shading=ball, opacity=0.4] (0,0) circle (3.2mm);
+			\draw[shading=ball, opacity=0.4] (1,0) circle (3.2mm);
 		\node[circle,fill=black, inner sep=1pt] (1) at (0.1,0){};
 		\node[circle,fill=black, inner sep=1pt] (2) at (-0.1,0){};
 		\node[circle,fill=black, inner sep=1pt] (3) at (1.1,0){};
 		\node[circle,fill=black, inner sep=1pt] (4) at (0.9,0){};
 
-			\draw[shading=ball, opacity=0.4] (0,1) circle (3mm);
+			\draw[shading=ball, opacity=0.4] (0,1) circle (3.2mm);
 		\node[circle,fill=black, inner sep=1pt] (5) at (0.1,1){};
 		\node[circle,fill=black, inner sep=1pt] (6) at (-0.1,1){};
 		\node (9) at (2,0) {\dots};
@@ -507,25 +504,25 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 		\node[rotate=90] (15) at (1,-1) {\dots};
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (2) edge [bend left] node[midway, above, yshift=-1mm] {\scriptsize s} (1);
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (1) edge [bend left] node[midway, below, yshift=1mm] {\scriptsize s} (2);
-		\draw (2) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize u} (2);
-		\draw (1) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u} (1);
-		\draw (1) edge [loop above,>=stealth, ->, out=5, in=-20] node [left, xshift=1mm] {$\scriptstyle \rm t^\dagger$} (5);
+		\draw (2) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize $\rm u_1$} (2);
+		\draw (1) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u$_2$} (1);
+		\draw (1) edge [loop above,>=stealth, ->, out=5, in=-20] node [left, xshift=1mm] {$\scriptstyle \rm t$} (5);
 		\draw (1) edge [loop above,>=stealth, ->, out=15, in=-75] node [left, yshift = 2mm] {$\scriptstyle \tau^\dagger$} (6);
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (6) edge [bend left] node[midway, above, yshift=-1mm] {\scriptsize s} (5);
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (5) edge [bend left] node[midway, below,yshift=1mm] {\scriptsize s} (6);
-		\draw (6) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize u} (6);
-		\draw (5) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u} (5);
+		\draw (6) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize u$_1$} (6);
+		\draw (5) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u$_2$} (5);
 		\draw (2) edge [loop above,>=stealth, ->, out=175, in=120, min distance=11mm] node [right, xshift=-1mm] {$\scriptstyle \tau$}(5);
 		\draw (2) edge [loop above,>=stealth, ->, out=165, in=-105] node [right, yshift = 2mm]{\scriptsize t} (6);
 
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (4) edge [bend left] node[midway, above, yshift=-1mm] {\scriptsize s} (3);
 		\draw[->,>=stealth,shorten <=1pt,shorten >=1pt] (3) edge [bend left] node[midway, below,yshift=1mm] {\scriptsize s} (4);
-		\draw (4) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize u} (4);
-		\draw (3) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u} (3);
+		\draw (4) edge [loop above,>=stealth, ->, min distance = 2mm, out=150] node [yshift=-1mm] {\scriptsize u$_1$} (4);
+		\draw (3) edge [loop above,>=stealth, ->, min distance = 1.7mm, out=95, in=40] node [yshift=-1mm] {\scriptsize u$_2$} (3);
 
 		\draw (2) edge [loop above,>=stealth, ->, out=-75, in=-120] node [below, yshift=1mm] {$\scriptstyle \tau$}(4);
 		\draw (2) edge [loop above,>=stealth, ->, out=-95, in=-105, min distance = 6mm] node [below, yshift = 1mm]{\scriptsize t} (3);
-		\draw (1) edge [bend right,>=stealth, ->, out=0, in=110, min distance = 8mm] node [above, yshift=-1mm] {$\scriptstyle \rm t^\dagger$} (3);
+		\draw (1) edge [bend right,>=stealth, ->, out=0, in=110, min distance = 8mm] node [above, yshift=-1mm] {$\scriptstyle \rm t$} (3);
 		\draw (1) edge [bend left,>=stealth, ->, out=-30, in=210] node [above, yshift = -1mm] {$\scriptstyle {\tau}^\dagger$} (4);
 		\draw[|<->|, thick] (0,-0.7) -- (1,-0.7) node[below, midway, yshift=1mm] {$\scriptstyle a\bf i$};
 		\draw[|<->|, thick] (-0.8,0) -- (-0.8,1) node[left, midway, xshift=1mm] {$\scriptstyle a\bf j$};
@@ -557,9 +554,9 @@ Summing all elements and scaling as $1/N$ yields
 	The assumption is made that the leading diagonal of $\bf t$ is real, so for a two band system
 	Since Eq.\eqref{H_0} is also a matrix expression, the band energies $\varepsilon(\bf k)$ are the eigenvalues of this equation
 	\begin{equation}
-		\rm det \begin{pmatrix} \rm u+2t\cos \left(\bf k_\parallel{\mathnormal a} \right)-\varepsilon(\bf k) &s+2\tau
+		\rm det \begin{pmatrix} \rm u_1+2t\cos \left(\bf k_\parallel{\mathnormal a} \right)-\varepsilon(\bf k) &s+2\tau
 			\cos \left( {\bf k_\parallel}a \right) \\ s+2
-			\tau^\dagger\cos \left({\bf k_\parallel}a \right) &\rm u+2t\cos \left( \bf k_\parallel {\mathnormal a}
+			\tau^\dagger\cos \left({\bf k_\parallel}a \right) &\rm u_2+2t\cos \left( \bf k_\parallel {\mathnormal a}
 \right)-\varepsilon(\bf k) \end{pmatrix} =0
 	\end{equation}
 	thus
@@ -572,19 +569,21 @@ Summing all elements and scaling as $1/N$ yields
 	% \end{multline}
 
 	\begin{multline}
-		\varepsilon(\bf k) =\rm u+2t\left(\cos \left( k_x{\mathnormal a} \right)+ \cos \left( k_z{\mathnormal a} \right) \right)
+		\varepsilon({\bf k}) =\frac{1}{2}(\rm u_1+u_2)+2t\left(\cos \left( k_x{\mathnormal a} \right)+ \cos \left( k_z{\mathnormal a} \right) \right)
  \pm \\\sqrt{\rm { 4 \tau\tau^\dagger\left(\cos \left( k_x{\mathnormal a} \right) +\cos \left( k_z{\mathnormal a} \right)\right)^2
  +2{\mathnormal s}\left(\tau+\tau^\dagger\right)
- \left(\cos \left( k_x\mathnormal a \right)+\cos \left( k_z\mathnormal a \right)\right) +{\mathnormal s}^{2}}}
+ \left(\cos \left( k_x\mathnormal a \right)+\cos \left( k_z\mathnormal a \right)\right) +{\mathnormal s}^{2}+\frac{1}{4}\left(u_1 -u_2\right)^2}}
 	\end{multline}
-	Which upon switching off $s, \tau$ yields the one-band case, as expected.
+	Where upon switching off $s, \tau$ and making u$_1 = $u$_2$ yields the one-band case, as expected.
 	
 
 	\subsection{Surface Green's function}
+	The tight binding method is useful for describing infinite crystals, but in the study of mutlilayer systems, edge effects (surfaces) must be appropriately considered.
+	\gls{sgf}'s allow this to be possible and are an extension of the tight binding framework.
 	Two methods for determining closed-form \gls{sgf} will now be given. The first method, the Kalkstein \& Soven method is for historical purposes and has little practical significance as it fails to determine \gls{sgf} for more than one band. It is derived with the \gls{sc} lattice in consideration. The second method, the M\"{o}bius transformation method is far more general and very powerful.
 	\subsubsection{Kalkstein \& Soven Method}\label{k_s}
 	Initially, a perfect infinite \gls{sc} crystal is considered and separated artificially into two semi-infinite crystals along some imaginary cleavage plane in an arbitrary crystallographic direction\textcolor{blue}{\textsuperscript{ \cite{phan,KS}}}.
-The perfect crystal has Hamiltonian $H^0$ and Green's function $G^0 (\varepsilon-H^0+i\delta)=1$ where $\delta$ is a positive infinitesimal contribution to the energy. The 'cleaved' crystal has Hamiltonian $H$ and Green's function $G(\varepsilon-H+i\delta)=1$ where $H = H^0 + V$ and $V$ is the potential arising due to the perturbation of the introduced surface. Thus $G(\varepsilon-H^0-V+i\delta)=1$ which implies $G(\varepsilon-H^0-V+i\delta)G^0=G^0$. Since $G^0$ is commutative the reformulation is possible $(\varepsilon-H^0+i\delta)G^0=1$. Making this substitution above yields $G(1-VG^0)=G^0$ and so the familiar Dyson's equation follows; 
+The perfect crystal has Hamiltonian $H^0$ and Green's function $G^0 (\varepsilon-H^0+i\delta)=1$ where $\delta$ is a positive infinitesimal contribution to the energy. The cleaved crystal has Hamiltonian $H$ and Green's function $G(\varepsilon-H+i\delta)=1$ where $H = H^0 + V$ and $V$ is the potential arising due to the perturbation of the introduced surface. Thus $G(\varepsilon-H^0-V+i\delta)=1$ which implies $G(\varepsilon-H^0-V+i\delta)G^0=G^0$. Since $G^0$ is commutative the reformulation is possible $(\varepsilon-H^0+i\delta)G^0=1$. Making this substitution above yields $G(1-VG^0)=G^0$ and so the familiar Dyson's equation follows; 
 \begin{equation}\label{dyson}
 G=G^0+GVG^0 
 \end{equation}
@@ -593,15 +592,15 @@ The representation in the surface plane is Bloch-like so the transform to the mo
 \begin{equation}
 |n,{\bf k_\parallel} \rangle = \frac{1}{\sqrt{N_\parallel}}\sum_{\bf R_\parallel} |n{\bf a} + {\bf R_\parallel}\rangle e^{i\bf k_\parallel\cdot R_\parallel}
 \end{equation}
-The representation perpendicular to the surface plane is atomiclike and thus the mixed Bloch-Wannier form is used
+The representation perpendicular to the surface plane is finite and thus the mixed Bloch-Wannier form is used
 \begin{equation}
 	|{\bf k} \rangle =|{\bf k_\perp,k_\parallel}\rangle = \frac{1}{\sqrt{N_\perp}}\sum_n |n{\bf a,k_\parallel}\rangle e^{in{\rm{k}}_\perp a}
 \end{equation}
 By the tight binding model, the Green's function of the unperturbed crystal is
 \begin{equation}
-\langle {\bf k}|G^0|{\bf \acute{k}} \rangle = \frac{\delta_{\bf k,\acute{k}}}{\varepsilon-E^0 ({\bf k}) +i\delta}
+\langle {\bf k}|G^0|{\bf \acute{k}} \rangle = \frac{\delta_{\bf k-\acute{k}}}{\varepsilon-E^0 ({\bf k}) +i\delta}
 \end{equation}
-Where $\delta_{\bf k,\acute{k}}$ is the Kronecker-Delta which is equal to $1$ when $\bf k = \acute{k}$, and $0$ otherwise. Here the result $\langle {\bf k}|H^0|{\bf \acute{k}} \rangle = E^0 ({\bf k}) \delta_{\bf k,\acute{k}}$ has been used, where
+Where $\delta_{\bf k-\acute{k}}$ is the Dirac-Delta function which is non-zero only for the very small range of values around $\bf k = \acute{k}$. Here the result $\langle {\bf k}|H^0|{\bf \acute{k}} \rangle = E^0 ({\bf k}) $ has been used, where
 \begin{equation}
 	E^0 ({\bf k})={\rm{u}}+2{\rm{t}}[\cos({\rm{k}}_\perp a)+f({\bf k_\parallel})]
 \end{equation}
@@ -625,7 +624,8 @@ where the range of integration is over the first Brillouin zone. Putting $\omega
 \begin{equation}
 	G^0 (n) = \frac{a}{2\pi}\int_{-\frac{\pi}{a}}^{\frac{\pi}{a}} {d{\rm k}_\perp} \frac{e^{i|n|{\rm k}_\perp a}}{\omega +i\delta - 2{\rm t}\cos({\rm k}_\perp a)} .
 \end{equation}
-The substitution $z=e^{i{\rm k}_\perp a}$ is made, so that $\cos({\rm k}_\perp a) = \frac{1}{2}\big(e^{i{\rm k}_\perp a}+e^{-i{\rm k}_\perp a}\big)= \frac{1}{2}\big(z +\frac{1}{z}\big)$.\par Also $\frac{dz}{d{\rm k}_\perp}=iaz , \quad d{\rm k}_\perp =\frac{dz}{iaz},$ thus integrating over the unit circle $C$ yields
+The substitution $z=e^{i{\rm k}_\perp a}$ is made, so that $\cos({\rm k}_\perp a) = \frac{1}{2}\big(e^{i{\rm k}_\perp a}+e^{-i{\rm k}_\perp a}\big)= \frac{1}{2}\big(z +\frac{1}{z}\big)$.
+\\Also $\frac{dz}{d{\rm k}_\perp}=iaz , \quad d{\rm k}_\perp =\frac{dz}{iaz},$ thus integrating over the unit circle $C$ yields
 \begin{equation}
 	G^0 (n) = \frac{a}{2\pi}\oint_C \frac{dz}{iaz}\cdot \frac{z^{|n|}}{\omega +i\delta - {\rm t}z-{\rm t}z^{-1}} 
 \end{equation}
@@ -723,10 +723,10 @@ thus
 \end{equation}
 \\
 Throughout the remainder of this communication the convention $ G(0,0)\equiv {\rm{g_0}}$ is used.
-\par
+\\[2mm]To demonstrate one of the potential uses of \gls{sgf}'s, the \acrfull{ldos} will be calculated at different atomic layers.
 In the mixed representation, the \gls{ldos} is defined by
 \begin{equation}\label{rho}
-\rho_m(\varepsilon)=\frac{-1}{\pi N_\parallel}\sum_{\bf k_\parallel} \Im\left\{ G(m,m,{\bf k_\parallel})\right\}.
+	\rho_m(\varepsilon)=\frac{-1}{\pi N_\parallel}\sum_{\bf k_\parallel} \Im\left\{ G(m,m,{\bf k_\parallel})\right\}\site{KS}.
 \end{equation}
 Eq. \eqref{rho} is calculated numerically by converting the summation into a double integral over the two dimensional Brillouin zone
 \begin{equation}
@@ -887,7 +887,7 @@ ${\bf s}_i$ is the location of any atomic sites per primitive cell. For example 
 \end{center}
 \caption{\footnotesize The above figure shows a \gls{bcc} lattice with atomic planes stacked in the growth direction. The dashed region indicates the first Brillouin zone centred on the site at $(0,0,0)$, and the dotted region shows a primitive cell enclosing sites $a(0,-1,0)$ and $\frac{a}{2}(1,-1,1)$. It can be observed that the primitive cells tesselate completely, which forms part of their definition.}
 \end{figure}
-\par The representation in $k$-space is thus
+The representation in $k$-space is thus
 	\begin{equation}
 		|{\bf k}_\parallel, {\bf k}_\perp, {\bf s}\rangle = \frac{1}{\sqrt{N_\parallel}}\sum_{\bf R_\parallel = -\infty}^\infty e^{i{\bf k}_\parallel\cdot {\bf R}_\parallel} |{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle
 	\end{equation}
@@ -925,7 +925,7 @@ ${\bf s}_i$ is the location of any atomic sites per primitive cell. For example 
 		{\bf u} = \bm \mu + 2{\bf t}\left(\cos\left(k_x a\right)+\cos\left(k_z a\right)\right) + 4\left(\bm l + \bm l^\dagger\right)\cos\left(\frac{k_xa}{2}\right)\cos\left(\frac{k_za}{2}\right)\,.
 	\end{equation}
 	This ends the example.
-\\\par The definition of an $N$-dimensional M\"{o}bius transformation is as follows, let
+	\\[2mm] The definition of an $N$-dimensional M\"{o}bius transformation is as follows, let
 \begin{equation}
 \bf{A} = \begin{pmatrix} \bf{a}&\bf{b}\\ \bf{c}&\bf{d} \end{pmatrix}
 \end{equation}
@@ -1299,7 +1299,6 @@ Thus, the final form Equation \eqref{exchange} takes in this setting is
 When this is substituted back into Equation \eqref{exchange}, it can be observed that for large n, the imaginary component of the integrand oscillates rapidly as a function of $\rm \bf k_\parallel$ and $\varepsilon$. As such, the only non-zero contributions to the $\rm \bf k_\parallel$ integral come from the neighbourhood of points in k-space where $\phi_s$ is stationary. Similarly, the only contributions to the $\varepsilon$ integral that don't cancel are those that arise near the sharp cut off that occurs at the chemical potential $\mu$.
 \\[3mm]
 The period of the \gls{iec} as a function of spacer thickness P $= \pi/\phi_s$ where $\phi_s = (a_1k_{\perp 1} + a_2k_{\perp 2} + \dots)$.
-
 $c_s$ is complex, so may be expressed in polar form $c_s(\varepsilon, {\bf k_\parallel)} = |c_s(\varepsilon,{\bf k_\parallel)}|e^{i \psi_s (\varepsilon)}$ thus
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_s \mathnormal{|c_s(\varepsilon, {\bf k_\parallel)}| e^{i\rm (n \phi_s(\varepsilon, {\bf k_\parallel})+ \psi_s(\varepsilon))}}
@@ -1357,7 +1356,6 @@ using contour integration it can be shown that{\color{blue}{\textsuperscript{\ci
 \begin{equation}
 	\int_{-\infty}^{+\infty} dx \frac{e^{ax}}{1+e^x} = \frac{\pi}{{\rm sin}(\pi a)}
 \end{equation}
-
 Thus Equation \eqref{dodgy} becomes
 	\begin{multline}
 			\frac{kT|c_s(\mu, {\bf k}_\parallel^0)|\pi}{\left|{\rm det}\left(\partial^2\phi_s(\mu,{\bf k}_\parallel^0)\right)\right|^\frac{1}{2} {\rm sin}\left(\pi i\left[{\rm n}\phi_s'(\mu, {\bf k}_\parallel^0)+\psi_s'(\mu)\right]kT\right)}\equiv\\\rule{0cm}{1cm} \frac{-ikT\pi|c_s(\mu, {\bf k}_\parallel^0)|}{\left|{\rm det}\left(\partial^2\phi_s(\mu,{\bf k}_\parallel^0)\right)\right|^\frac{1}{2} {\rm sinh}\left(\pi kT\left[{\rm n}\phi_s'(\mu, {\bf k}_\parallel^0)+\psi_s'(\mu)\right]\right)}
@@ -1472,7 +1470,7 @@ but in the one band tight binding model, using Equations \eqref{glam}, \eqref{fn
 \end{equation}
 where the independent variable is now dropped as the surface \gls{mtgf}'s are considered from here on.
 \par Thus the \gls{mtgf}'s give a remarkably simple representation of the Fourier coefficients, $c_s$, giving a good platform to study the phase analytically.
-\\\par It is the first term that dominates the phase of \gls{iec}, $c_1$
+\\[2mm] It is the first term that dominates the phase of \gls{iec}, $c_1$
 \begin{equation}
 	c_1^{\alpha\beta} = (f_{\scriptscriptstyle R}^\alpha f_{\scriptscriptstyle L}^\beta)
 \end{equation}
@@ -1607,7 +1605,7 @@ More details are given in the Appendix.
 		f_0 = \sum_i \alpha_i f({\bf k}_i) - \sum_{m> N}^\infty f_m \sum_i \alpha_i A_m({\bf k}_i)
 	\end{equation}
 	Though in primitive-rectangular or square lattices, a set of generating wave vectors could always be found that zeros all functions $A_m({\bf k})$, so the algorithm reduces to a 'mesh' of equally spaced points, displaced from the origin by $a(\frac{1}{2},\frac{1}{2})$ where $a$ is the distance between the neighbouring points.
-	\\\par For these simple lattice types, the integral is performed as follows;
+	\\[2mm] For these simple lattice types, the integral is performed as follows;
 	\begin{equation}
 		\iint_{\rm BZ}f({\rm k}_x, {\rm k}_z) d{\rm k}_xd{\rm k}_z= F_N
 	\end{equation}
@@ -1625,10 +1623,9 @@ More details are given in the Appendix.
 	\subsection{Author's 2D Brillouin Zone integration method}
 	\qquad The method outlined in Subsection \ref{points} is the most efficient algorithm for integrating over the \gls{2dbz} by minimising the number of regularly spaced points required. The form given by Cunningham requires the user to determine whether convergence has been achieved, repeating with more points if necessary. If the function is slow to converge, this can be quite time consuming. 
 	The Author has made two developments to the results of Subsection \ref{points}. In both cases 'automatic' techniques are used, where if convergence hasn't been met, new points are used without discarding the work already done. In each case, the algorithm is for the square lattice, though it is easily extendible (and easier to write) to the primitive rectangular lattice. 
-	\\
-	\par The simplest of these two techniques is as follows: 
-
-where in the case of the square lattice
+	\\[2mm]
+	The simplest of these two techniques is as follows: 
+	\\[2mm]where in the case of the square lattice
 \begin{multline}\label{auto_square}
 		F_{3^qN} =\frac{8A_{\rm BZ}}{(3^\alpha N)^2}\sum_{q=0}^\alpha\sum_{n=0}^{2(3^q)N}\left(\sum_{m=0}^{n-1} f\left(\frac{n\pi}{2(3)^qNa}, \frac{m\pi}{2(3)^qNa}\right)\delta_{p 1}\delta_{r 1}l\right.\\\left.+\frac{1}{2}f\left(\frac{n\pi}{2(3)^qNa}, \frac{n\pi}{2(3)^qNa}\right)\delta_{p 1}\delta_{r 1}l\right)
 	\end{multline}
