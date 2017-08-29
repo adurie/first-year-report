@@ -605,7 +605,7 @@ Where $\delta_{\bf k-\acute{k}}$ is the Dirac-Delta function which is non-zero o
 	E^0 ({\bf k})={\rm{u}}+2{\rm{t}}[\cos({\rm{k}}_\perp a)+f({\bf k_\parallel})]
 \end{equation}
 where
-\begin{equation}
+\begin{equation}\label{disp}
 	f({\bf k_\parallel}) = \cos({\rm{k}}_y a)+\cos({\rm{k}}_z a)
 \end{equation}
 in the simple cubic case, as described here. Therefore
@@ -795,7 +795,7 @@ Eq. \eqref{rho} is calculated numerically by converting the summation into a dou
 \caption{\footnotesize \gls{ldos} with potential $u = 0eV$, ${\rm t} = 0.5eV$. The plots above are for atomic layers of various depth from the surface, $n$, with the surface layer $n=0$. Results calculated using C++98 with Clang compiler.}\label{LDOS}
 \end{figure}
 Figure \ref{LDOS} shows the calculated \gls{ldos} against energy for up to the sixth atomic plane. The following results are noted; the profile of the \gls{ldos} for larger $n$ heals very quickly to the bulk value, and has two distinct zones. 
-\par The region $-2\rm t \leq \varepsilon \leq 2t$ is some periodic function that flattens out the larger the value $n$ chosen, whereas the region $\varepsilon<-2\rm t, \varepsilon>2t$ appears to be almost parabolic. The on-site energy $\rm u$ displaces the whole function along the $\varepsilon$ axis. The full width of the function is 12t.
+\par The region $-2\rm t \leq \varepsilon \leq 2t$, the width of the allowed values of the in-plane element of the dispersion relation Eq. \eqref{disp}, is some periodic function that flattens out the larger the value $n$ chosen. This region is flat in the case of an infinite crystal. The region $\varepsilon<-2\rm t, \varepsilon>2t$ appears to be almost parabolic. The on-site energy $\rm u$ displaces the whole function along the $\varepsilon$ axis. The full width of the function is 12t, the width of the dispersion relation.
 By definition, integrating the \gls{ldos} gives $1$.
 	\subsubsection{Method of Adlayer}
 	A simple method to gain \gls{sgf}'s for additional 'deposited' atomic planes is the so called 'Adlayer' method, which essentially connects the previous \gls{sgf} to the deposited \gls{sgf} through the Dyson's equation. It is an iterative equation depending only on the previous \gls{sgf} through each computation. To calculate this it can be noted that Equation \eqref{Gsum} is equally valid for matrices, and so Equation \eqref{GGG} is rewritten in this context to find ${\bf G}_{11}$, the first Green's function deposited on the substrate
@@ -833,12 +833,13 @@ so upon reordering and taking appropriate inverses
 	Now from the definition of Green's function, the term ${\bf G}_{11}^0 = (\bm\varepsilon)^{-1}$. ${\bf V}_{11} = \bf u$, where $\bf u$ is the potential of the adlayered plane, ${\bf V}_{10}=\bf t^\dagger$ is the hopping from the adlayer to the substrate and ${\bf V}_{01} = \bf t$ is the hopping from the substrate to the adlayer. Where the indices of the Green's functions are the same, this indicates they are \gls{sgf}'s and thus Equation \eqref{adlayer_0} can be presented as follows
 
 \begin{equation}
-	\bf{g_{\rm 1}} = (\bf{v}-\bf{t}^{\dag}\bf{g_0t})^{\rm -1}
+	{\bf g}_1 = ({\bf v-t}^{\dag}{\bf g}_0{\bf t})^{-1}
 \end{equation}
 where $\bf v = \bm\varepsilon-u$. Repeating the adlayer process leads to the iterative formula
 \begin{equation}\label{adlayer}
 	\bf{g_{\rm n}} = (\bf{v}-\bf{t}^{\dag}\bf{g_{\rm n-1}t})^{\rm -1}
 \end{equation}
+an exact form of a closed-form \gls{sgf} in terms of ${\bf g}_0$. What makes Equation \eqref{adlayer} particularly interesting is the fact that different materials may be stacked upon each other without loss of accuracy. Thus it makes a good vehicle for studying multilayer systems.
 	\subsubsection{M\"{o}bius Transformation method}
 	The Kalkstein \& Soven method outlined in Subsection \ref{k_s} is one of the first closed-form Green's function formalisms derived, however it fails to describe the case when Green's functions are matrices. For any realistic calculations, this becomes a requirement. 
 An alternative method known as the M\"{o}bius Transformation method, or the method of Umerski\textcolor{blue}{\textsuperscript{\cite{AU_SGF}}} is used in these cases.
@@ -975,7 +976,7 @@ such that
 		{\bf O}^{-1} {\bf X}{\bf O} = \bm \Lambda
 	\end{equation}
 	Equation \eqref{frac} has the remarkable property of demonstrating the existence of interatomic \gls{sgf} representations due to the continuity at non-integer n.
-	\par To obtain the closed form \gls{sgf} ${\bf g}_0$ for semi-infinite systems, the ordering of the eigenvalues must be more precise. To do this, a small positive imaginary contribution is made to the energy, such that $\varepsilon \longrightarrow \varepsilon+i\delta$. This has the effect of shifting pairs of eigenvalues on the unit circle such that one moves just inside the circle and the other just outside. The former are in $\bm \Lambda_1$ and the latter are in $\bm \Lambda_2$ where
+	\par To obtain the closed form \gls{sgf} ${\bf g}_0$ for semi-infinite systems, the ordering of the eigenvalues must be more precise. To do this, a small positive imaginary contribution is made to the energy, such that $\varepsilon \longrightarrow \varepsilon+i\delta$ but to enforce n $\rightarrow \infty$ before $\delta \rightarrow 0$. This has the effect of shifting pairs of eigenvalues on the unit circle such that one moves just inside the circle and the other just outside. The former are in $\bm \Lambda_1$ and the latter are in $\bm \Lambda_2$, such that as $\rm n\rightarrow\infty$, \quad $\bm\Lambda_1^{\rm n}, \bm\Lambda_2^{-\rm n}\rightarrow 0$, where
 	\begin{equation}
 		\bm \Lambda = \begin{pmatrix} \bm \Lambda_1&\bf 0\\\bf 0&\bm \Lambda_2 \end{pmatrix}
 	\end{equation}
@@ -1192,7 +1193,8 @@ Where
 \begin{equation}\label{F}
 	\rm F = \frac{1}{\pi}\ln [det(\bf A_{\rm \scriptscriptstyle FM}^{\rm -1}A_{\rm \scriptscriptstyle AF})]
 \end{equation}
-Where $\bf A_{\rm \scriptscriptstyle FM}$ is in the \gls{fm} configuration $(\theta = 0)$, and $\bf A_{\rm \scriptscriptstyle AF}$ is in the \gls{af} configuration $(\theta = \pi)$\textcolor{blue}{\textsuperscript{\cite{rev3}}}. For computational efficiency purposes, these $2N\times2N$ matrices may be reduced to $N\times N$ matrices by separating $\bf A$ into it's spin up and spin down constituents $\bf A = \bm \alpha^\uparrow \bm\alpha^\downarrow$.
+Where $\bf A_{\rm \scriptscriptstyle FM}$ is in the \gls{fm} configuration $(\theta = 0)$, and $\bf A_{\rm \scriptscriptstyle AF}$ is in the \gls{af} configuration $(\theta = \pi)$\textcolor{blue}{\textsuperscript{\cite{rev3}}}. For computational efficiency purposes, these $2N\times2N$ matrices may be reduced to $N\times N$ matrices by separating $\bf A$ into it's spin up and spin down constituents $\bf A = \bm \alpha^\uparrow \bm\alpha^\downarrow$,
+thus $\bm \alpha^\sigma = \bf(I - g_{\rm\scriptscriptstyle R}^\sigma t^\dag g_{\rm\scriptscriptstyle L}^\sigma t)^{\rm-1}$.
 In this communication, efforts are directed at solving Equation \eqref{exchange}, which is again very numerically intensive if attempted to solve directly. Instead, two methods to solve Equation \eqref{exchange} are outlined here. The method of summing Matsubara frequencies is described initially\textcolor{blue}{\textsuperscript{\cite{mats}}}, followed by an outline of the \gls{spa}\textcolor{blue}{\textsuperscript{\cite{rev1}}}.
 % A magnetic multilayer system is envisaged here comprising of a semi-infinite LHS magnetic lead with magnetisation in the $xz$ plane held parallel to the $z$ axis. One or more spacer materials grown to n atomic planes thick, the system is then completed with a semi-infinite RHS magnetic lead with magnetisation the $xz$ plane held at an angle $\theta$ from the z-axis. 
 	\subsection{Method of Matsubara}
@@ -1200,11 +1202,10 @@ In this communication, efforts are directed at solving Equation \eqref{exchange}
 \par The Matsubara frequency method takes advantage of the fact that $\int_{-\infty}^{\infty}d\varepsilon$ can be integrated over the contour comprised of a semicircle who's diameter lies on the real line. This calculation is possible, since F($\varepsilon, \bf k_\parallel, \rm n)$ is analytic in this domain and $\longmapsto 0$, as $\varepsilon \longmapsto \pm \infty$\textcolor{blue}{\textsuperscript{\cite{tall}}}, and the Fermi function
 has an infinite number of isolated singularities at $\varepsilon = \mu \pm (2m+1)kT\pi i$ for $m=0,1,2,\dots$, none of which lie on the real axis. $kT$ is the Boltzmann constant multiplied by temperature. The semicircle lies in the upper half plane, and so all singularities at $\gamma i$ for $\gamma < 0$ are discarded. 
 The residues of $f(\varepsilon - \mu)$ lie at
-\begin{equation}
-\begin{aligned}
-\lim_{\varepsilon \rightarrow \mu + (2m+1)kT\pi i}\frac{1}{1+e^{(\varepsilon-\mu)/kT)}}=\\\lim_{\varepsilon \rightarrow \mu + (2m+1)kT\pi i}\frac{1}{\frac{1}{kT}e^{(\varepsilon-\mu)/kT}}=-kT
-\end{aligned}
-\end{equation}
+	\begin{flalign}
+	&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{1+e^{\omega}}=\\&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{\frac{1}{kT}e^{(\varepsilon-\mu)/kT}}=-kT
+\end{flalign}
+where $\omega = (\varepsilon-\mu)/kT$.
 Thus
 \begin{equation}\label{matsu}
 	\int_{-\infty}^{+\infty}  d\varepsilon\; f(\varepsilon-\mu){\rm F}(\varepsilon, {\bf k}_\parallel, {\rm n})\equiv 2\pi i\left(-kT\sum_{m=0}^\infty {\rm F}\left(\mu{ + (2m+1) kT\pi i}, \rm\bf k_\parallel, \rm n\right)\right)
@@ -1291,7 +1292,7 @@ Thus, the final form Equation \eqref{exchange} takes in this setting is
 \end{equation}
 % The Green's function for the spacer layer are obtained by growing from the LHS lead using Equation \eqref{adlayer}. This is in order to maintain maximum numerical efficiency given that calculations of previous layers are stored in the process.
 	\subsection{Stationary Phase Approximation}
-	The \gls{spa} method relies on the fact that F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded as a Fourier series
+	The \gls{spa} method relies on the fact that F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded as a Fourier series
 
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_s \mathnormal{c_s(\varepsilon, {\bf k}_\parallel) e^{i\rm n \phi_s(\varepsilon, \bf k_\parallel)}}
@@ -1307,7 +1308,7 @@ $\phi_s$ is then expanded to second order in $\bf k_\parallel$ about the station
 \begin{multline}
 	\phi_s({\bf k_\parallel}) = \phi_s({\bf k}_\parallel^0) + ({\bf k}_\parallel - {\bf k}_\parallel^0)^T\frac{\partial \phi_s}{\partial{\bf k}_\parallel }+ \frac{1}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_s) ({\bf k}_\parallel - {\bf k}_\parallel^0) + \dots
 \end{multline}
-As stated above, the essence of \gls{spa} is to assume the contributions are largest when the phase is stationary. Thus ${\bf k}_\parallel^0$ is the solution to ${\partial \phi_s}/{\partial{\bf k}_\parallel } = 0$. Thus
+where $\partial \phi_s/\partial{\bf k}_\parallel,\,(\partial^2\phi_s)$ are $2\times2$ matrices, and $(\partial^2 \phi_s)$ is the Hessian matrix $(\partial^2\phi_s)_{x, z} \equiv \partial^2\phi_s/\partial{\rm \bf k_{\parallel \mathnormal x}}\partial{\rm \bf k_{\parallel \mathnormal z}}$. As stated above, the essence of \gls{spa} is to assume the contributions are largest when the phase is stationary. Thus ${\bf k}_\parallel^0$ is the solution to ${\partial \phi_s}/{\partial{\bf k}_\parallel } = 0$. Thus
 
 \begin{multline}\label{stationary}
 	{\rm J(n) = \frac{1}{\rm A_{\scriptscriptstyle BZ}}Im}\int_{-\infty}^{+\infty}d\varepsilon\;f(\varepsilon - \mu)\times \\ \sum_s{|c_s(\varepsilon,{\bf k}_\parallel^0)| e^{i{\rm (n} \phi_s(\varepsilon, {\bf k}_\parallel^0)+ \psi_s(\varepsilon))}}\int_{\bf k_\parallel}d^2 {\bf k}_\parallel \mathnormal e^{i(\frac{\rm n}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_s) ({\bf k}_\parallel - {\bf k}_\parallel^0))}
@@ -1365,7 +1366,7 @@ Thus Equation \eqref{dodgy} becomes
 thus in full, the Stationary Phase Approximation of the \gls{iec} is
 
 \begin{equation}
-	{\rm J(n)} = -\frac{(2\pi)^2{kT}}{2{\rm nA_{\scriptscriptstyle BZ}}}\sum_s \sum_{{\bf k}_\parallel^0}{\rm Re}\left.\left(\frac{\tau  c_se^{i{\rm n}\phi_s}}{\vert {\rm det}(\partial^2\phi_s)\vert^\frac{1}{2}\sinh(\pi kT[n\phi_s '+\psi_s '])} \right) \right|_{\mu , {\bf k}_\parallel^0}
+	{\rm J(n)} = -\frac{(2\pi)^2{kT}}{2{\rm nA_{\scriptscriptstyle BZ}}}\sum_s \sum_{{\bf k}_\parallel^0}{\rm Re}\left.\left(\frac{\tau  c_se^{i{\rm n}\phi_s}}{\vert {\rm det}(\partial^2\phi_s)\vert^\frac{1}{2}\sinh(\pi kT[n\phi_s '+\psi_s '])} \right) \right|_{\mu , {\bf k}_\parallel^0}\site{origspa}
 \end{equation}
 \subsubsection{1-band Simple Cubic model}
 	Given that in this simple case the Fermi surface has a single sheet, the period P is equal to $\rm \pi/k_\perp$, and $\phi_s = 2s\rm k_\perp$\textcolor{blue}{\textsuperscript{\cite{rev3}}}.
@@ -1388,7 +1389,7 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 		c_s= \frac{1}{\rm P} \int_{{\rm n}_0}^{{\rm n}_0+{\rm P}} d{\rm n \;F(n)}e^{- i\frac{2\pi s \rm n}{\rm P}}
 	\end{equation}
 	is integrated by utilising Equation \eqref{frac}, since this method is capable of handling non-integer n. The choice of $\rm n_0$ may be arbitrary.
-	$(\partial^2 \phi_s)$ is the $2\times 2$ Hessian matrix $(\partial^2\phi_s)_{x, z} \equiv \partial^2\phi_s/\partial{\rm \bf k_{\parallel \mathnormal x}}\partial{\rm \bf k_{\parallel \mathnormal z}}$ evaluated at the stationary point $\rm \bf k_\parallel^{\rm 0}$.
+	The Hessian matrix, $(\partial^2 \phi_s)$ is evaluated at the stationary point $\rm \bf k_\parallel^{\rm 0}$.
 	$\tau=i$ when both eigenvalues of the Hessian matrix are positive, $\tau=-i$ when they are negative, and $\tau=1$ when they differ in sign.
 	With these simplifications, the \gls{spa} may be restated as follows
 \begin{equation}\label{SPA_2}
