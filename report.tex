@@ -222,7 +222,7 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 	\par It	has been well known for some time that altering the magnetic configuration of a magnetic multilayer influences the charge current flowing through it. More recently it has been recognised that conversely, by passing a strong charge current through a magnetic trilayer, the current becomes spin-polarised when passing through the pinned magnet so that a spin current flows through the spacer to the opposing ferromagnet (the switching magnet). The spin current is absorbed by the \gls{sm} exerting a force known as \gls{stt}. If the \gls{stt} is high enough, the \gls{sm} undergoes a total reversal of magnetisation in an effect known as current-induced switching of magnetisation, which remains a very active field due to its obvious commercial potential in \gls{mram}\textsuperscript{\textcolor{blue}{\cite{stt}}}, a non-volatile form of random access memory with potential to become a universal memory\site{universal}, a form of data storage replacing the separate CPU cache, RAM and \gls{hdd} storage. \gls{mram} is non-volatile since the \gls{sm}'s retain their configuration in the absence of charge current. It remains a problem that too much heat is generated in these devices and this is of current research interest.
 	\par In the absence of charge current in a magnetic multilayer, there remains a net flow of spin current between the two magnetic layers, provided the magnets are out of alignment. This is \gls{iec}. Given the phenomenon exists without the expense of a charge current, \gls{iec} has been under active research due to possible implications such as \gls{mram} or CPU chips without the same heat generation due to lack of flowing charge. Recently \gls{iec} has fallen out of favour, with later research has focussing on \gls{stt} and current induced switching of magnetisation. In 1998, Ebels \textit{et. al.} found by experiment induced phase shifts in \gls{iec} in magnetic trilayers, by doping the magnetic layers\site{ebels}. Due to the limited interest at the time, it is likely the potential implications such as switching induced by altering the phase of \gls{iec} were not recognised at the time. Recently, one of the pioneers of \gls{cpp} \gls{tmr} devices made this observation and revives the mechanism for doing so\textsuperscript{\textcolor{blue}{\cite{AUphase}}}. This is the main research focus here.
 	\section{Green's Function Formalism}
-	\subsection{Method of Tight Binding}
+	\subsection{Method of Tight Binding}\label{tb}
 	The Method of Tight Binding is a convenient framework to use in this context as it models very well the potentials arising in atoms in a regular periodic structure. 
 	In an infinite periodic structure a translation from one crystal site to another leaves the structure as a whole unchanged since each site is identical. A structure of this nature is referred to as Bloch-like\textsuperscript{\textcolor{blue}{\cite{kittel_1996}}}.
 	The position vector of each atomic site is given by $\bf R$,
@@ -299,7 +299,7 @@ Where since
 	\begin{equation}
 		\varepsilon = {\rm u + t}(e^{i{\rm k}a} + e^{-i{\rm k}a}) = {\rm u}+2{\rm t}\cos{{\rm k}a}
 	\end{equation}
-	\subsubsection{One-band model \gls{bcc} example}
+	\subsubsection{One-band model \gls{bcc} example}\label{3dbcc}
 
 	\begin{figure}[H]
 	\begin{center}
@@ -843,8 +843,10 @@ an exact form of a closed-form \gls{sgf} in terms of ${\bf g}_0$. What makes Equ
 	\subsubsection{M\"{o}bius Transformation method}
 	The Kalkstein \& Soven method outlined in Subsection \ref{k_s} is one of the first closed-form Green's function formalisms derived, however it fails to describe the case when Green's functions are matrices. For any realistic calculations, this becomes a requirement. 
 An alternative method known as the M\"{o}bius Transformation method, or the method of Umerski\textcolor{blue}{\textsuperscript{\cite{AU_SGF}}} is used in these cases.
-\\\par The location of any atomic site is given by ${\bf R} = {\bf R}_\parallel + {\bf R}_\perp +{\bf s}_i$, where ${\bf R}_\parallel = n_1{\bf a}_1+n_2{\bf a}_2$ represents the sites on the plane parallel to the surface with integers $n_1,n_2$ and ${\bf a}_1,{\bf a}_2$ are the primitive translation vectors. The vector ${\bf R}_\perp = \rm n\bf a$ represents the sites along the growth direction, generally the $y$-axis (${\bf k}_y$-axis in reciprocal space) such that ${\bf a} = a(0,1,0)$, n is the nth plane from the \gls{sgf} and $a$ is the distance between planes.
-${\bf s}_i$ is the location of any atomic sites per primitive cell. For example \gls{sc} has the one site ${\bf s} = (0,0,0)$ whereas \gls{bcc} has the two sites ${\bf s}_1 = (0,0,0), 	{\bf s}_2 = \frac{a}{2}(1,1,1)$.
+\\\par As in Section \ref{k_s}, the formalism required is that of a crystal, infinite along two axes (in plane) and finite in the growth direction (out-of-plane). Due to the structure of the crystal here, the standard tight-binding model in three dimensions outlined in Section \ref{tb} does not apply.
+Instead, the Hamiltonian must be diagonalised in-plane, but unless the crystal is \gls{sc}, in general more than one basis atom must be considered to cater for the principle layers, such that there is translational symmetry in the growth direction, and so that interactions between these layers are accounted for.
+\\\par Thus the location of any atomic site is given by ${\bf R} = {\bf R}_\parallel + {\bf R}_\perp +{\bf s}_i$, where ${\bf R}_\parallel = n_1{\bf a}_1+n_2{\bf a}_2$ represents the sites on the plane parallel to the surface per basis atom, with integers $n_1,n_2$ and ${\bf a}_1,{\bf a}_2$ are the primitive translation vectors. The vector ${\bf R}_\perp = \rm n\bf a$ represents the sites along the growth direction, generally the $y$-axis (${\bf k}_y$-axis in reciprocal space) such that ${\bf a} = a(0,1,0)$, n is the nth plane from the \gls{sgf} and $a$ is the distance between planes.
+${\bf s}_i$ is the location of the basis atoms. For example, \gls{bcc} has the two basis atoms at ${\bf s}_1 = (0,0,0), 	{\bf s}_2 = \frac{a}{2}(1,1,1)$, the two sites in a primitive (symmetrically irreducible) cell.
 	\tikzset{external/export next=false}
 	\begin{figure}[H]
 		\begin{center}
@@ -890,33 +892,44 @@ ${\bf s}_i$ is the location of any atomic sites per primitive cell. For example 
 \end{figure}
 The representation in $k$-space is thus
 	\begin{equation}
-		|{\bf k}_\parallel, {\bf k}_\perp, {\bf s}\rangle = \frac{1}{\sqrt{N_\parallel}}\sum_{\bf R_\parallel = -\infty}^\infty e^{i{\bf k}_\parallel\cdot {\bf R}_\parallel} |{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle
+		|{\bf k}_\parallel, {\bf k}_\perp, {\bf s}_i\rangle = \frac{1}{\sqrt{N_\parallel}}\sum_{\bf R_\parallel = -\infty}^\infty e^{i{\bf k}_\parallel\cdot {\bf R}_\parallel} |{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_i \rangle
 	\end{equation}
 	Thus the diagonalised Hamiltonian can be given by 
+	\begin{equation}\label{multibasis}
+		\langle{\bf k}_\parallel, {\bf k}_\perp, {\bf s}_i|{\bf H}|{\bf \acute{k}}_\parallel, {\bf \acute{k}}_\perp, {\bf s}_j\rangle = \frac{1}{N_\parallel}\sum_{\bf R_\parallel \acute{R}_\parallel}  e^{i({\bf \acute{k}}_\parallel\cdot {\bf \acute{R}}_\parallel-{\bf k}_\parallel\cdot {\bf R}_\parallel)} \langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_i|{\bf H}|{\bf \acute{R}}_\parallel,{\bf \acute{R}}_\perp, {\bf s}_j \rangle
+	\end{equation}
+	An example is now given, the \gls{bcc} structure.
+	In this case, the basis atoms are located at ${\bf s}_1=(0,0,0), \, {\bf s}_2=\frac{a}{2}(1,1,1)$.
+	The principle lattice vectors are ${\bf a}_1 = a(1,0,0), \, {\bf a}_2 = a(0,0,1), \, {\bf a}_3 = a(0,1,0)$,
+	with ${\bf R}_\parallel = n_1{\bf a}_1 + n_2{\bf a}_2, \, {\bf R}_\perp = n_3 {\bf a}_3$.
+	The potential of the onsite element of the first basis atom at ${\bf s}_1$ is ${\bf u}_1$ and the potential of the onsite element of the second basis atom at ${\bf s}_2$ is ${\bf u}_2$,
+	where the bold typeface of these potentials indicates they are themselves matrices in multiband models.
+	In this example, offsite terms up to second nearest neighbours are considered, where the first nearest neighbours have potential ${\bf t}_1$, and the second nearest neighbours have potential ${\bf t}_2$.
+	Using Equation \eqref{multibasis} in conjunction with Equation \eqref{kk} yields
 	\begin{equation}
-		\langle{\bf k}_\parallel, {\bf k}_\perp, {\bf s}|{\bf H}|{\bf \acute{k}}_\parallel, {\bf \acute{k}}_\perp, {\bf \acute{s}}\rangle = \frac{1}{N_\parallel}\sum_{\bf R_\parallel \acute{R}_\parallel}  e^{i({\bf \acute{k}}_\parallel\cdot {\bf \acute{R}}_\parallel-{\bf k}_\parallel\cdot {\bf R}_\parallel)} \langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf \acute{R}}_\parallel,{\bf \acute{R}}_\perp, {\bf \acute{s}} \rangle
+		equation required here
 	\end{equation}
-	An example is now given, the \gls{bcc} structure. In this case, considering nearest neighbours and next nearest neighbours, the only non-zero elements of the Hamiltonian are
-	\begin{equation}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle = \bm \mu
-	\end{equation}
-	\begin{equation}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel \pm {\bf d},{\bf R}_\perp, {\bf s} \rangle = \bf t
-	\end{equation} 
-	where $\bf d$ is the set of nearest neighbours in $\bf R_\parallel$ (which makes them next nearest neighbours in the \gls{bcc} structure.
-	\begin{equation}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp+\bf a, {\bf s} \rangle = \bf t
-	\end{equation}
-	\begin{equation}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp-\bf a, {\bf s} \rangle = \bf t^\dagger
-	\end{equation}
-	\begin{equation}\label{l}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_1|{\bf H}|{\bf R}_\parallel+{\bf c},{\bf R}_\perp, {\bf s}_2 \rangle = \bm l
-	\end{equation}
-	\begin{equation}\label{ldagg}
-		\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_1|{\bf H}|{\bf R}_\parallel+{\bf c},{\bf R}_\perp-{\bf a}, {\bf s}_2 \rangle = \bm{l}^\dagger
-	\end{equation}
-	where $\bf c$ is the set of vectors ${\bf 0}, a(-1,0), a(-1,-1), a(0,-1)$ such that Equations \eqref{l}, \eqref{ldagg} account for the four nearest neighbours in front, $\bm l$, and the four nearest neighbours behind, $\bm l^\dagger$.
+	% In this case, considering nearest neighbours and next nearest neighbours, the only non-zero elements of the in-plane Hamiltonian are
+	% \begin{equation}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle = \bm \mu
+	% \end{equation}
+	% \begin{equation}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel \pm {\bf d},{\bf R}_\perp, {\bf s} \rangle = \bf t
+	% \end{equation} 
+	% where $\bf d$ is the set of nearest neighbours in $\bf R_\parallel$ (which makes them next nearest neighbours in the \gls{bcc} structure.
+	% \begin{equation}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp+\bf a, {\bf s} \rangle = \bf t
+	% \end{equation}
+	% \begin{equation}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp-\bf a, {\bf s} \rangle = \bf t^\dagger
+	% \end{equation}
+	% \begin{equation}\label{l}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_1|{\bf H}|{\bf R}_\parallel+{\bf c},{\bf R}_\perp, {\bf s}_2 \rangle = \bm l
+	% \end{equation}
+	% \begin{equation}\label{ldagg}
+	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_1|{\bf H}|{\bf R}_\parallel+{\bf c},{\bf R}_\perp-{\bf a}, {\bf s}_2 \rangle = \bm{l}^\dagger
+	% \end{equation}
+	% where $\bf c$ is the set of vectors ${\bf 0}, a(-1,0), a(-1,-1), a(0,-1)$ such that Equations \eqref{l}, \eqref{ldagg} account for the four nearest neighbours in front, $\bm l$, and the four nearest neighbours behind, $\bm l^\dagger$.
 	Thus the Hamiltonian describing potentials along atomic layers is given by
 	\begin{equation}
 	\bf	H = \begin{pmatrix} \bf u&\bf t& \bf 0&\bf 0\\\bf t^\dagger&\bf u &\ddots&\bf 0\\\bf 0&\ddots&\ddots&\bf t\\\bf 0&\bf 0&\bf t^\dagger&\bf u\end{pmatrix}
@@ -976,7 +989,7 @@ such that
 		{\bf O}^{-1} {\bf X}{\bf O} = \bm \Lambda
 	\end{equation}
 	Equation \eqref{frac} has the remarkable property of demonstrating the existence of interatomic \gls{sgf} representations due to the continuity at non-integer n.
-	\par To obtain the closed form \gls{sgf} ${\bf g}_0$ for semi-infinite systems, the ordering of the eigenvalues must be more precise. To do this, a small positive imaginary contribution is made to the energy, such that $\varepsilon \longrightarrow \varepsilon+i\delta$ but to enforce n $\rightarrow \infty$ before $\delta \rightarrow 0$. This has the effect of shifting pairs of eigenvalues on the unit circle such that one moves just inside the circle and the other just outside. The former are in $\bm \Lambda_1$ and the latter are in $\bm \Lambda_2$, such that as $\rm n\rightarrow\infty$, \quad $\bm\Lambda_1^{\rm n}, \bm\Lambda_2^{-\rm n}\rightarrow 0$, where
+	\par To obtain the closed form \gls{sgf} ${\bf g}_0$ for semi-infinite systems, the ordering of the eigenvalues must be more precise\site{rev3}. To do this, a small positive imaginary contribution is made to the energy, such that $\varepsilon \longrightarrow \varepsilon+i\delta$ but to enforce n $\rightarrow \infty$ before $\delta \rightarrow 0$. This has the effect of shifting pairs of eigenvalues on the unit circle such that one moves just inside the circle and the other just outside. The former are in $\bm \Lambda_1$ and the latter are in $\bm \Lambda_2$, such that as $\rm n\rightarrow\infty$, \quad $\bm\Lambda_1^{\rm n}, \bm\Lambda_2^{-\rm n}\rightarrow 0$, where
 	\begin{equation}
 		\bm \Lambda = \begin{pmatrix} \bm \Lambda_1&\bf 0\\\bf 0&\bm \Lambda_2 \end{pmatrix}
 	\end{equation}
@@ -1292,8 +1305,8 @@ Thus, the final form Equation \eqref{exchange} takes in this setting is
 \end{equation}
 % The Green's function for the spacer layer are obtained by growing from the LHS lead using Equation \eqref{adlayer}. This is in order to maintain maximum numerical efficiency given that calculations of previous layers are stored in the process.
 	\subsection{Stationary Phase Approximation}
-	The \gls{spa} method relies on the fact that F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded as a Fourier series
-
+	F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded in a Fourier-type series (exactly a Fourier series in the one-band model)
+% The \acrfull{spa} method relies on the fact that 
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_s \mathnormal{c_s(\varepsilon, {\bf k}_\parallel) e^{i\rm n \phi_s(\varepsilon, \bf k_\parallel)}}
 \end{equation}
@@ -1308,7 +1321,7 @@ $\phi_s$ is then expanded to second order in $\bf k_\parallel$ about the station
 \begin{multline}
 	\phi_s({\bf k_\parallel}) = \phi_s({\bf k}_\parallel^0) + ({\bf k}_\parallel - {\bf k}_\parallel^0)^T\frac{\partial \phi_s}{\partial{\bf k}_\parallel }+ \frac{1}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_s) ({\bf k}_\parallel - {\bf k}_\parallel^0) + \dots
 \end{multline}
-where $\partial \phi_s/\partial{\bf k}_\parallel,\,(\partial^2\phi_s)$ are $2\times2$ matrices, and $(\partial^2 \phi_s)$ is the Hessian matrix $(\partial^2\phi_s)_{x, z} \equiv \partial^2\phi_s/\partial{\rm \bf k_{\parallel \mathnormal x}}\partial{\rm \bf k_{\parallel \mathnormal z}}$. As stated above, the essence of \gls{spa} is to assume the contributions are largest when the phase is stationary. Thus ${\bf k}_\parallel^0$ is the solution to ${\partial \phi_s}/{\partial{\bf k}_\parallel } = 0$. Thus
+where $\partial \phi_s/\partial{\bf k}_\parallel,\,(\partial^2\phi_s)$ are $2\times2$ matrices, and $(\partial^2 \phi_s)$ is the Hessian matrix $(\partial^2\phi_s)_{x, z} \equiv \partial^2\phi_s/\partial{\rm \bf k_{\parallel \mathnormal x}}\partial{\rm \bf k_{\parallel \mathnormal z}}$. The essence of the \acrfull{spa} is to assume the contributions are largest when the phase is stationary. Thus ${\bf k}_\parallel^0$ is the solution to ${\partial \phi_s}/{\partial{\bf k}_\parallel } = 0$. Thus
 
 \begin{multline}\label{stationary}
 	{\rm J(n) = \frac{1}{\rm A_{\scriptscriptstyle BZ}}Im}\int_{-\infty}^{+\infty}d\varepsilon\;f(\varepsilon - \mu)\times \\ \sum_s{|c_s(\varepsilon,{\bf k}_\parallel^0)| e^{i{\rm (n} \phi_s(\varepsilon, {\bf k}_\parallel^0)+ \psi_s(\varepsilon))}}\int_{\bf k_\parallel}d^2 {\bf k}_\parallel \mathnormal e^{i(\frac{\rm n}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_s) ({\bf k}_\parallel - {\bf k}_\parallel^0))}
