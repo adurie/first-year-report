@@ -272,7 +272,7 @@ Where since
 			\varepsilon({\bf k})= {\bf u} + \sum_{{\bf d}\in {\bf R}}e^{i{\bf k \cdot d}}\langle\bf 0|H|d\rangle
 			\label{tight}
 		\end{equation}
-	\subsubsection{One-band model 1D example}
+		\subsubsection{One-band model 1D example}\label{simple}
 	\begin{figure}[H]
 	\begin{center}
 		\begin{tikzpicture}[scale=1.5, every node/.style={scale=1.5}]
@@ -569,10 +569,10 @@ Summing all elements and scaling as $1/N$ yields
 	% \end{multline}
 
 	\begin{multline}
-		\varepsilon({\bf k}) =\frac{1}{2}(\rm u_1+u_2)+2t\left(\cos \left( k_x{\mathnormal a} \right)+ \cos \left( k_z{\mathnormal a} \right) \right)
- \pm \\\sqrt{\rm { 4 \tau\tau^\dagger\left(\cos \left( k_x{\mathnormal a} \right) +\cos \left( k_z{\mathnormal a} \right)\right)^2
+		\varepsilon({\bf k}) =\frac{1}{2}({\rm u}_1+{\rm u}_2)+2{\rm t}\left(\cos \left( k_x a \right)+ \cos \left( k_z a \right) \right)
+ \pm \\\sqrt{ 4 \tau\tau^\dagger\left(\cos \left( k_x a \right) +\cos \left( k_z a \right)\right)^2
  +2{\mathnormal s}\left(\tau+\tau^\dagger\right)
- \left(\cos \left( k_x\mathnormal a \right)+\cos \left( k_z\mathnormal a \right)\right) +{\mathnormal s}^{2}+\frac{1}{4}\left(u_1 -u_2\right)^2}}
+ \left(\cos \left( k_x a \right)+\cos \left( k_z a \right)\right) +s^2+\frac{1}{4}\left({\rm u}_1 -{\rm u}_2\right)^2}
 	\end{multline}
 	Where upon switching off $s, \tau$ and making u$_1 = $u$_2$ yields the one-band case, as expected.
 	
@@ -907,8 +907,9 @@ The representation in $k$-space is thus
 	In this example, offsite terms up to second nearest neighbours are considered, where the first nearest neighbours have potential ${\bf t}_1$, and the second nearest neighbours have potential ${\bf t}_2$.
 	Using Equation \eqref{multibasis} in conjunction with Equation \eqref{kk} yields
 	\begin{equation}
-		equation required here
+		\langle{\bf k}_\parallel, n_3, {\bf s}_i|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_j\rangle = \delta_{\bf k_\parallel\acute{k_\parallel}}\sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf s}_i|{\bf H}|{\bf d}, 0, {\bf s}_j\rangle
 	\end{equation}
+	where $\bf d$ is the set including the position vectors of the onsite potential, the nearest neighbours and the next nearest neighbours.
 	% In this case, considering nearest neighbours and next nearest neighbours, the only non-zero elements of the in-plane Hamiltonian are
 	% \begin{equation}
 	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle = \bm \mu
@@ -930,15 +931,35 @@ The representation in $k$-space is thus
 	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_1|{\bf H}|{\bf R}_\parallel+{\bf c},{\bf R}_\perp-{\bf a}, {\bf s}_2 \rangle = \bm{l}^\dagger
 	% \end{equation}
 	% where $\bf c$ is the set of vectors ${\bf 0}, a(-1,0), a(-1,-1), a(0,-1)$ such that Equations \eqref{l}, \eqref{ldagg} account for the four nearest neighbours in front, $\bm l$, and the four nearest neighbours behind, $\bm l^\dagger$.
-	Thus the Hamiltonian describing potentials along atomic layers is given by
+	The Hamiltonian diagonalised in-plane takes the following form
 	\begin{equation}
 	\bf	H = \begin{pmatrix} \bf u&\bf t& \bf 0&\bf 0\\\bf t^\dagger&\bf u &\ddots&\bf 0\\\bf 0&\ddots&\ddots&\bf t\\\bf 0&\bf 0&\bf t^\dagger&\bf u\end{pmatrix}
 	\end{equation}
-	where 
+	where $\bf u$, the on-plane potential, and $\bf t$, the out-of-plane hopping are $2N\times2N$ matrices with each $N\times N$ element being dependent on the interaction of the two basis atoms, so that
 	\begin{equation}
-		{\bf u} = \bm \mu + 2{\bf t}\left(\cos\left(k_x a\right)+\cos\left(k_z a\right)\right) + 4\left(\bm l + \bm l^\dagger\right)\cos\left(\frac{k_xa}{2}\right)\cos\left(\frac{k_za}{2}\right)\,.
+		\bf u = \begin{pmatrix} {\bf u}_{11}&{\bf u}_{12}\\{\bf u}_{21}&{\bf u}_{22}\end{pmatrix}, \qquad \bf t = \begin{pmatrix} {\bf t}_{11}&{\bf t}_{12}\\{\bf t}_{21}&{\bf t}_{22}\end{pmatrix}
 	\end{equation}
-	This ends the example.
+	where the diagonal elements of $\bf u$ are given by
+	\begin{flalign}
+		{\bf u}_{ii} &= \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_i|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_i\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}\nonumber\\&=
+\sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf 0}|{\bf H}|{\bf d}, 0, {\bf 0}\rangle\nonumber\\&=
+		{\bf u}_i + 2{\bf t}_2\left(\cos\left(k_x a\right)+ \cos\left(k_z a\right)\right)
+	\end{flalign}
+	using the generalised result from \ref{simple}. The off-diagonal elements of $\bf u$ are given by
+	\begin{flalign}
+		{\bf u}_{12} &= \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_1|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_2\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}\nonumber\\&=
+\sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf s}_1|{\bf H}|{\bf d}, 0, {\bf s}_2\rangle\nonumber\\&=
+{\bf t}_1\left( e^{i{\bf k}_\parallel \cdot (0,0,0)}+e^{i{\bf k}_\parallel \cdot (-a,0,0)}+e^{i{\bf k}_\parallel \cdot (0,0,-a)}+e^{i{\bf k}_\parallel \cdot (-a,0,-a)}\right) 
+\nonumber\\&={\bf t}_1\left( 1+e^{-ik_x a}+e^{-ik_z a}+e^{-ia\left(k_x +k_z \right)}+\right) 
+	\end{flalign}
+	and
+	\begin{equation}
+		{\bf u}_{21} = \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_2|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_1\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}=
+		{\bf u}_{12}^\dagger.
+	\end{equation}
+	The diagonal elements of the matrix $\bf t$ represent hopping to a site of the same basis, the first and second bases respectively. The off-diagonal elements represent hopping between bases. As before, these terms are restricted to up to next nearest neighbour terms.
+	\\[2mm]\par The elements ${\bf t}_{ii} = {\bf t}_2$. It is easy to see that the element ${\bf t}_{12}=\bf 0$ since it cannot represent nearest neighbour, or next nearest neighbour interactions. The element ${\bf t}_{21}$ has exactly the same potential as ${\bf u}_{21}$, since the same interactions are considered. Thus ${\bf t}_{21} = {\bf u}_{12}^\dagger$.
+	Thus all terms of the Hamiltonian diagonalised in-plane have been derived, which concludes the example.
 	\\[2mm] The definition of an $N$-dimensional M\"{o}bius transformation is as follows, let
 \begin{equation}
 \bf{A} = \begin{pmatrix} \bf{a}&\bf{b}\\ \bf{c}&\bf{d} \end{pmatrix}
