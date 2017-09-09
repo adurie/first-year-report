@@ -297,7 +297,7 @@ Where since
 \end{figure}
 	In the one-band model in one dimension, all the vector values become scalar and the position of a given lattice site is $R=na$ and $d = \pm a$. As such, Eq. \eqref{tight} becomes
 	\begin{equation}
-		\varepsilon = {\rm u + t}(e^{i{\rm k}a} + e^{-i{\rm k}a}) = {\rm u}+2{\rm t}\cos{{\rm k}a}
+		\varepsilon = {\rm u + t}(e^{ika} + e^{-ika}) = {\rm u}+2{\rm t}\cos{ka}
 	\end{equation}
 	\subsubsection{One-band model \gls{bcc} example}\label{3dbcc}
 
@@ -621,10 +621,10 @@ This is solved most conveniently by converting the summation to an integral and 
 \end{equation}
 where the range of integration is over the first Brillouin zone. Putting $\omega = \varepsilon -{\rm u} -2{\rm t}f({\bf k_\parallel})$ yields
 \begin{equation}
-	G^0 (n) = \frac{a}{2\pi}\int_{-\frac{\pi}{a}}^{\frac{\pi}{a}} {d{\rm k}_\perp} \frac{e^{i|n|{\rm k}_\perp a}}{\omega +i\delta - 2{\rm t}\cos({\rm k}_\perp a)} .
+	G^0 (n) = \frac{a}{2\pi}\int_{-\frac{\pi}{a}}^{\frac{\pi}{a}} {dk_\perp} \frac{e^{i|n|k_\perp a}}{\omega +i\delta - 2{\rm t}\cos(k_\perp a)} .
 \end{equation}
-The substitution $z=e^{i{\rm k}_\perp a}$ is made, so that $\cos({\rm k}_\perp a) = \frac{1}{2}\big(e^{i{\rm k}_\perp a}+e^{-i{\rm k}_\perp a}\big)= \frac{1}{2}\big(z +\frac{1}{z}\big)$.
-\\Also $\frac{dz}{d{\rm k}_\perp}=iaz , \quad d{\rm k}_\perp =\frac{dz}{iaz},$ thus integrating over the unit circle $C$ yields
+The substitution $z=e^{ik_\perp a}$ is made, so that $\cos(k_\perp a) = \frac{1}{2}\big(e^{ik_\perp a}+e^{-ik_\perp a}\big)= \frac{1}{2}\big(z +\frac{1}{z}\big)$.
+\\Also $\frac{dz}{dk_\perp}=iaz , \quad dk_\perp =\frac{dz}{iaz},$ thus integrating over the unit circle $C$ yields
 \begin{equation}
 	G^0 (n) = \frac{a}{2\pi}\oint_C \frac{dz}{iaz}\cdot \frac{z^{|n|}}{\omega +i\delta - {\rm t}z-{\rm t}z^{-1}} 
 \end{equation}
@@ -729,7 +729,7 @@ In the mixed representation, the \gls{ldos} is defined by
 \end{equation}
 Eq. \eqref{rho} is calculated numerically by converting the summation into a double integral over the two dimensional Brillouin zone
 \begin{equation}
-	\rho_m(\varepsilon)=\frac{-a^2}{4\pi^3} \int_{-\frac{\pi}{a}}^{\frac{\pi}{a}}\int_{-\frac{\pi}{a}}^{\frac{\pi}{a}} d{\rm k}_y d{\rm k}_z  G(m,m,{\rm k}_y,{\rm k}_z).
+	\rho_m(\varepsilon)=\frac{-a^2}{4\pi^3} \int_{-\frac{\pi}{a}}^{\frac{\pi}{a}}\int_{-\frac{\pi}{a}}^{\frac{\pi}{a}} dk_y dk_z  G(m,m,k_y,k_z).
 \end{equation}
 \begin{figure}[H]
 	\centering
@@ -936,26 +936,26 @@ The representation in $k$-space is thus
 	\end{equation}
 	where $\bf u$, the on-plane potential, and $\bf t$, the out-of-plane hopping are $2N\times2N$ matrices with each $N\times N$ element being dependent on the interaction of the two basis atoms, so that
 	\begin{equation}
-		\bf u = \begin{pmatrix} {\bf u}_{11}&{\bf u}_{12}\\{\bf u}_{21}&{\bf u}_{22}\end{pmatrix}, \qquad \bf t = \begin{pmatrix} {\bf t}_{11}&{\bf t}_{12}\\{\bf t}_{21}&{\bf t}_{22}\end{pmatrix}
+		\bf u = \begin{pmatrix} {\bf u}_{11}&{\bf u}_{12}\\{\bf u}_{12}^\dagger&{\bf u}_{22}\end{pmatrix}, \qquad \bf t = \begin{pmatrix} {\bf t}_{11}&{\bf t}_{12}\\{\bf t}_{21}&{\bf t}_{22}\end{pmatrix}
 	\end{equation}
 	where the diagonal elements of $\bf u$ are given by
 	\begin{flalign}
-		{\bf u}_{ii} &= \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_i|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_i\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}\nonumber\\&=
+		{\bf u}_{ii} &= \langle{\bf k}_\parallel, n_3, {\bf s}_i|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_i\rangle\nonumber\\&=
 \sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf 0}|{\bf H}|{\bf d}, 0, {\bf 0}\rangle\nonumber\\&=
 		{\bf u}_i + 2{\bf t}_2\left(\cos\left(k_x a\right)+ \cos\left(k_z a\right)\right)
 	\end{flalign}
 	using the generalised result from \ref{simple}. The off-diagonal elements of $\bf u$ are given by
 	\begin{flalign}
-		{\bf u}_{12} &= \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_1|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_2\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}\nonumber\\&=
+		{\bf u}_{12} &= \langle{\bf k}_\parallel, n_3, {\bf s}_1|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_2\rangle\nonumber\\&=
 \sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf s}_1|{\bf H}|{\bf d}, 0, {\bf s}_2\rangle\nonumber\\&=
 {\bf t}_1\left( e^{i{\bf k}_\parallel \cdot (0,0,0)}+e^{i{\bf k}_\parallel \cdot (-a,0,0)}+e^{i{\bf k}_\parallel \cdot (0,0,-a)}+e^{i{\bf k}_\parallel \cdot (-a,0,-a)}\right) 
-\nonumber\\&={\bf t}_1\left( 1+e^{-ik_x a}+e^{-ik_z a}+e^{-ia\left(k_x +k_z \right)}+\right) 
+\nonumber\\&={\bf t}_1\left( 1+e^{-ik_x a}+e^{-ik_z a}+e^{-ia\left(k_x +k_z \right)}\right) 
 	\end{flalign}
-	and
-	\begin{equation}
-		{\bf u}_{21} = \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_2|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_1\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}=
-		{\bf u}_{12}^\dagger.
-	\end{equation}
+	% and
+	% \begin{equation}
+	% 	{\bf u}_{21} = \frac{\langle{\bf k}_\parallel, n_3, {\bf s}_2|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_1\rangle}{\delta_{\bf k_\parallel\acute{k_\parallel}}}=
+	% 	{\bf u}_{12}^\dagger.
+	% \end{equation}
 	The diagonal elements of the matrix $\bf t$ represent hopping to a site of the same basis, the first and second bases respectively. The off-diagonal elements represent hopping between bases. As before, these terms are restricted to up to next nearest neighbour terms.
 	\\[2mm]\par The elements ${\bf t}_{ii} = {\bf t}_2$. It is easy to see that the element ${\bf t}_{12}=\bf 0$ since it cannot represent nearest neighbour, or next nearest neighbour interactions. The element ${\bf t}_{21}$ has exactly the same potential as ${\bf u}_{21}$, since the same interactions are considered. Thus ${\bf t}_{21} = {\bf u}_{12}^\dagger$.
 	Thus all terms of the Hamiltonian diagonalised in-plane have been derived, which concludes the example.
@@ -1325,14 +1325,15 @@ Thus, the final form Equation \eqref{exchange} takes in this setting is
 \end{equation}
 % The Green's function for the spacer layer are obtained by growing from the LHS lead using Equation \eqref{adlayer}. This is in order to maintain maximum numerical efficiency given that calculations of previous layers are stored in the process.
 	\subsection{Stationary Phase Approximation}
-	F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded in a Fourier-type series (exactly a Fourier series in the one-band model)
+	F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}, with periods given by $\left(2\pi/k_{\perp 1}, 2\pi/k_{\perp 2}, \dots, 2\pi/k_{\perp p}\right)$ where $\{k_{\perp 1}, k_{\perp 2}, \dots, k_{\perp p}\}$ are the values of the perpendicular wavevector $k_\perp$ that satisfy the bulk dispersion relation, $E({\bf k}_\parallel, k_\perp) = \varepsilon$. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded in a Fourier-type series (exactly a Fourier series in the one-band model)
 % The \acrfull{spa} method relies on the fact that 
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_s \mathnormal{c_s(\varepsilon, {\bf k}_\parallel) e^{i\rm n \phi_s(\varepsilon, \bf k_\parallel)}}
 \end{equation}
+where $\phi_s = (a_1k_{\perp 1} + a_2k_{\perp 2} + \dots + a_pk_{\perp p})$ with integers $\{a_1, a_2, \dots, a_p\}$, and $c_s$ are the Fourier coefficients.
+ \par
 When this is substituted back into Equation \eqref{exchange}, it can be observed that for large n, the imaginary component of the integrand oscillates rapidly as a function of $\rm \bf k_\parallel$ and $\varepsilon$. As such, the only non-zero contributions to the $\rm \bf k_\parallel$ integral come from the neighbourhood of points in k-space where $\phi_s$ is stationary. Similarly, the only contributions to the $\varepsilon$ integral that don't cancel are those that arise near the sharp cut off that occurs at the chemical potential $\mu$.
 \\[3mm]
-The period of the \gls{iec} as a function of spacer thickness P $= \pi/\phi_s$ where $\phi_s = (a_1k_{\perp 1} + a_2k_{\perp 2} + \dots)$.
 $c_s$ is complex, so may be expressed in polar form $c_s(\varepsilon, {\bf k_\parallel)} = |c_s(\varepsilon,{\bf k_\parallel)}|e^{i \psi_s (\varepsilon)}$ thus
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_s \mathnormal{|c_s(\varepsilon, {\bf k_\parallel)}| e^{i\rm (n \phi_s(\varepsilon, {\bf k_\parallel})+ \psi_s(\varepsilon))}}
@@ -1402,19 +1403,19 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 	{\rm J(n)} = -\frac{(2\pi)^2{kT}}{2{\rm nA_{\scriptscriptstyle BZ}}}\sum_s \sum_{{\bf k}_\parallel^0}{\rm Re}\left.\left(\frac{\tau  c_se^{i{\rm n}\phi_s}}{\vert {\rm det}(\partial^2\phi_s)\vert^\frac{1}{2}\sinh(\pi kT[n\phi_s '+\psi_s '])} \right) \right|_{\mu , {\bf k}_\parallel^0}\site{origspa}
 \end{equation}
 \subsubsection{1-band Simple Cubic model}
-	Given that in this simple case the Fermi surface has a single sheet, the period P is equal to $\rm \pi/k_\perp$, and $\phi_s = 2s\rm k_\perp$\textcolor{blue}{\textsuperscript{\cite{rev3}}}.
-	$\rm k_\perp$ is obtained by rearranging the dispersion relation
+	Given that in this simple case the Fermi surface has a single sheet, the period P is equal to $\pi/k_\perp$, and $\phi_s = 2sk_\perp$\textcolor{blue}{\textsuperscript{\cite{rev3}}}.
+	$k_\perp$ is obtained by rearranging the dispersion relation
 	\begin{equation}\label{dispersion}
-		\rm \varepsilon = u + 2t\left(\cos(\bf k_\parallel \mathnormal a)+\cos(\rm k_\perp \mathnormal a)\right)	
+		\varepsilon = {\rm u + 2t}\left(\cos({\bf k}_\parallel a)+\cos(k_\perp a)\right)	
 	\end{equation}
 	The summation over $\rm\bf k_\parallel$ is reduced to the sum of those values at which $\rm\bf k_\parallel$ is stationary. These values occur at $\rm d\phi_s/d\bf k_\parallel = \rm0$.
 	Since
 	\begin{equation}
-		\rm k_\perp = \frac{1}{\mathnormal a}\cos^{-1}\Big(\frac{\varepsilon - u}{2t} - \cos(\bf k_\parallel \mathnormal a)\Big)
+		k_\perp \rm= \frac{1}{\mathnormal a}\cos^{-1}\Big(\frac{\varepsilon - u}{2t} - \cos(\bf k_\parallel \mathnormal a)\Big)
 	\end{equation}
 	Then
 	\begin{equation}
-		\rm \frac{\partial k_\perp}{\partial\bf k_\parallel} = -\frac{\sin(\bf k_\parallel\mathnormal a)}{\sqrt{-\left(\frac{\varepsilon - u}{2t}-\cos(\bf k_\parallel \mathnormal a)\right)^{\rm 2} -\rm 1}}
+		\frac{\partial k_\perp}{\partial\bf k_\parallel} = -\frac{\sin({\bf k}_\parallel a)}{\sqrt{-\left(\frac{\varepsilon -{\rm u}}{2{\rm t}}-\cos({\bf k}_\parallel a)\right)^2 -1}}
 	\end{equation}
 	Thus there is one stationary point, at $\rm\bf k_\parallel = 0$.
 	The Fourier term
@@ -1430,7 +1431,7 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 \end{equation}
 Where
 \begin{equation}
-	\rm k_\perp' = \left(\frac{\partial\varepsilon}{\partial k_\perp}\right)^{-1}=\left(-2t\mathnormal a\sin(k_\perp)\right)^{-1}
+	k_\perp' = \left(\frac{\partial\varepsilon}{\partial k_\perp}\right)^{-1}=\left(-2{\rm t} a\sin(k_\perp)\right)^{-1}
 \end{equation}
 and $\psi_s'$ is calculated numerically by comparing points on the gradient line over an infinitesimal distance such that the gradient is linear over these points.
 The Hessian matrix evaluates in this case to
@@ -1588,16 +1589,16 @@ Where the Greek characters refer to quantities of the leads, and the Roman chara
 			xmin=10,
 			xmax=50,
 			scaled y ticks = false,
-			legend entries = {$SPA \quad t_{lead} = 0.15$,$Full \quad t_{lead} = 0.15$, $SPA \quad t_{lead} = 0.25$, $Full \quad t_{lead} = 0.25$},
+			legend entries = {$\quad t_{lead} = 0.15$, $\quad t_{lead} = 0.25$},
 		]
 		\addplot[blue] table [col sep=comma] {SPA_15_1D.txt};
-		\addplot[purple] table [col sep=comma] {Mat_15_1D.txt};
+		% \addplot[purple] table [col sep=comma] {Mat_15_1D.txt};
 		\addplot[red] table [col sep=comma] {SPA_25_1D.txt};
-		\addplot[green] table [col sep=comma] {Mat25_1D.txt};
+		% \addplot[green] table [col sep=comma] {Mat25_1D.txt};
 	\end{axis}
 \end{tikzpicture}
-\caption{\footnotesize This figure shows the \gls{iec} in the one dimensional case, as a function of spacer thickness for two different hoppings in the leads in Rydbergs, showing the full numerical results and \gls{spa} calculations.
-The potential in the leads $= -0.7Ry$ in the majority spin band and $=-0.5Ry$ in the minority band. The potential in the spacer is $= -0.79Ry$, the hopping in the spacer is ${\rm t} = 0.4Ry$, $\mu= (0 + 1\times 10^{-5}i)Ry$ for \gls{spa}, and $(0+1\times 10^{-10}i)Ry$ for Matsubara. $kT = 1.9\times 10^{-3}Ry$ (room temperature).  Results calculated using C++11 with Clang compiler, utilising the Eigen library. Concurrency provided through OpenMP.
+\caption{\footnotesize This figure shows the \gls{iec} in the one dimensional case, as a function of spacer thickness for two different hoppings in the leads in Rydbergs, showing the \gls{spa} calculations.
+The potential in the leads $= -0.7Ry$ in the majority spin band and $=-0.5Ry$ in the minority band. The potential in the spacer is $= -0.79Ry$, the hopping in the spacer is ${\rm t} = 0.4Ry$, $\mu= (0 + 1\times 10^{-5}i)Ry$. $kT = 1.9\times 10^{-3}Ry$ (room temperature).  Results calculated using C++11 with Clang compiler, utilising the Eigen library. Concurrency provided through OpenMP.
 }\label{phase_graph}
 \end{figure}
 With the potentials used in Fig. \ref{phase_graph}, firstly considering the case when the hopping in the leads is $0.15Ry$, the leads behave as insulators in the majority spin band and $f^\uparrow$ has the radial term (introduced in Fig. \ref{phase_drawing}) $r\approx 0.60$. In the minority spin band, the leads also behave as insulators with $f^\downarrow$ having radial term $r\approx 0.89$. 
@@ -1641,7 +1642,7 @@ More details are given in the Appendix.
 	Though in primitive-rectangular or square lattices, a set of generating wave vectors could always be found that zeros all functions $A_m({\bf k})$, so the algorithm reduces to a 'mesh' of equally spaced points, displaced from the origin by $a(\frac{1}{2},\frac{1}{2})$ where $a$ is the distance between the neighbouring points.
 	\\[2mm] For these simple lattice types, the integral is performed as follows;
 	\begin{equation}
-		\iint_{\rm BZ}f({\rm k}_x, {\rm k}_z) d{\rm k}_xd{\rm k}_z= F_N
+		\iint_{\rm BZ}f(k_x, k_z) dk_xdk_z= F_N
 	\end{equation}
 	where in the case of the square lattice
 	\begin{equation}\label{CPsquare}
