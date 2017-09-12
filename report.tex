@@ -535,24 +535,22 @@ As such, the non-zero elements of the overlap integral include Equations \eqref{
 	\begin{equation}
 		\bf u=\begin{pmatrix} \rm u_1&s\\s&\rm u_2 \end{pmatrix} \qquad,\qquad \qquad \bf t=\begin{pmatrix} \rm t&\tau\\\tau^\dagger&\rm t\end{pmatrix}
 	\end{equation}
-	The self-energy is ${\rm u}_i$ for $i \in [1,2] \in \mathbb{Z}$ the two bands, and $s$ is the energy required to raise (lower) an electron to a more (less) excited state on the same atom. t is the energy required to hop to an equivalent excited state on a neighbouring atom, and $\tau$ is the hopping to a differently excited state on a neighbouring atom. In real space, the Hamiltonian is now block diagonalised
-	\begin{equation}
-	\bf	H = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &\bf t&\bf 0\\\bf 0&\bf t^\dagger&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
-	\end{equation}
-	The reciprocal space Hamiltonian $\mathcal{H}=\langle {\bf k}|\bf H|{\bf \acute{k}} \rangle$ is obtained using Equation \eqref{kkk} 
+	The self-energy is ${\rm u}_i$ for $i \in [1,2] \in \mathbb{Z}$ the two bands, and $s$ is the energy required to raise (lower) an electron to a more (less) excited state on the same atom. t is the energy required to hop to an equivalent excited state on a neighbouring atom, and $\tau$ is the hopping to a differently excited state on a neighbouring atom.\\
+	% \begin{equation}
+	% \bf	H = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &\bf t&\bf 0\\\bf 0&\bf t^\dagger&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
+	% \end{equation}
+% \par	The reciprocal space Hamiltonian $\mathcal{H}=\langle {\bf k}|\bf H|{\bf \acute{k}} \rangle$ is obtained using Equation \eqref{kkk} 
 
-	\begin{equation}
-		\mathcal{H} = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &{\bf t}\sum_{\bf d} e^{i\bf k \cdot d}&\bf 0\\\bf 0&{\bf t}^\dagger\sum_{\bf d} e^{-i\bf k \cdot d}&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
-	\end{equation}
-
-	In the case of the square lattice the primitive position vectors are ${\bf a}_1 = a(0,1)$, \quad ${\bf a}_2 = a(1,0)$ and ${\bf d}$ is the set of nearest neighbours $\pm {\bf a}_1, \pm {\bf a}_2$.
-Summing all elements and scaling as $1/N$ yields
-	\begin{equation}\label{H_0}
-		\mathcal{H}(\bf k) = \mathcal{H}_{n-1,n} + \mathcal{H}_{n,n} + \mathcal{H}_{n+1,n}
-	\end{equation}
-
-	The assumption is made that the leading diagonal of $\bf t$ is real, so for a two band system
-	Since Eq.\eqref{H_0} is also a matrix expression, the band energies $\varepsilon(\bf k)$ are the eigenvalues of this equation
+	% \begin{equation}
+	% 	\mathcal{H} = \begin{pmatrix} \ddots&\ddots& \bf 0&\bf 0\\\ddots&\bf u &{\bf t}\sum_{\bf d} e^{i\bf k \cdot d}&\bf 0\\\bf 0&{\bf t}^\dagger\sum_{\bf d} e^{-i\bf k \cdot d}&\bf u&\ddots\\\bf 0&\bf 0&\ddots&\ddots\end{pmatrix}
+	% \end{equation}
+\par	In the case of the square lattice, the primitive position vectors are ${\bf a}_1 = a(0,1)$, \quad ${\bf a}_2 = a(1,0)$ and ${\bf d}$ is the set of nearest neighbours $\pm {\bf a}_1, \pm {\bf a}_2$.
+% Summing all elements and scaling as $1/N$ yields
+	% \begin{equation}\label{H_0}
+	% 	\mathcal{H}(\bf k) = \mathcal{H}_{n-1,n} + \mathcal{H}_{n,n} + \mathcal{H}_{n+1,n}
+	% \end{equation}
+Thus, using Equation \eqref{tight} and making the assumption that the leading diagonal of $\bf t$ is real, the eigenvalues of the two band system are given by
+	% Since Eq.\eqref{H_0} is also a matrix expression, the band energies $\varepsilon(\bf k)$ are the eigenvalues of this equation
 	\begin{equation}
 		\rm det \begin{pmatrix} {\rm u}_1+2{\rm t}\left(\cos \left( k_xa \right)+ \cos \left( k_za \right)\right)-\varepsilon(\bf k) &s+2\tau
 			\left(\cos \left( k_xa \right)+ \cos \left( k_za \right)\right) \\ s+2
