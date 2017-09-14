@@ -891,6 +891,7 @@ The representation in $k$-space is thus
 	\begin{equation}
 		|{\bf k}_\parallel, {\bf k}_\perp, {\bf s}_i\rangle = \frac{1}{\sqrt{N_\parallel}}\sum_{\bf R_\parallel = -\infty}^\infty e^{i{\bf k}_\parallel\cdot {\bf R}_\parallel} |{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_i \rangle
 	\end{equation}
+	Where ${\bf k}_\parallel$ is the in-plane momentum space vector, and ${\bf k}_\perp$ is the momentum space vector in the growth direction (out of plane).
 	Thus the diagonalised Hamiltonian can be given by 
 	\begin{equation}\label{multibasis}
 		\langle{\bf k}_\parallel, {\bf k}_\perp, {\bf s}_i|{\bf H}|{\bf \acute{k}}_\parallel, {\bf \acute{k}}_\perp, {\bf s}_j\rangle = \frac{1}{N_\parallel}\sum_{\bf R_\parallel \acute{R}_\parallel}  e^{i({\bf \acute{k}}_\parallel\cdot {\bf \acute{R}}_\parallel-{\bf k}_\parallel\cdot {\bf R}_\parallel)} \langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}_i|{\bf H}|{\bf \acute{R}}_\parallel,{\bf \acute{R}}_\perp, {\bf s}_j \rangle
@@ -1159,12 +1160,13 @@ the equilibrium term, and
 \begin{multline}\label{keldysh}
 	\langle j_{n-1}\rangle_2 = \frac{1}{2\pi}\sum_{\bf k_\parallel}\int d\varepsilon \,\rm Re \, Tr \Big\lbrace\Big\lbrack\bf g_{\rm\scriptscriptstyle L} t A B g_{\rm \scriptscriptstyle R}^\dag t^\dag-AB+\\{\rm\frac{1}{2}} \bf(A+B)\Big\rbrack\bm\sigma\Big\rbrace [\mathnormal f(\varepsilon - \mu_{\scriptscriptstyle L})-\mathnormal f(\varepsilon - \mu_{\rm\scriptscriptstyle R})]
 \end{multline}
-the transport term, named so since it is only non-zero when a bias is applied. Here $f(\varepsilon-\mu)$ is the Fermi-Dirac distribution function given by
+the transport term, named so since it is only non-zero when a bias is applied, where the electrochemical potentials in the right and left hand leads $\mu_{\rm \scriptscriptstyle L}, \mu_{\rm \scriptscriptstyle R}$ are non-equal. Here $f(\varepsilon-\mu_{\rm \scriptscriptstyle L(R)})$ is the Fermi-Dirac distribution function given by
 \begin{equation}\label{fermi}
-	f(\varepsilon-\mu)=\frac{1}{1+e^{(\varepsilon-\mu)/kT}}
+	f(\varepsilon-\mu_{\scriptscriptstyle L(R)})=\frac{1}{1+e^{(\varepsilon-\mu_{\scriptscriptstyle L(R)})/kT}}
 \end{equation}
-The equilibrium term exists in the absence of applied bias and is responsible for the \gls{iec}.
-$\bf A = (I - g_{\rm\scriptscriptstyle R}t^\dag g_{\rm\scriptscriptstyle L}t)^{\rm-1}$, $\bf B = (I -g_{\rm\scriptscriptstyle R}^\dag t^\dag g_{\rm\scriptscriptstyle L}^\dag t)^{\rm -1}$ and $\bm \sigma$ is one of the $2\times 2$ Pauli matrices $\sigma_x, \sigma_y, \sigma_z$ who's choice is dependent on the spin current axis direction to be computed. As such, the out of plane spin current is required here, thus $\sigma_y$ is selected for the computation. $f(\varepsilon - \mu_\alpha)$ is the Fermi function with electrochemical potential $\mu_\alpha$. Equation \eqref{keldysh} can instead yield the total charge current if $\frac{1}{2}\bm\sigma$ is replaced by $e/\hbar $ since $\langle j_{n-1}\rangle_1$ makes no contribution to charge current\textcolor{blue}{\textsuperscript{\cite{keldysh_2}}}.
+The \gls{sgf}'s $\bf g_{\rm\scriptscriptstyle L}, g_{\rm\scriptscriptstyle R}$, represent the left and right surfaces respectively, of a junction that is separated into two independent parts through some imaginary cleavage plane\textcolor{blue}{\textsuperscript{\cite{kubo2}}} see Fig \ref{fig:5th}.
+$\bf A = (I - g_{\rm\scriptscriptstyle R}t^\dag g_{\rm\scriptscriptstyle L}t)^{\rm-1}$, $\bf B = (I -g_{\rm\scriptscriptstyle R}^\dag t^\dag g_{\rm\scriptscriptstyle L}^\dag t)^{\rm -1}$ and $\bm \sigma$ is one of the $2\times 2$ Pauli matrices $\sigma_x, \sigma_y, \sigma_z$ who's choice is dependent on the spin current axis direction to be computed. As such, the out of plane spin current is required here, thus $\sigma_y$ is selected for the computation. Equation \eqref{keldysh} can instead yield the total charge current if $\frac{1}{2}\bm\sigma$ is replaced by $(e/\hbar)\bf I $ since $\langle j_{n-1}\rangle_1$ makes no contribution to charge current\textcolor{blue}{\textsuperscript{\cite{keldysh_2}}}.
+\\[2mm]\par It is the equilibrium term (Equation \eqref{keldysh_1}) that is of interest here, since it exists in the absence of applied bias and is responsible for the \gls{iec}.
 	\tikzset{external/export next=false}
 \begin{figure}[H]
 	\centering
@@ -1202,7 +1204,8 @@ $\bf A = (I - g_{\rm\scriptscriptstyle R}t^\dag g_{\rm\scriptscriptstyle L}t)^{\
 \end{tikzpicture}
 \caption{\footnotesize Schematic of a \gls{cpp} trilayer. The red shaded areas are the semi-infinite leads, and the blue shaded area is the spacer. The spacer is grown from the LHS lead to thickness $n$, and for these calculations there is an imaginary cleavage plane passing between the $n$th spacer layer and the left surface of the RHS lead.}\label{fig:5th}
 \end{figure}
-\par The system comprises (see Figure \ref{fig:5th}) of a \gls{pm}, a metallic spacer and a \gls{sm} in its most minimal form. Often additional layers are required and in general the system is grown with \gls{cpp}. Thus it may be modelled that the magnetisation of the \gls{pm} lies in the $xz$ plane at an angle $\theta$ to the $z$ axis. The magnetisation of the \gls{sm} is held parallel to the $z$ axis. The closed-form \gls{sgf}'s of the leads may be calculated using Equation \eqref{SGF_AU}, the \gls{sgf} of the spacer and \gls{sm} are grown epitaxially using either Equation \eqref{adlayer} or Equation \eqref{bigG}. $\bf g_{\rm\scriptscriptstyle R}$ is the \gls{sgf} of the \gls{sm} in contact with the spacer, and $\bf g_{\rm\scriptscriptstyle L}$ is the \gls{sgf} of the outermost spacer layer.
+\par The system comprises (see Figure \ref{fig:5th}) of a \gls{pm}, a metallic spacer and a \gls{sm} in its most minimal form. Often additional layers are required and in general the system is grown with \gls{cpp} if a charge current is passed through. Thus it may be modelled that the magnetisation of the \gls{pm} lies in the $xz$ plane at an angle $\theta$ to the $z$ axis. The magnetisation of the \gls{sm} is held parallel to the $z$ axis. The closed-form \gls{sgf}'s of the leads may be calculated using Equation \eqref{SGF_AU}, the \gls{sgf} of the spacer and \gls{sm} are grown epitaxially using either Equation \eqref{adlayer} or Equation \eqref{bigG}.
+The Author models $\bf g_{\rm\scriptscriptstyle R}$ as the \gls{sgf} of the \gls{sm} in contact with the spacer, and $\bf g_{\rm\scriptscriptstyle L}$ as the \gls{sgf} of the outermost spacer layer, but without loss of generality, any such neighbouring \gls{sgf}'s may be used.
 The matrix of on-site potentials of the \gls{pm} have been rotated by $\theta$ as follows\textcolor{blue}{\textsuperscript{\cite{SC}}}
 \begin{equation}
 	\rm\bf u_{\rm 1 \theta}\; {\rm =}\; s^{\rm -1}u_{\rm 1 0}s
@@ -1216,7 +1219,7 @@ At equilibrium, Equation \eqref{keldysh_1} yields the \gls{iec} by integrating w
 \begin{equation}\label{alt_exchange}
 	{\rm J(n)}= \int_\theta d\theta \langle j_{n-1}\rangle_1 = \frac{1}{2\pi}\sum_{\bf k_\parallel}\int d\varepsilon \int_0^\pi d\theta\,\rm Re \, Tr \lbrace \bf (B-A)\bm\sigma\rbrace \mathnormal f(\varepsilon - \mu)
 \end{equation}
-The second method for describing \gls{iec} is derived directly from the thermodynamic potentials, which in equilibrium form is as follows
+A second method for describing \gls{iec} is derived directly from the thermodynamic potentials, which in equilibrium form is as follows
 \begin{equation}\label{exchange}
 	\rm J(n) = \frac{1}{n_\parallel}\sum_{\bf k_\parallel}Im\int_{-\infty}^{+\infty}{\mathnormal d}\varepsilon\;{\mathnormal f}(\varepsilon - \mu)F(\varepsilon, {\bf k_\parallel}, n)
 \end{equation}
@@ -1404,8 +1407,9 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 	Given that in this simple case the Fermi surface has a single sheet, the period P is equal to $\pi/k_\perp$, and $\phi_s = 2sk_\perp$\textcolor{blue}{\textsuperscript{\cite{rev3}}}.
 	$k_\perp$ is obtained by rearranging the dispersion relation
 	\begin{equation}\label{dispersion}
-		\varepsilon = {\rm u + 2t}\left(\cos({\bf k}_\parallel a)+\cos(k_\perp a)\right)	
+		\varepsilon = {\rm u + 2t}\left(\cos(k_x a) + \cos(k_z a)+\cos(k_\perp a)\right)	
 	\end{equation}
+	Where ${\bf k}_\parallel = (k_x, k_z)$. 
 	The summation over $\rm\bf k_\parallel$ is reduced to the sum of those values at which $\rm\bf k_\parallel$ is stationary. These values occur at $\rm d\phi_s/d\bf k_\parallel = \rm0$.
 	Since
 	\begin{equation}
