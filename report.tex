@@ -207,7 +207,7 @@ A great deal of the programs written and formulae derived were done so in conjun
 		The system explored is a pseudo one-dimensional magnetic multilayer. The Green's function formalism is used here, as this offers a means of providing complete and accurate results comparable, if correctly modeled, to experiment. This review begins with a brief history of the subject area, moving on to a description of the necessary tools needed, such as the method of Tight Binding and derivations of closed form Green's functions. These methods are then applied to the \gls{iec} firstly in its full form simplified by the method of Matsubara, followed by the derivation of an analytical method. The origin of the phase of \gls{iec} is then discussed and derived to be followed by a conclusion and a plan for future work. The paper concludes with numerical integration routines described in the Appendix.
 	\end{abstract}
 	\section{Introduction}
-	\subsection{History}
+	\subsection{History}\label{history}
 	There has been significant interest in the field of spintronics for the past three decades. This interest began with the discovery that the resistance of a multilayer comprising of alternating sets of thin magnetic and equally thin non-magnetic metallic layers was much lower when the magnetic moments of the layers were parallel compared to the anti-parallel case\textcolor{blue}{\textsuperscript{\cite{rev3, GMR1, GMR2}}}. This is explained by the fact that if a device is constructed on the nanoscopic scale, such that the thickness is smaller than the spin diffusion length, spin can flow through this device with some memory of it's orientation. A magnet by definition polarises spin, so that spincurrent (spin-polarised current) can be modelled as if flowing through two independent wires. The up an down spin carriers are scattered at different rates at layer interfaces and the total resistance of the structure depends on the magnetic configuration of all magnetic components, which in turn can be modified by an applied magnetic field thus the resistance can be manipulated by this field. 
 This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is defined by
 	\begin{equation}
@@ -1237,7 +1237,7 @@ In this communication, efforts are directed at solving Equation \eqref{exchange}
 has an infinite number of isolated singularities at $\varepsilon = \mu \pm (2m+1)kT\pi i$ for $m=0,1,2,\dots$, none of which lie on the real axis. $kT$ is the Boltzmann constant multiplied by temperature. The semicircle lies in the upper half plane, and so all singularities at $\gamma i$ for $\gamma < 0$ are discarded. 
 The residues of $f(\varepsilon - \mu)$ lie at
 	\begin{flalign}
-	&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{1+e^{\omega}}=\\&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{\frac{1}{kT}e^{(\varepsilon-\mu)/kT}}=-kT
+		&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{1+e^{\omega}}=\\&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{\frac{\rm d}{{\rm d}\varepsilon}e^{\omega}}=-kT
 \end{flalign}
 where $\omega = (\varepsilon-\mu)/kT$.
 Thus
@@ -1400,7 +1400,7 @@ Thus Equation \eqref{dodgy} becomes
 \normalsize \justify \quad 
 thus in full, the Stationary Phase Approximation of the \gls{iec} is
 
-\begin{equation}
+\begin{equation}\label{spa}
 	{\rm J(n)} = -\frac{(2\pi)^2{kT}}{2{\rm nA_{\scriptscriptstyle BZ}}}\sum_s \sum_{{\bf k}_\parallel^0}{\rm Re}\left.\left(\frac{\tau  c_se^{i{\rm n}\phi_s}}{\vert {\rm det}(\partial^2\phi_s)\vert^\frac{1}{2}\sinh(\pi kT[n\phi_s '+\psi_s '])} \right) \right|_{\mu , {\bf k}_\parallel^0}\site{origspa}
 \end{equation}
 \subsubsection{1-band Simple Cubic model}
@@ -1410,14 +1410,18 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 		\varepsilon = {\rm u + 2t}\left(\cos(k_x a) + \cos(k_z a)+\cos(k_\perp a)\right)	
 	\end{equation}
 	Where ${\bf k}_\parallel = (k_x, k_z)$. 
-	The summation over $\rm\bf k_\parallel$ is reduced to the sum of those values at which $\rm\bf k_\parallel$ is stationary. These values occur at $\rm d\phi_s/d\bf k_\parallel = \rm0$.
+	The summation over $\rm\bf k_\parallel$ is reduced to the sum of those values at which $\rm\bf k_\parallel$ is stationary. These values occur at $\partial\phi_s/\partial k_x= \partial\phi_s/\partial k_z= 0$.
 	Since
 	\begin{equation}
-		k_\perp \rm= \frac{1}{\mathnormal a}\cos^{-1}\Big(\frac{\varepsilon - u}{2t} - \cos(\bf k_\parallel \mathnormal a)\Big)
+		k_\perp \rm= \frac{1}{\mathnormal a}\cos^{-1}\Big(\frac{\varepsilon - u}{2t} - \mathnormal{\cos(k_x  a)-\cos(k_z  a)}\Big)
 	\end{equation}
 	Then
 	\begin{equation}
-		\frac{\partial k_\perp}{\partial\bf k_\parallel} = -\frac{\sin({\bf k}_\parallel a)}{\sqrt{-\left(\frac{\varepsilon -{\rm u}}{2{\rm t}}-\cos({\bf k}_\parallel a)\right)^2 -1}}
+		\frac{\partial k_\perp}{\partial k_x} = -\frac{\sin(k_x a)}{\sqrt{1-\left(\frac{\varepsilon -{\rm u}}{2{\rm t}}-\cos(k_x a)-\cos(k_z a)\right)^2}}
+	\end{equation}
+	and
+	\begin{equation}
+		\frac{\partial k_\perp}{\partial k_z} = -\frac{\sin(k_z a)}{\sqrt{1-\left(\frac{\varepsilon -{\rm u}}{2{\rm t}}-\cos(k_x a)-\cos(k_z a)\right)^2}}
 	\end{equation}
 	Thus there is one stationary point, at $\rm\bf k_\parallel = 0$.
 	The Fourier term
@@ -1473,8 +1477,9 @@ Which is further simplified since $k_x, k_y = 0$. The results comparing the meth
 	
 \end{figure}
 \subsection{Phase of Interlayer Exchange Coupling}
-\par The Stationary phase approximation was analysed to ascertain phase dependence of \gls{iec}.
-By applying perturbation and isolation techniques it became quickly apparent the phase was dominated by the first Fourier term (using direct complex Fourier series expansion agaist \gls{sgf}'s $\bf g$, this term is $c_{-1}$), in particular since this term is complex, it is the phase $\psi_s$ of the Fourier term that is of importance.
+\par As discussed in Section \ref{history}, it is of great interest in both theory and practice to understand more fully what governs the phase of \gls{iec} as a function of spacer thickness. In order to aid this understanding, 
+the Stationary phase approximation was analysed.
+By perturbing quantities during modelling, and isolating terms during certain summations within Equation \eqref{spa}, it became quickly apparent the phase was dominated by the first Fourier term (using direct complex Fourier series expansion agaist \gls{sgf}'s $\bf g$, this term is $c_{-1}$), in particular since this term is complex, it is the phase $\psi_s$ of the Fourier term that is of importance.
 \par In order to understand the origin of this term more fully, it would be beneficial to negate the need to integrate over the spacer period, which is required using standard Fourier series expansion.
 There are two alternative methods to obtain the Fourier components. The first involves taking an inverse \gls{fft}.
 The second method replaces the \gls{sgf} with the \gls{mtgf} 
