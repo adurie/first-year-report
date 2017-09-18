@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt]{article}
 \usepackage{siunitx}
+\usepackage{scalerel}
 \usepackage[style=listdotted,toc,nopostdot,acronym,nomain]{glossaries}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -1516,7 +1517,7 @@ where the independent variable is now dropped as the surface \gls{mtgf}'s are co
 \begin{equation}
 	c_1^{\alpha\beta} = (f_{\scriptscriptstyle R}^\alpha f_{\scriptscriptstyle L}^\beta)
 \end{equation}
-Exploring an arbitrary \gls{mtgf} and using Equation \eqref{fn}
+Continuing in the one band model and exploring an arbitrary \gls{mtgf}, with Equation \eqref{fn} yields
 \begin{equation}
 	f = -\frac{(\lambda_2{\rm t g} - 1)}{(\lambda_1 {\rm t g} - 1)}
 \end{equation}
@@ -1529,29 +1530,29 @@ it is straightforward to show that
 $\rm g =\tau^{-1}\lambda_1$ with $\lambda_1$ being the eigenvalue of the lead.
 This yields the following depending on whether the lead is an insulator or a conductor. In the case of a conductor
 \begin{equation}\label{conductor}
-	f = -\frac{(\frac{\rm t}{\tau}e^{i(k - \kappa)}-1)}{(\frac{\rm t}{\tau}e^{-i(k +\kappa)}-1)}
+	f = -\frac{(\frac{\rm t}{\tau}e^{i(k_\perp - \kappa_\perp)}-1)}{(\frac{\rm t}{\tau}e^{-i(k_\perp +\kappa_\perp)}-1)}
 \end{equation}
 and in the case of an insulator
 \begin{equation}\label{insulator}
-	f = -\frac{(\frac{\rm t}{\tau}e^{-\kappa} e^{ ik}-1)}{(\frac{\rm t}{\tau}e^{-\kappa} e^{-ik}-1)}
+	f = -\frac{(\frac{\rm t}{\tau}e^{-\kappa_\perp} e^{ ik_\perp}-1)}{(\frac{\rm t}{\tau}e^{-\kappa_\perp} e^{-ik_\perp}-1)}
 \end{equation}
-Where the Greek characters refer to quantities of the leads, and the Roman characters refer to quantities of the spacer.
-\par Complex analysis shows the system of most interest here is that of the insulator since the numerator is the complex conjugate of the denominator of $-f$, thus $|f|=1$, from which it follows that $|c_1| = 1$ establishing the dominance of this term. For the conducting spacer, $|f|<1$ since the sign of $\kappa$ always ensures the magnitude of the numerator is less than that of the denominator.
-\par Similarly, with $\kappa$ being complex in the case of the conductor, the phase of the numerator of $-f$ will always be more advanced than that of the denominator. In the insulator the two phases are equal, and the total phase of the system is the sum of the phases of the denominator and numerator. It is thus expected the larger phase changes will be observed in an insulator, outlined in Fig. \ref{phase_drawing}.
+Where the Greek characters refer to quantities of the leads, and the Roman characters refer to quantities of the spacer, with $k_\perp, \kappa_\perp$ the perpendicular wave-vectors, and ${\rm t}, \tau$ the one band hoppings.
+\par Complex analysis shows the system of most interest here is that of the insulator since the numerator is the complex conjugate of the denominator of $-f$, thus $|f|=1$, from which it follows that $|c_1| = 1$ establishing the dominance of this term. For the conducting spacer, $|f|<1$ since the sign prefix before $\kappa_\perp$ always ensures the magnitude of the numerator is less than that of the denominator.
+\par Similarly, with $\kappa_\perp$ being coupled to $i$ in the conductor, the phase of the numerator of $-f$ will always be more advanced than that of the denominator. In the insulator the two phases are equal, and the total phase of the system is the sum of the phases of the denominator and numerator. It is thus expected the larger phase changes will be observed in an insulator, outlined in Fig. \ref{phase_drawing}.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[scale=1.8]
-		\draw[blue,opacity = 0.7,fill=yellow] (-0.5,0) circle [radius=1.1cm];
-		\draw[very thin,blue,fill=blue] (-0.5,0) -- +(120:1.1cm) circle[radius=0.03cm] -- node[midway, yshift=0.2cm, xshift = 0.2cm, rotate=-32]{\scriptsize numerator}(0.5,0) circle[radius = 0.03cm];
-		\draw[very thin,red, fill=red] (-0.5,0) -- +(240:1.1cm) circle[radius=0.03cm] -- node[midway, yshift=-0.2cm,xshift = 0.2cm, rotate=32]{\scriptsize denominator} (0.5,0);
-		\draw[black, fill = blue, opacity = 0.4] (-0.5,0) -- (-0.2,0) arc [start angle = 0, end angle = 120,radius = 0.3cm] node [black, opacity = 1, xshift = 0.4cm, yshift = -0.2cm] {$\scriptstyle k$}-- cycle;
-		\draw[black, fill = red, opacity = 0.4] (-0.5,0) -- (-0.2,0) arc [start angle = 0, end angle = -120,radius = 0.3cm] -- cycle;
-		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- node[opacity=1,black, scale=1.4, yshift=0.15cm, xshift=-0.06cm] {$\scriptscriptstyle\Psi$} (0.8, 0) arc [start angle = 0, end angle = 148, radius = 0.3cm] -- cycle;
-		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- (0.8, 0) arc [start angle = 0, end angle = -148, radius = 0.3cm] -- cycle;
+		\draw[blue,opacity = 0.7,fill=yellow] (-0.5,0) circle [radius=0.9cm];
+		\draw[very thin,blue,fill=blue] (-0.5,0) -- +(20:0.9cm) circle[radius=0.03cm] -- node[midway, yshift=0.2cm, xshift = -1.0cm, rotate=22]{\tiny numerator}(0.5,0) circle[radius = 0.03cm];
+		\draw[very thin,red, fill=red] (-0.5,0) -- +(340:0.9cm) circle[radius=0.03cm] -- node[midway, yshift=-0.2cm,xshift = -1.0cm, rotate=-22]{\tiny denominator} (0.5,0);
+		\draw[black, fill = blue, opacity = 0.4] (-0.5,0) -- (0.2,0) arc [start angle = 0, end angle = 20,radius = 0.7cm] node [black, opacity = 1, xshift = -0.2cm, yshift = -0.28cm] {$\scriptstyle k_\perp$}-- cycle;
+		\draw[black, fill = red, opacity = 0.4] (-0.5,0) -- (0.2,0) arc [start angle = 0, end angle = -20,radius = 0.7cm] node [black, opacity = 1, xshift = -0.3cm, yshift = 0.28cm] {$\scriptstyle -k_\perp$}-- cycle;
+		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- node[opacity=1,black, scale=1.4, yshift=0.15cm, xshift=-0.06cm] {$\scriptscriptstyle\Psi$} (0.8, 0) arc [start angle = 0, end angle = 117, radius = 0.3cm] -- cycle;
+		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- (0.8, 0) arc [start angle = 0, end angle = -117, radius = 0.3cm] -- cycle;
 		\node[scale=1.4] at (1,0.5) {$\scriptscriptstyle f = e^{i\Psi}$};
 		\draw[opacity = 0.5,step=.5cm,gray,very thin] (-1.9,-1.4) grid (1.4,1.4);
 		\draw[decoration={markings,mark=at position 0 with
-			{\arrow[xshift = 0.15cm,scale=2,>=stealth]{<}}, mark=at position 1 with {\arrow[scale=2, >=stealth]{>}}},postaction={decorate}] (-0.6, 0.03) -- +(120:1.03cm) node [scale=1.4, midway, yshift=-0.2cm,xshift=-0.3cm] {$\scriptscriptstyle\frac{\rm t}{\tau}e^{-\kappa}$};
+			{\arrow[xshift = 0.15cm,scale=2,>=stealth]{<}}, mark=at position 1 with {\arrow[scale=2, >=stealth]{>}}},postaction={decorate}] (-0.6, 0.03) -- +(120:0.83cm) node [scale=1.4, midway, yshift=-0.2cm,xshift=-0.3cm] {$\scriptscriptstyle\frac{\rm t}{\tau}e^{-\kappa_{\scaleto{\perp}{2.5pt}}}$};
 		\draw [thick, decoration={markings,mark=at position 1 with
 			{\arrow[scale=2,>=stealth]{>}}},postaction={decorate}](0.5,-1.5) -- (0.5, 1.5) node [above] {$\Im(z)$};
 		\draw [thick, decoration={markings,mark=at position 1 with
@@ -1565,14 +1566,14 @@ Where the Greek characters refer to quantities of the leads, and the Roman chara
 		\draw[blue,opacity = 0.7,fill=yellow] (-0.5,0) circle [radius=1.1cm];
 		\draw[very thin,blue,fill=blue] (-0.5,0) -- +(20:1.1cm) circle[radius=0.03cm] -- (0.5,0) circle[radius = 0.03cm];
 		\draw[very thin,red, fill=red] (-0.5,0) -- +(340:1.1cm) circle[radius=0.03cm] -- (0.5,0);
-		\draw[black, fill = blue, opacity = 0.4] (-0.5,0) -- (-0.2,0) arc [start angle = 0, end angle = 20,radius = 0.3cm] -- cycle;
-		\draw[black, fill = red, opacity = 0.4] (-0.5,0) -- (-0.2,0) arc [start angle = 0, end angle = -20,radius = 0.3cm] -- cycle;
+		\draw[black, fill = blue, opacity = 0.4] (-0.5,0) -- (0.2,0) arc [start angle = 0, end angle = 20,radius = 0.7cm] node [black, opacity = 1, xshift = -0.2cm, yshift = -0.28cm] {$\scriptstyle k_\perp$}-- cycle;
+		\draw[black, fill = red, opacity = 0.4] (-0.5,0) -- (0.2,0) arc [start angle = 0, end angle = -20,radius = 0.7cm] node [black, opacity = 1, xshift = -0.3cm, yshift = 0.28cm] {$\scriptstyle -k_\perp$}-- cycle;
 		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- node[opacity=1,black, scale=1.4, yshift=0.15cm, xshift=-0.06cm] {$\scriptscriptstyle\Psi$} (0.8, 0) arc [start angle = 0, end angle = 84.5, radius = 0.3cm] -- cycle;
 		\draw[black, fill = green, opacity = 0.4] (0.5, 0) -- (0.8, 0) arc [start angle = 0, end angle = -84.5, radius = 0.3cm] -- cycle;
 		\node[scale=1.4] at (1,0.5) {$\scriptscriptstyle f = e^{i\Psi}$};
 		\draw[opacity = 0.5,step=.5cm,gray,very thin] (-1.9,-1.4) grid (1.4,1.4);
 		\draw[decoration={markings,mark=at position 0 with
-			{\arrow[xshift = 0.15cm,scale=2,>=stealth]{<}}, mark=at position 1 with {\arrow[scale=2, >=stealth]{>}}},postaction={decorate}] (-0.6, 0.03) -- +(120:1.03cm) node [scale=1.4, midway, yshift=-0.2cm,xshift=-0.3cm] {$\scriptscriptstyle\frac{\rm t}{\tau}e^{-\kappa}$};
+			{\arrow[xshift = 0.15cm,scale=2,>=stealth]{<}}, mark=at position 1 with {\arrow[scale=2, >=stealth]{>}}},postaction={decorate}] (-0.6, 0.03) -- +(120:1.03cm) node [scale=1.4, midway, yshift=-0.2cm,xshift=-0.3cm] {$\scriptscriptstyle\frac{\rm t}{\tau}e^{-\kappa_{\scaleto{\perp}{2.5pt}}}$};
 		\draw [thick, decoration={markings,mark=at position 1 with
 			{\arrow[scale=2,>=stealth]{>}}},postaction={decorate}](0.5,-1.5) -- (0.5, 1.5) node [above] {$\Im(z)$};
 		\draw [thick, decoration={markings,mark=at position 1 with
@@ -1582,7 +1583,7 @@ Where the Greek characters refer to quantities of the leads, and the Roman chara
 		\foreach \x in {-1, 1}
 			\draw[thick] (0.5, \x) -- (0.52, \x) node[right, scale=0.6] {\x};
 	\end{tikzpicture}
-	\caption{\footnotesize Depiction of Equation \eqref{insulator}, the \gls{mtgf} in the case of an insulating spacer. In each of the drawings, the blue point on the yellow disc indicates the numerator and the red point indicates the denominator. The blue shaded arc is the phase $k$, and the red shaded arc is the phase $-k$. The phase $\Psi$ is of interest here, depicted by the green shaded arc. It is apparent that should the radius $\frac{\rm t}{\tau}e^{-\kappa}$ become greater than $1$, as $k$ increases a large phase change will be observed. The drawing on the left which is fully labeled, shows the phase $\Psi$ is greater with more advanced $k$, than in the figure on the right with smaller $k$. It is evident in this scenario that a $2\pi$ phase change may be observed, as $k$ passes from $0$ to $\pi$. Alternatively, a large phase change of $\Psi$ can also be observed as the radius of the yellow disc, $\frac{\rm t}{\tau}e^{-\kappa}=r$ moves from $r<1$ to $r\ge1$, when $k$ is small.}\label{phase_drawing}
+	\caption{\footnotesize Depiction of Equation \eqref{insulator}, the \gls{mtgf} in the case of an insulating spacer. In each of the drawings, the blue point on the yellow disc indicates the numerator and the red point indicates the denominator. The blue shaded arc is the phase $k_\perp$, and the red shaded arc is the phase $-k_\perp$. The phase $\Psi$ is of interest here, which is the phase of the \gls{mtgf} $f$, depicted by the green shaded arc. The objective is to attempt to observe a phase change of $\Psi$ from $0$ to $2\pi$. It is apparent that a large phase change of $\Psi$ can be observed as the radius of the yellow disc, $\frac{\rm t}{\tau}e^{-\kappa_\perp}=r$ moves from $r<1$ to $r\ge1$, when the phase $k_\perp$ is small.}\label{phase_drawing}
 \end{figure}
 \par With this theory in account, a one dimensional, \gls{sc} one band model was used to compute the \gls{iec} at different ratios of hopping in the leads compared to the spacer. The results are shown in Fig. \ref{phase_graph}. The system explored has a weak insulating spacer so that the oscillations of the \gls{iec} were only slightly damped. Fig. \ref{phase_graph} shows a strong phase dependence on the hopping ratios.
 \pgfplotsset{height=4in}
@@ -1608,8 +1609,8 @@ Where the Greek characters refer to quantities of the leads, and the Roman chara
 The potential in the leads $= -0.7Ry$ in the majority spin band and $=-0.5Ry$ in the minority band. The potential in the spacer is $= -0.79Ry$, the hopping in the spacer is ${\rm t} = 0.4Ry$, $\mu= (0 + 1\times 10^{-5}i)Ry$. $kT = 1.9\times 10^{-3}Ry$ (room temperature).  Results calculated using C++11 with Clang compiler, utilising the Eigen library. Concurrency provided through OpenMP.
 }\label{phase_graph}
 \end{figure}
-With the potentials used in Fig. \ref{phase_graph}, firstly considering the case when the hopping in the leads is $0.15Ry$, the leads behave as insulators in the majority spin band and $f^\uparrow$ has the radial term (introduced in Fig. \ref{phase_drawing}) $r\approx 0.60$. In the minority spin band, the leads also behave as insulators with $f^\downarrow$ having radial term $r\approx 0.89$. 
-\par Now considering the case when the hopping in the leads is $0.25Ry$, the leads behave as insulators in the majority spin band and $f^\uparrow$ has radial term $r\approx 0.67$. In the minority spin band, the leads have in the strictest sense become conducting, but this case is in fact the boundary term where Equations \eqref{conductor}, \eqref{insulator} are equal. Here $f^\downarrow$ has radial term $r=1.60$.
+With the potentials used in Fig. \ref{phase_graph}, firstly considering the case when the hopping in the leads is $0.15Ry$, the leads behave as insulators in both spin bands and in each case the argument $r=\frac{\rm t}{\tau}e^{-\kappa_\perp}<1$ (see Fig. \ref{phase_drawing} for details). 
+\par Now considering the case when the hopping in the leads is $0.25Ry$, the leads behave as insulators in the majority spin band with $r<1$. In the minority spin band, the leads have in the strictest sense become conducting, but this case is in fact the boundary term where Equations \eqref{conductor}, \eqref{insulator} are equal. Here $r>1$.
 \par It is since in the minority spin band the radial term in $f$ changes from $r\approx0.89$ to $r=1.60$, that the phase change in Fig. \ref{phase_graph} is observed.
 
 	\section{Conclusion \& Future Developments}
