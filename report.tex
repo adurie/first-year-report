@@ -32,6 +32,7 @@
 \makeatother
 \makeglossaries
 \newacronym{spa}{SPA}{stationary phase approximation}
+\newacronym{csp}{CSP}{Cunningham Special Points}
 \newacronym{iec}{IEC}{interlayer exchange coupling}
 \newacronym{gmr}{GMR}{giant magneto-resistance}
 \newacronym{stt}{STT}{spin transfer torque}
@@ -1667,8 +1668,8 @@ More details are given in the Appendix.
 	\qquad The method outlined in Subsection \ref{points} is the most efficient algorithm for integrating over the \gls{2dbz} by minimising the number of regularly spaced points required. The form given by Cunningham requires the user to determine whether convergence has been achieved, repeating with more points if necessary. If the function is slow to converge, this can be quite time consuming. 
 	The Author has made two developments to the results of Subsection \ref{points}. In both cases 'automatic' techniques are used, where if convergence hasn't been met, new points are used without discarding the work already done. In each case, the algorithm is for the square lattice, though it is easily extendible (and easier to write) to the primitive rectangular lattice. 
 	\\[2mm]
-	The simplest of these two techniques is as follows: 
-	\\[2mm]where in the case of the square lattice
+	The simplest of these two techniques, utilised in the header file {\tt cunningham.h} is as follows, 
+	where in the case of the square lattice
 \begin{multline}\label{auto_square}
 		F_{3^qN} =\frac{8A_{\rm BZ}}{(3^\alpha N)^2}\sum_{q=0}^\alpha\sum_{n=0}^{2(3^q)N}\left(\sum_{m=0}^{n-1} f\left(\frac{n\pi}{2(3)^qNa}, \frac{m\pi}{2(3)^qNa}\right)\delta_{p 1}\delta_{r 1}l\right.\\\left.+\frac{1}{2}f\left(\frac{n\pi}{2(3)^qNa}, \frac{n\pi}{2(3)^qNa}\right)\delta_{p 1}\delta_{r 1}l\right)
 	\end{multline}
@@ -1725,7 +1726,7 @@ More details are given in the Appendix.
 
 \end{tikzpicture}
 \caption{\footnotesize
-Author's 'automatic' CSP routine with $N = 3$ and $a=1$ showing the first pass on the left ($q=0$) and the second pass on the right ($q=1$). The figure illustrates how there is no penalty incurred when the number of points is increased, where the total number of points is the sum of both frames. Each point along the diagonal has half the weighting of the remaining points.}
+	Author's 'automatic' \gls{csp} routine with $N = 3$ and $a=1$ showing the first pass on the left ($q=0$) and the second pass on the right ($q=1$). The figure illustrates how there is no penalty incurred when the number of points is increased, where the total number of points is the sum of both frames. Each point along the diagonal has half the weighting of the remaining points.}
 \end{figure}
 The coded routine requires the following input parameters;
 \\
@@ -1740,7 +1741,8 @@ The coded routine requires the following input parameters;
 	\end{tabular}
 \end{listliketab}
 \par
-The second more sophisticated technique is presently under development. It is a doubly adaptive routine which splits the integrand with regard to both dependent variables testing for convergence on each side. Any converged sides remain without further calculations, and any unconverged sides are split further until convergence is achieved. The routine is iterative, creating a starting number of points then checking for convergence along $k_x$ then along $k_z$ where any splitting along $k_z$ invokes checks along the new points in $k_x$ created. The algorithm requires second order recursive functions.
+The second more sophisticated technique, utilised in the {\tt cunningham\_spawn.h} header file is an adaptive routine which in the case of a primitive rectangular lattice, calls the integrand at the mean value point\site{CP}, then it calls the integrand at a further eight points, which together with the mean value point forms a rectangular mesh with evenly spaced points such that if mirrored on the $k_x$ or $k_z$ axes, the mesh appears continuous. The routine then compares the initial point with the sum of the nine points scaled by $1/9$. If convergence is achieved, the function terminates. Otherwise, through recursion it samples each of these individual parent points and generates a sub-mesh of eight child points, with the parent point rescaled to form a ninth. The child points are positioned at a third of the distance to the next neighbour parent point, such that if each parent spawns children, again a continuous mesh is observed. The child points are summed and appropriately scaled to check for convergence against their corresponding parent, if convergence hasn't been met, the process repeats until convergence along all points is achieved, or the recursion limit has been reached.
+\\[2mm]\par It is easy to generalise this technique to the square lattice, where if a point is sampled on the line $k_x = k_z$ it is halved, and only the six points that lie within the irreducible segment are sampled. Two of these also lie on the line $k_x = k_z$, which means they are also weighted by a half. When spawning further points, only the parents that lie on the line $k_x = k_z$ spawn children that must also adhere to this special case. Otherwise the nine points as outlined in the previous paragraph are sampled.
 The routine requires the following input parameters;
 
 \storestyleof{itemize}
@@ -1748,29 +1750,51 @@ The routine requires the following input parameters;
 	\begin{tabular}{lll}
 	\textbullet &The recursion depth cap &{\it must be an integer}\\
 	\textbullet &The relative error tolerance &{\it in decimal form}\\
-	\textbullet &The starting number of points per meridian &{\it must be an integer}\\
 	\textbullet &The lattice constant, $a$ & \\
 	\textbullet &Any number of further parameters to be forwarded to $f$&\\
 	\end{tabular}
 \end{listliketab}
-
+\pgfplotsset{width=6.3in}
+\pgfplotsset{height=6.3in}
+\begin{figure}[H]
+\begin{tikzpicture} 
+	\begin{axis}[
+			title=Adaptive Cunningham Points based quadrature routine developed by the Author,
+			ylabel=$k_z$,
+			ylabel style={rotate=-90},
+			xlabel=$k_x$,
+			xtick={0,1.5708,3.14159},
+			xticklabels={$0$,$\frac{\pi}{2}$,$\pi$},
+			ytick={0,1.5708,3.14159},
+			yticklabels={$0$,$\frac{\pi}{2}$,$\pi$},
+			ymin=-0.2,
+			ymax=3.34,
+			xmin=-0.2,
+			xmax=3.34,
+		]
+		\addplot[only marks, mark size=0.7pt,violet] table [col sep=comma] {qti3.txt};
+	\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize
+	Typical sampling map of the Author's automatic, adaptive \gls{csp} routine with $a=1$ in the square lattice. Note the separation of points is smaller in some areas than others indicating convergence is slower in these places. }
+\end{figure}
 In each case, the routine has been concisely written as a header file within C++14 made callable for a number of different types including the Tux Family Eigen container type. The compiler is able to infer the type required in the routine from the return type of the function forwarded in the parameter list within the initial calling sequence. The routine makes use of perfect forwarding of r-value references to improve efficiency.
 Forwarding of an arbitrary number of parameters to $f$ is made possible by means of variadic templates.
 
-% Table 1 shows benchmarking timings from the authors machine\footnote{Intel Core i3-3120M CPU @ 2.50GHz, 4GB RAM} between the new adaptive method, and the standard CSP method. The results in each case are converged with relative error $\delta \leq 3\%$. 
-% The full routine is not displayed here, as it is very technically dense and requires knowledge of C++ and various techniques therein. It is however, available on request. create true CP routine to benchmark
-% \\[8mm]
-% \footnotesize
-% \begin{center}
-% \begin{tabular}{cccc}\toprule
-% 	Computation& \parbox{3cm}{\centering Return type of integrand}& \parbox{3cm}{\centering Time to output results using standard CP}& \parbox{3cm}{\centering Time to output results using adaptive CP}\\
-% \midrule
-% \parbox{3cm}{\centering Local density of states of a semi-infinite crystal}& Real (double)& 28 seconds& 3 seconds\\[8mm]
-% \parbox{3cm}{\centering Exchange Coupling using summation of Matsubara Frequencies}& \parbox{3cm}{\centering Container of type complex double}& 79 seconds& 3 seconds\\[8mm]
-% \parbox{3cm}{\centering Keldysh formalism (slow to converge)}& \parbox{3cm}{\centering Container of type real (double)}& 4 minutes& 3 minutes\\
-% \bottomrule
-% \end{tabular}
-% \end{center}
+The following table shows benchmarking timings from the authors machine\footnote{Intel Core i3-3120M CPU @ 2.50GHz, 4GB RAM} between the first routine outlined in this section, {\tt cunningham.h}, and the second routine
+
+{\tt cunningham\_spawn.h}. In each case, the \gls{sc} one band model was calculated. Benchmarking against the original \gls{csp} routine hasn't been attempted since it is difficult to create unbiased results as per the discussion over Equation \eqref{auto_rect} in this section.
+\footnotesize
+\begin{center}
+\begin{tabular}{cccc}\toprule
+	Computation& \parbox{3cm}{\centering Return type of integrand}& \parbox{3cm}{\centering Time to output results using {\scriptsize\tt cunningham.h}}& \parbox{3cm}{\centering Time to output results using {\scriptsize\tt cunningham\_spawn.h}}\\
+\midrule
+\parbox{3cm}{\centering Local density of states of a semi-infinite crystal (8 layers)}& Real (double)& 2.39 seconds& 1.13 seconds\\[1cm]
+\parbox{3cm}{\centering Exchange Coupling using summation of Matsubara Frequencies}& \parbox{3cm}{\centering Container of type complex double}& 1.60 seconds& 0.91 seconds\\[1cm]
+\parbox{3cm}{\centering Transport spincurrent using the Keldysh formalism, avoiding the energy integral}& \parbox{3cm}{\centering Container of type real (double)}& 81.39 seconds& 34.08 seconds\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \normalsize
 \begingroup
