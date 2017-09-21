@@ -157,15 +157,15 @@ The following software packages have been studied with a brief description of th
 				\item glossaries \quad - \quad {\it generates glossaries and lists of acronyms if required, by running a Perl script}
 			\end{itemize}
 	\end{itemize}
-	Further skills developed include learning to touch-type
-\\	Miscellaneous tools used include the LLVM Clang compiler for C++, the GNU Debugger, Google gperftools and valgrind.
+	Further skills developed include learning to touch-type. Miscellaneous tools used include the LLVM Clang compiler for C++, the GNU Debugger, Google gperftools and valgrind. Git is used for version control, remote repositories are stored on the github server under the user adurie.
 The following programs have been written with a brief description of their purposes
 
 \begin{itemize}
 	\item{C++}
 		\begin{itemize}
 			\setlength\itemsep{1em}
-			\item cunningham\_points\_integration.h \quad-\quad {\it header file that performs \gls{2dbz} integration, more details are given in the Appendix}
+			\item cunningham.h \quad-\quad {\it header file that performs \gls{2dbz} integration, more details are given in the Appendix}
+			\item cunningham\_spawn.h \quad-\quad {\it header file that performs adaptive \gls{2dbz} integration, more details are given in the Appendix}
 			\item interp.cpp \quad-\quad {\it takes raw data as input and interpolates results}
 			\item analytic\_conductance\_trilayer\_landauer.cpp \quad-\quad {\it calculates the conductance using the Landauer formalism using analytical methods}
 			\item numerical\_conductance\_trilayer\_landauer.cpp \quad-\quad {\it calculates the conductance using the Landauer formalism using direct calculations}
@@ -183,18 +183,18 @@ The following programs have been written with a brief description of their purpo
 	\item{Fortran}
 		\begin{itemize}
 			\setlength\itemsep{1em}
-			\item conductor\_approx\_with\_r.f90 \quad-\quad {\it calculates the charge current for a trilayer with a conducting spacer using the Landuaer formalism}
-			\item insulator\_approx\_with\_$\rm r^\wedge$2.f90 \quad-\quad {\it calculates the charge current for a trilayer with an insulator spacer using the Landuaer formalism}
+			\item conductor\_approx\_with\_r.f90 \quad-\quad {\it calculates the charge current for a trilayer with a conducting spacer using the Landauer formalism}
+			\item insulator\_approx\_with\_$\rm r^\wedge$2.f90 \quad-\quad {\it calculates the charge current for a trilayer with an insulator spacer using the Landauer formalism}
 			\item analytic\_trilayer\_with\_conductor.f90 \quad-\quad {\it calculates the charge current for a trilayer with a conducting spacer using analytic derivations using the Landauer formalism}
 		\end{itemize}
 \end{itemize}
-In addition to the equations derived in this document, the following known results have also been derived by the Author;
+In addition to the equations derived in this document, the following known results have also been derived by the author;
 \begin{itemize}
 	\item{Transport spincurrent Keldysh term without the energy integral, derived from Equation \eqref{keldysh}}
 	\item{Partial conductance of a trilayer with an insulating spacer, Equation (3) of \textcolor{blue}{\cite{Mathon2016}}}
 	\item{Analytic form of Total conductance in a trilayer with an insulating spacer using the Landauer formalism, Equation (6) of \textcolor{blue}{\cite{Mathon2016}}}
 	\item{Analytic form of Total Conductance in a trilayer with a conducting spacer using the Landauer formalism by considering $\Gamma$-point and cutoff-point terms using higher order stationary phase approximations and cutoff point approximations and further Fourier terms. These were written up in an unpublished document\site{me}}
-	\item{Partial conductance of a 4-layer system in the Landuaer formalism in a conductor}
+	\item{Partial conductance of a 4-layer system in the Landauer formalism in a conductor}
 	\item{Creation of a Maple document that calculates the partial conductance in the Landauer formalism in a conductor for an arbitrary number of layers using a programming block}
 	\item{Further tight binding}
 		\begin{itemize}
@@ -204,7 +204,7 @@ In addition to the equations derived in this document, the following known resul
 		\end{itemize}
 \end{itemize}
 A great deal of the programs written and formulae derived were done so in conjunction with Maple worksheets.
-	\newpage
+\\[9mm]
 	\begin{abstract}
 		The system explored is a pseudo one-dimensional magnetic multilayer. The Green's function formalism is used here, as this offers a means of providing complete and accurate results comparable, if correctly modeled, to experiment. This review begins with a brief history of the subject area, moving on to a description of the necessary tools needed, such as the method of Tight Binding and derivations of closed form Green's functions. These methods are then applied to the \gls{iec} firstly in its full form simplified by the method of Matsubara, followed by the derivation of an analytical method. The origin of the phase of \gls{iec} is then discussed and derived to be followed by a conclusion and a plan for future work. The paper concludes with numerical integration routines described in the Appendix.
 	\end{abstract}
@@ -1207,7 +1207,7 @@ $\bf A = (I - g_{\rm\scriptscriptstyle R}t^\dag g_{\rm\scriptscriptstyle L}t)^{\
 \caption{\footnotesize Schematic of a \gls{cpp} trilayer. The red shaded areas are the semi-infinite leads, and the blue shaded area is the spacer. The spacer is grown from the LHS lead to thickness $n$, and for these calculations there is an imaginary cleavage plane passing between the $n$th spacer layer and the left surface of the RHS lead.}\label{fig:5th}
 \end{figure}
 \par The system comprises (see Figure \ref{fig:5th}) of a \gls{pm}, a metallic spacer and a \gls{sm} in its most minimal form. Often additional layers are required and in general the system is grown with \gls{cpp} if a charge current is passed through. Thus it may be modelled that the magnetisation of the \gls{pm} lies in the $xz$ plane at an angle $\theta$ to the $z$ axis. The magnetisation of the \gls{sm} is held parallel to the $z$ axis. The closed-form \gls{sgf}'s of the leads may be calculated using Equation \eqref{SGF_AU}, the \gls{sgf} of the spacer and \gls{sm} are grown epitaxially using either Equation \eqref{adlayer} or Equation \eqref{bigG}.
-The Author models $\bf g_{\rm\scriptscriptstyle R}$ as the \gls{sgf} of the \gls{sm} in contact with the spacer, and $\bf g_{\rm\scriptscriptstyle L}$ as the \gls{sgf} of the outermost spacer layer, but without loss of generality, any such neighbouring \gls{sgf}'s may be used.
+The author models $\bf g_{\rm\scriptscriptstyle R}$ as the \gls{sgf} of the \gls{sm} in contact with the spacer, and $\bf g_{\rm\scriptscriptstyle L}$ as the \gls{sgf} of the outermost spacer layer, but without loss of generality, any such neighbouring \gls{sgf}'s may be used.
 The matrix of on-site potentials of the \gls{pm} have been rotated by $\theta$ as follows\textcolor{blue}{\textsuperscript{\cite{SC}}}
 \begin{equation}
 	\rm\bf u_{\rm 1 \theta}\; {\rm =}\; s^{\rm -1}u_{\rm 1 0}s
@@ -1355,19 +1355,33 @@ Where all terms not depending on $\bf k_\parallel$ have been commuted to the lef
 	\frac{1}{\rm n_\parallel}\sum_{\bf k_\parallel} \longrightarrow \frac{1}{\rm A_{\scriptscriptstyle BZ}} \int_{\bf k_\parallel}d^2 \bf k_\parallel
 \end{equation}	
 Using a standard matrix result from Gaussian integration{\color{blue}{\textsuperscript{\cite{gauss}}}}, it can be shown that
-\begin{equation}
-	\int_{-\infty}^{+\infty} e^{(\frac{i}{2}{\bf x^TAx})}d^n{\bf x}=\sqrt{\frac{(2\pi i)^n}{{\rm det}A}}
+\begin{equation}\label{multivariate}
+	\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\bf x^TAx}\right)d^2{\bf x}\equiv\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\sum_{j=1}^2 \lambda_j y_j^2}\right)d^n{\bf y}
+	% \sqrt{\frac{(2\pi i)^n}{{\rm det}A}}
 \end{equation}
-The RHS integral \eqref{stationary} can be converted into the form above
+where $\lambda_j$ are the two eigenvalues of $\bf A$, and ${\bf y} = {\bf O}^T \bf x$ where $\bf O$ is an orthogonal matrix obtained by diagonalising the symmetrix matrix, $\bf A$ such that ${\bf D} = {\bf O}^T \bf AO$, where $\bf D$ is a diagonal matrix.
+
+Integrating independently each term on the RHS of Equation \eqref{multivariate} leads to the following result
+\begin{equation}\label{sqrts}
+	\sqrt{\frac{2\pi i}{\lambda_1}}\sqrt{\frac{2\pi i}{\lambda_2}}\equiv\sqrt{\frac{2\pi}{|\lambda_1|}}e^{i\pi\, {\rm sgn}(\lambda_1)/4}\sqrt{\frac{2\pi}{|\lambda_2|}} e^{i\pi \,{\rm sgn}(\lambda_2)/4}
+\end{equation}
+ Equation \eqref{sqrts} simplifies to 
+ \begin{flalign}\label{deta}
+	\nonumber\frac{2\pi}{\sqrt{|\lambda_1 \lambda_2|}}e^{i\pi({\rm sgn}(\lambda_1)+{\rm sgn}(\lambda_2))/4}&\equiv \frac{2\pi}{|{\rm det}\left({\bf O}^T{\bf AO}\right)|^{\frac{1}{2}}}e^{i\pi({\rm sgn}(\lambda_1)+{\rm sgn}(\lambda_2))/4}\\\nonumber
+	&\equiv\frac{2\pi\tau}{|{\rm det}\left({\bf O}^T{\bf AO}\right)|^{\frac{1}{2}}}\\
+	&\equiv\frac{2\pi\tau}{|{\rm det}\left({\bf A}\right)|^{\frac{1}{2}}}
+\end{flalign}
+where $\tau = i$ if both eigenvalues of $\bf A$ are positive, $\tau = -i$ if both eigenvalues are negative and $\tau = 1$ when both eigenvalues differ in sign.
+The final result in Equation \eqref{deta} holds since ${\rm det}({\bf O}) = 1$.
+The RHS integral in Equation \eqref{stationary} can be converted into the form of the RHS of Equation \eqref{multivariate}
 \begin{equation}\label{subs}
 	\int_{-\infty}^{+\infty}d^2 {\bf k}_\parallel \mathnormal e^{i(\frac{\rm n}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_s) ({\bf k}_\parallel - {\bf k}_\parallel^0))} \equiv\int_{-\infty}^{+\infty}d^2 {\bf y} \mathnormal e^{(\frac{i}{2}{\bf y}^T( {\rm n}\partial^2\phi_s) {\bf y})}
 \end{equation}
 since scalars are commutative, and upon the substitution $({\bf k}_\parallel - {\bf k}_\parallel^0)={\bf y}$ with $d^2{\bf k}_\parallel = d^2({\bf y} + {\bf k}_\parallel^0)=d^2{\bf y}$.
 Thus Equation \eqref{subs} yields
 \begin{equation}
-	\frac{2\pi i}{\sqrt{{\rm n}^2{\rm det}(\partial^2\phi_s)}} = \frac{2\pi\tau}{{\rm n}|{\rm det}(\partial^2\phi_s)|^{\frac{1}{2}}}
+\frac{2\pi\tau}{{\rm n}|{\rm det}(\partial^2\phi_s)|^{\frac{1}{2}}}
 \end{equation}
-Where $\tau = i$ if both eigenvalues of $(\partial^2\phi_s)$ are positive, $\tau = -i$ if both eigenvalues are negative and $\tau = 1$ when both eigenvalues differ in sign.
 The \gls{iec} presently takes the form
 \begin{equation}
 	{\rm J(n)} = \frac{2\pi}{\rm nA_{\scriptscriptstyle BZ}}{\rm Im}\int_{-\infty}^{+\infty}d\varepsilon f(\varepsilon - \mu)\sum_{{\bf k}_{\parallel}^0}\sum_s\frac{\tau {|c_s(\varepsilon, {\bf k}_\parallel^0)| e^{i\left({\rm n} \phi_s(\varepsilon, {\bf k}_\parallel^0)+ \psi_s(\varepsilon)\right)}}}{\left|{\rm det}\left(\partial^2\phi_s(\varepsilon, {\bf k}_\parallel)\right)\right|^{\frac{1}{2}}}
@@ -1622,7 +1636,7 @@ In order to simulate 'realness', surface roughness will be modeled and a thin sw
 Different realistic structures will be modeled to explore the suitability of certain materials, though due to limitations of theory, these will of course be crystalline.
 \\\par Due to the required gate voltage, the Matsubara frequency method will no longer be valid as a means of calculating \gls{iec}.
 Thus a full numerical computation requires direct integration over energy and two-dimensional $k$-space. This is very numerically intensive and the integrand as a function of energy is not smooth.
-To make this problem more tractable, the Author has been developing a quadrature routine that is doubly adaptive and takes advantage of Brillouin zone symmetries.
+To make this problem more tractable, the author has been developing a quadrature routine that is doubly adaptive and takes advantage of Brillouin zone symmetries.
 More details are given in the Appendix.
 
 	\appendix
@@ -1664,9 +1678,9 @@ More details are given in the Appendix.
 	where $p \equiv n\pmod 2$ and $r \equiv m\pmod 2$. $\delta_{x y}$ is the Kronecker Delta where $\delta_{x y} = 1$ if $x=y$ and $\delta_{x y} = 0$ if $x\neq y$.
 	\\\par Here $N$ is the number of points used along the $k_x\,(k_z)$ axis. In the irreducible segment of the square lattice, this is the largest number of points along that axis. In a primitive-rectangular lattice, no such distinction exists. $a,\,b$ are lattice constants with $a=b$ in the case of the square lattice.
 
-	\subsection{Author's 2D Brillouin Zone integration method}
+	\subsection{author's 2D Brillouin Zone integration method}
 	\qquad The method outlined in Subsection \ref{points} is the most efficient algorithm for integrating over the \gls{2dbz} by minimising the number of regularly spaced points required. The form given by Cunningham requires the user to determine whether convergence has been achieved, repeating with more points if necessary. If the function is slow to converge, this can be quite time consuming. 
-	The Author has made two developments to the results of Subsection \ref{points}. In both cases 'automatic' techniques are used, where if convergence hasn't been met, new points are used without discarding the work already done. In each case, the algorithm is for the square lattice, though it is easily extendible (and easier to write) to the primitive rectangular lattice. 
+	The author has made two developments to the results of Subsection \ref{points}. In both cases 'automatic' techniques are used, where if convergence hasn't been met, new points are used without discarding the work already done. In each case, the algorithm is for the square lattice, though it is easily extendible (and easier to write) to the primitive rectangular lattice. 
 	\\[2mm]
 	The simplest of these two techniques, utilised in the header file {\tt cunningham.h} is as follows, 
 	where in the case of the square lattice
@@ -1759,7 +1773,7 @@ The routine requires the following input parameters;
 \begin{figure}[H]
 \begin{tikzpicture} 
 	\begin{axis}[
-			title=Adaptive Cunningham Points based quadrature routine developed by the Author,
+			title=Adaptive Cunningham Points based quadrature routine developed by the author,
 			ylabel=$k_z$,
 			ylabel style={rotate=-90},
 			xlabel=$k_x$,
@@ -1776,7 +1790,7 @@ The routine requires the following input parameters;
 	\end{axis}
 \end{tikzpicture}
 \caption{\footnotesize
-	Typical sampling map of the Author's automatic, adaptive \gls{csp} routine with $a=1$ in the square lattice. Note the separation of points is smaller in some areas than others indicating convergence is slower in these places. }
+	Typical sampling map of the author's automatic, adaptive \gls{csp} routine with $a=1$ in the square lattice. Note the separation of points is smaller in some areas than others indicating convergence is slower in these places. }
 \end{figure}
 In each case, the routine has been concisely written as a header file within C++14 made callable for a number of different types including the Tux Family Eigen container type. The compiler is able to infer the type required in the routine from the return type of the function forwarded in the parameter list within the initial calling sequence. The routine makes use of perfect forwarding of r-value references to improve efficiency.
 Forwarding of an arbitrary number of parameters to $f$ is made possible by means of variadic templates.
