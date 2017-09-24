@@ -99,7 +99,7 @@
 	\printglossary[title=List of Abbreviations]
 	\newpage
 	\section{Author's developments since registration}
-	The following programming languages have been studied, and listed in order of fluency. Libraries studied are given in subentries. The references given  indicate the documentation studied.
+	The following programming languages have been studied, and listed in order of fluency. Libraries studied are given in sub-entries. The references given  indicate the documentation studied.
 	\begin{multicols}{2}
 	\begin{itemize}
 		\item C++98\textsuperscript{\textcolor{blue}{\cite{acc, alex}}}, C++11\site{c++ref}, C++14
@@ -142,9 +142,9 @@
 The following software packages have been studied with a brief description of their purposes
 	\begin{itemize}
 		\item Maple 2015 \quad - \quad {\it computer algebra package}
-		\item VIM\site{vim} \quad - \quad {\it text editor with powerful keybindings}
+		\item VIM\site{vim} \quad - \quad {\it text editor with powerful key-bindings}
 			\begin{itemize}
-				\item Latex-Suite \quad - \quad {\it \LaTeX package with additional keybindings specific to \LaTeX}
+				\item Latex-Suite \quad - \quad {\it \LaTeX package with additional key-bindings specific to \LaTeX}
 			\end{itemize}
 		\item TeXMaker \quad - \quad {\it a \LaTeX editor}
 		\item QTIplots \quad - \quad {\it provides graphical output from raw data}
@@ -165,7 +165,7 @@ The following programs have been written with a brief description of their purpo
 		\begin{itemize}
 			\setlength\itemsep{1em}
 			\item cunningham.h \quad-\quad {\it header file that performs \gls{2dbz} integration. Further details are given in the Appendix}
-			\item cunningham\_spawn.h \quad-\quad {\it header file that performs adaptive \gls{2dbz} integration, more details are given in the Appendix}
+			\item cunningham\_spawn.h \quad-\quad {\it header file that performs adaptive \gls{2dbz} integration. Further details are given in the Appendix}
 			\item interp.cpp \quad-\quad {\it takes raw data as input and interpolates results}
 			\item analytic\_conductance\_trilayer\_landauer.cpp \quad-\quad {\it calculates the conductance using the Landauer formalism using analytical methods}
 			\item numerical\_conductance\_trilayer\_landauer.cpp \quad-\quad {\it calculates the conductance using the Landauer formalism using direct calculations}
@@ -233,11 +233,11 @@ This is \gls{gmr}. The so-called {\it optimistic magneto-resistance ratio} is de
 		\begin{equation}
 			\bm\varepsilon({\bf k}) = \frac{\langle {\bf k}|{\bf H}|{\bf k} \rangle}{\langle\bf k|k\rangle}
 		\end{equation}
-		In order to diagonalise the matrix Hamiltonian, $\bf H$, the transformation from real space to momentum space ({\bf k}-space) is required
+		In order to diagonalise the matrix Hamiltonian, $\bf H$, the transformation from real space to momentum space ($k$-space) is required
 		\begin{equation}\label{kkk}
 			|{\bf k}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf R = -\infty}^\infty e^{i{\bf k}\cdot \bf R} |\bf R\rangle
 		\end{equation}
-		where the summation is over every lattice point, $N$ is the total number of lattice points in the crystal. The position of any site in {\bf k}-space is given by ${\bf K} = \sum_i^\chi k_i{\bf b}_i$ with integers $k_i$ and primitive translation vectors ${\bf b}_i$ determined such that 
+		where the summation is over every lattice point, $N$ is the total number of lattice points in the crystal. The position of any site in $k$-space is given by ${\bf K} = \sum_i^\chi k_i{\bf b}_i$ with integers $k_i$ and primitive translation vectors ${\bf b}_i$ determined such that 
 		\begin{equation}
 		{\bf b}_i\cdot {\bf a}_j = 2\pi \delta_{i j}
 			\label{ab}
@@ -251,15 +251,15 @@ where since
 			\label{kk}
 			\langle{\bf k}|{\bf \acute{k}}\rangle = \frac{1}{N}\sum_{\bf R \acute{R}} e^{-i{\bf k}\cdot{\bf R}}e^{i{\bf \acute{k}}\cdot{\bf \acute{R}}} \langle{\bf R | \acute{R}}\rangle \equiv \frac{1}{N}\sum_{\bf R} e^{-i{\bf R\cdot(k-\acute{k})}}=\delta_{\bf k \acute{k}}
 		\end{equation}
-		Assuming a small set of nearby atoms overlap with non-negligable results, all elements of the Hamiltonian are zero, except
+		Assuming a small set of nearby atoms overlap with non-negligible results, all elements of the Hamiltonian are zero, except
 		\begin{equation}\label{u}
 			\langle{\bf R}|{\bf H}|{\bf R}\rangle = \bf u
 		\end{equation}
-		the onsite potential, and 
+		the on-site potential, and 
 		\begin{equation}\label{t}
 			\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle = \bf t
 		\end{equation}
-		where $\bf d$ is the set of position vectors of the non-negligable neighbouring terms. $\bf t$ is the set of hopping matrices whose strength varies depending on the binding distance to the onsite term. Models involving multiple energy bands or multiple bases per site require that $\bf t, u$ are matrices. 
+		where $\bf d$ is the set of position vectors of the non-negligible neighbouring terms. $\bf t$ is the set of hopping matrices whose strength varies depending on the binding distance to the on-site term. Models involving multiple energy bands or multiple bases per site require that $\bf t, u$ are matrices. 
 		\\[2mm]Thus
 		\begin{equation}
 			\langle{\bf R}|{\bf H}|{\bf \acute{k}}\rangle = \frac{1}{\sqrt{N}}\sum_{\bf \acute{R}}\langle{\bf {R}}|{\bf H}|{\bf \acute{R}}\rangle e^{i\bf \acute{k}\cdot \acute{R}}= \frac{1}{\sqrt{N}}e^{i\bf \acute{k}\cdot R}\left({\bf u}+\sum_{{\bf d }\in {\bf R}}e^{i{\bf k \cdot d}}\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf d}\rangle\right)
@@ -444,7 +444,7 @@ In the \gls{bcc} structure, the nearest neighbours are the sites in the body cen
 		% 	\langle{\bf R}|{\bf H}|{\bf R}\pm {\bf c}\rangle = \bf s
 		% \end{equation}
 		% where {\bf c} is the set of vectors separating next-nearest neighbours and {\bf s} is the next-nearest neighbour hopping.
-		In the one band model, the onsite potential and hoppings are scalar.
+		In the one band model, the on-site potential and hoppings are scalar.
 		\\\par Here ${\bf R} = n_1{\bf a}_1 + n_2{\bf a}_2 + n_3{\bf a}_3$ with integers $n_1,n_2,n_2$ and the primitive translation vectors may be chosen as follows;
 		\begin{equation}
 		{\bf a}_1 = \frac{a}{2}(1,1,1),\qquad {\bf a}_2 = \frac{a}{2}(-1,1,1),\qquad {\bf a}_3=\frac{a}{2}(1,-1,1). 
@@ -534,7 +534,7 @@ In the \gls{bcc} structure, the nearest neighbours are the sites in the body cen
 \end{center}
 \caption{\footnotesize Depiction of an infinite square mesh of atoms in two bands separated by $a$ showing the various energies contained within the matrices in Equation \eqref{matrices}. Full details of these energies are given below.}\label{squarechain}
 \end{figure}
-\par	In the two band model, the interaction between electrons at different excited states occupying the two available bands per atomic site must also be considered. This means the potential of an electron associated with the onsite atom is now more complicated. Similarly, hopping to another atomic site is more complicated since there are multiple bands to hop to. Figure \ref{squarechain} indicates the origin of these terms. Nearest neighbour interactions are the only terms considered in this example, in this case Equations \eqref{t}, \eqref{u} may be used which are the $2\times2$ matrices
+\par	In the two band model, the interaction between electrons at different excited states occupying the two available bands per atomic site must also be considered. This means the potential of an electron associated with the on-site atom is now more complicated. Similarly, hopping to another atomic site is more complicated since there are multiple bands to hop to. Figure \ref{squarechain} indicates the origin of these terms. Nearest neighbour interactions are the only terms considered in this example, in this case Equations \eqref{u} \& \eqref{t} are the $2\times2$ matrices
 \begin{equation}\label{matrices}
 		\bf u=\begin{pmatrix} \rm u_{11}&\rm u_{12}\\\rm u_{21}&\rm u_{22} \end{pmatrix} \qquad,\qquad \qquad \bf t=\begin{pmatrix} \rm t_{11}&\rm t_{12}\\\rm t_{21}&\rm t_{22}\end{pmatrix}
 	\end{equation}
@@ -586,7 +586,7 @@ t_{{21}}+{t_{{22}}}^{2} \right)}  \left( \cos \left({k_xa}\right) +\cos \left({k
 	Two methods for determining closed-form \gls{sgf}s will now be given. The first method, the Kalkstein \& Soven method is for historical purposes and has little practical significance as it fails to determine \gls{sgf}s for more than one band. It is derived with the \gls{sc} lattice in consideration. The second method, the M\"{o}bius transformation method is far more general and very powerful.
 	\subsubsection{Kalkstein \& Soven method}\label{k_s}
 	Initially, a perfect infinite \gls{sc} crystal is considered and separated artificially into two semi-infinite crystals along some imaginary cleavage plane in an arbitrary crystallographic direction\textcolor{blue}{\textsuperscript{ \cite{phan,KS}}}.
-The perfect crystal has Hamiltonian $H^0$ and Green's function $G^0 (\varepsilon-H^0+i\delta)=1$ where $\delta$ is a positive infinitesimal contribution to the energy. The cleaved crystal has Hamiltonian $H$ and Green's function $G(\varepsilon-H+i\delta)=1$ where $H = H^0 + V$ and $V$ is the potential arising due to the perturbation of the introduced surface. Thus $G(\varepsilon-H^0-V+i\delta)=1$ which implies $G(\varepsilon-H^0-V+i\delta)G^0=G^0$. Since $G^0$ is commutative the reformulation is possible $(\varepsilon-H^0+i\delta)G^0=1$. Making this substitution above yields $G(1-VG^0)=G^0$ and so the familiar Dyson's equation follows; 
+The perfect crystal has Hamiltonian $H^0$ and Green's function $G^0 (\varepsilon-H^0+i\delta)=1$ where $\delta$ is a positive infinitesimal contribution to the energy, $\varepsilon$. The cleaved crystal has Hamiltonian $H$ and Green's function $G(\varepsilon-H+i\delta)=1$ where $H = H^0 + V$ and $V$ is the potential arising due to the perturbation of the introduced surface. Thus $G(\varepsilon-H^0-V+i\delta)=1$ which implies $G(\varepsilon-H^0-V+i\delta)G^0=G^0$. Since $G^0$ is commutative the reformulation is possible $(\varepsilon-H^0+i\delta)G^0=1$. Making this substitution above yields $G(1-VG^0)=G^0$ and so the familiar Dyson's equation follows; 
 \begin{equation}\label{dyson}
 G=G^0+GVG^0 
 \end{equation}
@@ -667,7 +667,7 @@ where
 \begin{equation}
 	\mu = \sqrt{4{\rm t}^2-\omega^2} .
 \end{equation}
-Returning to the Dyson's equation \eqref{dyson}, which in this representation reduces to the set of equations
+Returning to Dyson's equation \eqref{dyson}, which in this representation reduces to the set of equations
 \begin{equation}\label{Gsum}
 G(m,n)=G^0(m,n)+\sum_{p,q} G^0 (m,p)V(p,q)G(q,n)
 \end{equation}
@@ -802,7 +802,7 @@ Figure \ref{LDOS} shows the calculated \gls{ldos} against energy for up to the s
 \\\par The region $-2\rm t \leq \varepsilon \leq 2t$, the width of the allowed values of the in-plane element of the dispersion relation Equation \eqref{disp}, is some periodic function that flattens out the larger the value $n$ chosen. This region is flat in the case of an infinite crystal. The region $\varepsilon<-2\rm t, \varepsilon>2t$ appears to be almost parabolic. The on-site energy $\rm u$ displaces the whole function along the $\varepsilon$ axis. The full width of the function is 12t, the width of the dispersion relation.
 By definition, integrating the \gls{ldos} gives $1$.
 	\subsubsection{Method of Adlayer}
-	A simple method to gain \gls{sgf}s for additional 'deposited' atomic planes is the so called 'Adlayer' method, which essentially connects the previous \gls{sgf} to the deposited \gls{sgf} through the Dyson's equation. It is an iterative equation depending only on the previous \gls{sgf} through each computation. To calculate this it can be noted that Equation \eqref{Gsum} is equally valid for matrices, and so Equation \eqref{GGG} is rewritten in this context to find ${\bf G}_{11}$, the first Green's function deposited on the substrate
+	A simple method to gain \gls{sgf}s for additional 'deposited' atomic planes is the so called 'Adlayer' method, which essentially connects the previous \gls{sgf} to the deposited \gls{sgf} through Dyson's equation. It is an iterative equation depending only on the previous \gls{sgf} through each computation. To calculate this it can be noted that Equation \eqref{Gsum} is equally valid for matrices, and so Equation \eqref{GGG} is rewritten in this context to find ${\bf G}_{11}$, the first Green's function deposited on the substrate
 	\begin{equation}\label{G11}
 	{\bf G}_{11}^1={\bf G}_{11}^0+{\bf G}_{11}^1{\bf V}_{11}{\bf G}_{11}^0 +{\bf G}_{10}^1{\bf V}_{01}{\bf G}_{11}^0
 \end{equation}
@@ -849,8 +849,8 @@ an exact form of a closed-form \gls{sgf} in terms of ${\bf g}_0$. What makes Equ
 An alternative method known as the M\"{o}bius Transformation method, or the method of Umerski\textcolor{blue}{\textsuperscript{\cite{AU_SGF}}} is used in these cases.
 \\\par As in Section \ref{k_s}, the formalism required is that of a crystal, infinite along two axes (in plane) and finite in the growth direction (out-of-plane). Due to the structure of the crystal here, the standard tight-binding model in three dimensions outlined in Section \ref{tb} does not apply.
 Instead, the Hamiltonian must be diagonalised in-plane, but unless the crystal is \gls{sc}, in general more than one basis atom must be considered to cater for the principle layers, such that there is translational symmetry in the growth direction, and so that interactions between these layers are accounted for.
-\\\par Thus the location of any atomic site is given by ${\bf R} = {\bf R}_\parallel + {\bf R}_\perp +{\bf s}_i$, where ${\bf R}_\parallel = n_1{\bf a}_1+n_2{\bf a}_2$ represents the sites on the plane parallel to the surface per basis atom, with integers $n_1,n_2$ and ${\bf a}_1,{\bf a}_2$ are the primitive translation vectors. The vector ${\bf R}_\perp = \rm n\bf a$ represents the sites along the growth direction, generally the $y$-axis (${\bf k}_y$-axis in reciprocal space) such that ${\bf a} = a(0,1,0)$, n is the nth plane from the \gls{sgf} and $a$ is the distance between planes.
-${\bf s}_i$ is the location of the basis atoms. For example, \gls{bcc} has the two basis atoms at ${\bf s}_1 = (0,0,0), 	{\bf s}_2 = \frac{a}{2}(1,1,1)$, the two sites in a primitive (symmetrically irreducible) cell.
+\\\par Thus the location of any atomic site is given by ${\bf R} = {\bf R}_\parallel + {\bf R}_\perp +{\bf s}_i$, where ${\bf R}_\parallel = n_1{\bf a}_1+n_2{\bf a}_2$ represents the sites on the plane parallel to the surface per basis atom, with integers $n_1,n_2$ and ${\bf a}_1,{\bf a}_2$ are the primitive translation vectors. The vector ${\bf R}_\perp = \rm n\bf a$ represents the sites along the growth direction, generally the $y$-axis ($k_y$-axis in reciprocal space) such that ${\bf a} = a(0,1,0)$. n is the nth plane from the \gls{sgf} and $a$ is the distance between planes.
+${\bf s}_i$ is the position vector of the basis atoms. For example, \gls{bcc} has the two basis atoms at ${\bf s}_1 = (0,0,0), 	{\bf s}_2 = \frac{a}{2}(1,1,1)$, the two sites in a primitive (symmetrically irreducible) cell.
 	\tikzset{external/export next=false}
 	\begin{figure}[H]
 		\begin{center}
@@ -892,7 +892,7 @@ ${\bf s}_i$ is the location of the basis atoms. For example, \gls{bcc} has the t
 
 	\end{tikzpicture}
 \end{center}
-\caption{\footnotesize The above figure shows a \gls{bcc} lattice with atomic planes stacked in the growth direction. The dashed region indicates the first Brillouin zone centred on the site at $(0,0,0)$, and the dotted region shows a primitive cell enclosing sites $a(0,-1,0)$ and $\frac{a}{2}(1,-1,1)$. It can be observed that the primitive cells tesselate completely, which forms part of their definition.}
+\caption{\footnotesize The above figure shows a \gls{bcc} lattice with atomic planes stacked in the growth direction. The dashed region indicates the first Brillouin zone centred on the site at $(0,0,0)$, and the dotted region shows a primitive cell enclosing sites $a(0,-1,0)$ and $\frac{a}{2}(1,-1,1)$. It can be observed that the primitive cells tessellate completely, which forms part of their definition.}
 \end{figure}
 The representation in $k$-space is thus
 	\begin{equation}
@@ -907,14 +907,14 @@ The representation in $k$-space is thus
 	In this case, the basis atoms are located at ${\bf s}_1=(0,0,0), \, {\bf s}_2=\frac{a}{2}(1,1,1)$.
 	The principle lattice vectors are ${\bf a}_1 = a(1,0,0), \, {\bf a}_2 = a(0,0,1), \, {\bf a}_3 = a(0,1,0)$,
 	with ${\bf R}_\parallel = n_1{\bf a}_1 + n_2{\bf a}_2, \, {\bf R}_\perp = n_3 {\bf a}_3$.
-	The potential of the onsite element of the first basis atom at ${\bf s}_1$ is ${\bf u}_1$ and the potential of the onsite element of the second basis atom at ${\bf s}_2$ is ${\bf u}_2$,
-	where the bold typeface of these potentials indicates they are themselves matrices in multiband models.
-	In this example, offsite terms up to second nearest neighbours are considered, where the first nearest neighbours have potential ${\bf t}_1$, and the second nearest neighbours have potential ${\bf t}_2$.
+	The potential of the on-site element of the first basis atom at ${\bf s}_1$ is ${\bf u}_1$ and the potential of the on-site element of the second basis atom at ${\bf s}_2$ is ${\bf u}_2$,
+	where the bold typeface of these potentials indicates they are themselves matrices in multi-band models.
+	In this example, off-site terms up to second nearest neighbours are considered, where the potential induced by first nearest neighbour interactions is ${\bf t}_1$, and second nearest neighbour interactions is ${\bf t}_2$.
 	Using Equation \eqref{multibasis} in conjunction with Equation \eqref{kk} yields
 	\begin{equation}
 		\langle{\bf k}_\parallel, n_3, {\bf s}_i|{\bf H}|\acute{\bf k}_\parallel, n_3, {\bf s}_j\rangle = \delta_{\bf k_\parallel\acute{k_\parallel}}\sum_{{\bf d}\in N_\parallel}e^{i\bf k_\parallel \cdot d}\langle{\bf 0}, 0, {\bf s}_i|{\bf H}|{\bf d}, 0, {\bf s}_j\rangle
 	\end{equation}
-	where $\bf d$ is the set including the position vectors of the onsite potential, the nearest neighbours and the next nearest neighbours.
+	where $\bf d$ is the set including the position vectors of the on-site potential, the nearest neighbours and the next nearest neighbours.
 	% In this case, considering nearest neighbours and next nearest neighbours, the only non-zero elements of the in-plane Hamiltonian are
 	% \begin{equation}
 	% 	\langle{\bf R}_\parallel,{\bf R}_\perp, {\bf s}|{\bf H}|{\bf R}_\parallel,{\bf R}_\perp, {\bf s} \rangle = \bm \mu
@@ -963,7 +963,7 @@ The representation in $k$-space is thus
 	% 	{\bf u}_{12}^\dagger.
 	% \end{equation}
 	The diagonal elements of the matrix $\bf t$ represent hopping to a site of the same basis, the first and second bases respectively. The off-diagonal elements represent hopping between bases. As before, these terms are restricted to up to next nearest neighbour terms.
-	\\[2mm]\par The elements ${\bf t}_{ii} = {\bf t}_2$. It is easy to see that the element ${\bf t}_{12}=\bf 0$ since it cannot represent nearest neighbour, or next nearest neighbour interactions. The element ${\bf t}_{21}$ has exactly the same potential as ${\bf u}_{21}$, since the same interactions are considered. Thus ${\bf t}_{21} = {\bf u}_{12}^\dagger$.
+	\\[2mm]\par The elements ${\bf t}_{ii} = {\bf t}_2$. It is easy to see that the element ${\bf t}_{12}=\bf 0$ since it cannot represent nearest neighbour, or next nearest neighbour interactions. The element ${\bf t}_{21}$ has exactly the same potential as ${\bf u}_{12}^\dagger$, since the same interactions are considered.
 	Thus all terms of the Hamiltonian diagonalised in-plane have been derived, which concludes the example.
 	\\[2mm] The definition of an $N$-dimensional M\"{o}bius transformation is as follows, let
 \begin{equation}
@@ -974,7 +974,7 @@ Where $\bf{A}$ is a $2N \times 2N$ matrix, and $\bf{a}, \bf{b}, \bf{c}, \bf{d}, 
 \bf{A \bullet z} = (\bf{az} + \bf{b})(\bf{cz} + \bf{d})^{\rm -1}
 \end{equation}
 is the left hand M\"{o}bius transformation of $\bf z$ by $\bf A$.
-This leads to the following result, derived from the Dyson equation
+This leads to the following result, derived from Dyson's equation
 \begin{equation}
 	{\bf g}_{{\rm n}+1} = {\bf X}\bullet {\bf g}_{\rm n}
 \end{equation}
@@ -982,7 +982,7 @@ where
 \begin{equation}\label{X}
 	\bf{X} = \begin{pmatrix} \bf0&\bf{t}^{\rm{-1}}\\-\bf{t}^{\rm{\dag}}&\bf{vt}^{\rm{-1}} \end{pmatrix}
 \end{equation}
-Here, each element is an $N \times N$ matrix and $\bf{0}$ is a matrix of zeros. The formalism here assumes a psuedo one-dimensional crystal grown along an arbitrary axis with ${\bf v} = \bm\varepsilon - {\bf u}$. Equation \eqref{X} in its present form and the results that follow are defined for left hand surfaces. For right-hand surfaces, values $\bf{t}$ and $\bf{t}^{\rm{\dag}}$ must be interchanged.
+Here, each element is an $N \times N$ matrix and $\bf{0}$ is a matrix of zeros. The formalism here assumes a pseudo one-dimensional crystal grown along an arbitrary axis with ${\bf v} = \bm\varepsilon - {\bf u}$, where $\bm \varepsilon$ is a matrix whose diagonal elements are the energy, $\varepsilon$, and off-diagonal elements are zero. Equation \eqref{X} in its present form and the results that follow are defined for left hand surfaces. For right-hand surfaces, values $\bf{t}$ and $\bf{t}^{\rm{\dag}}$ must be interchanged.
 To generalise to a three-dimensional crystal, an alternative basis must be used such as that defined at the beginning of this subsection.
 % \begin{equation}\label{disp}
 % 	\bf{v} = \varepsilon . \bf{I} - \bf{u} - \rm2\bf{t}\cos({\bf{k_\parallel}}\mathnormal a)
@@ -1012,7 +1012,7 @@ such that
 	\begin{equation}
 		{\bf O}^{-1} {\bf X}{\bf O} = \bm \Lambda
 	\end{equation}
-	Equation \eqref{frac} has the remarkable property of demonstrating the existence of interatomic \gls{sgf} representations due to the continuity at non-integer n.
+	Equation \eqref{frac} has the remarkable property of demonstrating the existence of inter-atomic \gls{sgf} representations due to the continuity at non-integer n.
 	\\\par To obtain the closed form \gls{sgf} ${\bf g}_0$ for semi-infinite systems, the ordering of the eigenvalues must be more precise\site{rev3}. To do this, a small positive imaginary contribution is made to the energy, such that $\varepsilon \longrightarrow \varepsilon+i\delta$ but to enforce n $\rightarrow \infty$ before $\delta \rightarrow 0$. This has the effect of shifting pairs of eigenvalues on the unit circle such that one moves just inside the circle and the other just outside. The former are in $\bm \Lambda_1$ and the latter are in $\bm \Lambda_2$, such that as $\rm n\rightarrow\infty$, \quad $\bm\Lambda_1^{\rm n}, \bm\Lambda_2^{-\rm n}\rightarrow 0$, where
 	\begin{equation}
 		\bm \Lambda = \begin{pmatrix} \bm \Lambda_1&\bf 0\\\bf 0&\bm \Lambda_2 \end{pmatrix}
@@ -1156,7 +1156,7 @@ where $\bf 0$ is the $N\times N$ null matrix.
 % \end{figure}
 	\section{Interlayer Exchange Coupling}
 	\par In the absence of charge current in a magnetic multilayer, there remains a net flow of spincurrent between the two magnetic layers, provided the magnets are out of alignment. This is \gls{iec}, which oscillates between the \gls{fm} and \gls{af} regimes as a function of spacer layer thickness\site{Parkin}. 
-	Two means of calculating \gls{iec} are now given. The first is derived from the spincurrent.
+	Two means of calculating \gls{iec} are now given. The first is derived from the spincurrent\site{rev3}.
 	Using the Keldysh formalism\textsuperscript{\textcolor{blue}{\cite{keldyshorig}}}, the spincurrent is essentially built from two components, $\langle j_{n-1}\rangle = \langle j_{n-1}\rangle_1 + \langle j_{n-1}\rangle_2$\textcolor{blue}{\textsuperscript{\cite{keldysh_3}}}.
 with 
 \begin{equation}\label{keldysh_1}
@@ -1164,11 +1164,11 @@ with
 \end{equation}
 the equilibrium term, and
 \begin{multline}\label{keldysh}
-	\langle j_{n-1}\rangle_2 = \frac{1}{2\pi}\sum_{\bf k_\parallel}\int d\varepsilon \,\rm Re \, Tr \Big\lbrace\Big\lbrack\bf g_{\rm\scriptscriptstyle L} t A B g_{\rm \scriptscriptstyle R}^\dag t^\dag-AB+\\{\rm\frac{1}{2}} \bf(A+B)\Big\rbrack\bm\sigma\Big\rbrace [\mathnormal f(\varepsilon - \mu_{\scriptscriptstyle L})-\mathnormal f(\varepsilon - \mu_{\rm\scriptscriptstyle R})]
+	\langle j_{n-1}\rangle_2 = \frac{1}{2\pi}\sum_{\bf k_\parallel}\int d\varepsilon \,\rm Re \, Tr \Big\lbrace\Big\lbrack\bf g_{\rm\scriptscriptstyle L} t A B g_{\rm \scriptscriptstyle R}^\dag t^\dag-AB+\\{\rm\frac{1}{2}} \bf(A+B)\Big\rbrack\bm\sigma\Big\rbrace [\mathnormal f(\varepsilon - \mu_{\rm\scriptscriptstyle L})-\mathnormal f(\varepsilon - \mu_{\rm\scriptscriptstyle R})]
 \end{multline}
 the transport term, named so since it is only non-zero when a bias is applied, where the electrochemical potentials in the right and left hand leads $\mu_{\rm \scriptscriptstyle L}, \mu_{\rm \scriptscriptstyle R}$ are non-equal. Here $f(\varepsilon-\mu_{\rm \scriptscriptstyle L(R)})$ is the Fermi-Dirac distribution function given by
 \begin{equation}\label{fermi}
-	f(\varepsilon-\mu_{\scriptscriptstyle L(R)})=\frac{1}{1+e^{(\varepsilon-\mu_{\scriptscriptstyle L(R)})/kT}}
+	f(\varepsilon-\mu_{\rm\scriptscriptstyle L(R)})=\frac{1}{1+e^{(\varepsilon-\mu_{\rm\scriptscriptstyle L(R)})/kT}}
 \end{equation}
 \par The \gls{sgf}s $\bf g_{\rm\scriptscriptstyle L}, g_{\rm\scriptscriptstyle R}$, represent the left and right surfaces respectively, of a junction that is separated into two independent parts through some imaginary cleavage plane\textcolor{blue}{\textsuperscript{\cite{kubo2}}}, see Fig \ref{fig:5th}.
 $\bf A = (I - g_{\rm\scriptscriptstyle R}t^\dag g_{\rm\scriptscriptstyle L}t)^{\rm-1}$, $\bf B = (I -g_{\rm\scriptscriptstyle R}^\dag t^\dag g_{\rm\scriptscriptstyle L}^\dag t)^{\rm -1}$ and $\bm \sigma$ is one of the $2\times 2$ Pauli matrices $\sigma_x, \sigma_y, \sigma_z$ whose choice is dependent on the spincurrent axis direction to be computed. As such, the out of plane spincurrent is required here, thus $\sigma_y$ is selected for the computation. Equation \eqref{keldysh} can instead yield the total charge current if $\frac{1}{2}\bm\sigma$ is replaced by $(e/\hbar)\bf I $ since $\langle j_{n-1}\rangle_1$ makes no contribution to charge current\textcolor{blue}{\textsuperscript{\cite{keldysh_2}}}.
@@ -1221,11 +1221,11 @@ where
 	{\bf s} = \begin{pmatrix} \cos(\frac{\theta}{2})&\sin(\frac{\theta}{2})\\-\sin(\frac{\theta}{2})&\cos(\frac{\theta}{2}) \end{pmatrix}
 \end{equation}
 It will be of interest to calculate the \gls{iec} of a system in the case of an applied bias. Unfortunately the integrand is not smooth with respect to energy, $\varepsilon$, so at least at this stage the zero-bias (equilibrium) case is considered.
-At equilibrium, Equation \eqref{keldysh_1} yields the \gls{iec} by integrating with respect to $\theta$ from $0$ to $	\pi$
+At equilibrium, Equation \eqref{keldysh_1} yields the \gls{iec} J(n), by integrating with respect to $\theta$, from $0$ to $	\pi$
 \begin{equation}\label{alt_exchange}
 	{\rm J(n)}= \int_\theta d\theta \langle j_{n-1}\rangle_1 = \frac{1}{2\pi}\sum_{\bf k_\parallel}\int d\varepsilon \int_0^\pi d\theta\,\rm Re \, Tr \lbrace \bf (B-A)\bm\sigma\rbrace \mathnormal f(\varepsilon - \mu)
 \end{equation}
-A second method for describing \gls{iec} is derived directly from the thermodynamic potentials, which in equilibrium form is as follows
+A second method for describing \gls{iec} is derived directly from the thermodynamic potentials, which in equilibrium form is as follows\site{rev3}
 \begin{equation}\label{exchange}
 	\rm J(n) = \frac{1}{n_\parallel}\sum_{\bf k_\parallel}Im\int_{-\infty}^{+\infty}{\mathnormal d}\varepsilon\;{\mathnormal f}(\varepsilon - \mu)F(\varepsilon, {\bf k_\parallel}, n)
 \end{equation}
@@ -1235,12 +1235,12 @@ Where
 \end{equation}
 Where $\bf A_{\rm \scriptscriptstyle FM}$ is in the \gls{fm} configuration $(\theta = 0)$, and $\bf A_{\rm \scriptscriptstyle AF}$ is in the \gls{af} configuration $(\theta = \pi)$\textcolor{blue}{\textsuperscript{\cite{rev3}}}. For computational efficiency purposes, these $2N\times2N$ matrices may be reduced to $N\times N$ matrices by separating $\bf A$ into its spin up and spin down constituents $\bf A = \bm \alpha^\uparrow \bm\alpha^\downarrow$,
 thus $\bm \alpha^\sigma = \bf(I - g_{\rm\scriptscriptstyle R}^\sigma t^\dag g_{\rm\scriptscriptstyle L}^\sigma t)^{\rm-1}$.
-In this communication, efforts are directed at solving Equation \eqref{exchange}, which is again very numerically intensive if attempted to solve directly. Instead, two methods to solve Equation \eqref{exchange} are outlined here. The method of summing Matsubara frequencies is described initially\textcolor{blue}{\textsuperscript{\cite{mats}}}, followed by an outline of the \gls{spa}\textcolor{blue}{\textsuperscript{\cite{rev1}}}.
+In this communication, efforts are directed at solving Equation \eqref{exchange}, which is again very numerically intensive if attempted to solve directly. Instead, two methods to solve Equation \eqref{exchange} are outlined here. The method of summing Matsubara frequencies is described initially\textcolor{blue}{\textsuperscript{\cite{mats}}}, followed by an outline of the \acrfull{spa}\textcolor{blue}{\textsuperscript{\cite{rev1}}}.
 % A magnetic multilayer system is envisaged here comprising of a semi-infinite LHS magnetic lead with magnetisation in the $xz$ plane held parallel to the $z$ axis. One or more spacer materials grown to n atomic planes thick, the system is then completed with a semi-infinite RHS magnetic lead with magnetisation the $xz$ plane held at an angle $\theta$ from the z-axis. 
 	\subsection{Method of Matsubara}
 % The SGF of the leads are generated from Equation \eqref{SGF_AU}, the method of developing SGF's of the spacer layers varies depending on the method used to yield the exchange coupling in equilibrium (zero bias)
 \par The Matsubara frequency method takes advantage of the fact that $\int_{-\infty}^{\infty}d\varepsilon$ can be integrated over the contour comprised of a semicircle whose diameter lies on the real line. This calculation is possible, since F($\varepsilon, \bf k_\parallel, \rm n)$ is analytic in this domain and $\longmapsto 0$, faster than $|\varepsilon| \longmapsto \infty$\textcolor{blue}{\textsuperscript{\cite{tall}}}, and the Fermi function
-has an infinite number of isolated singularities at $\varepsilon = \mu \pm (2m+1)kT\pi i$ for $m=0,1,2,\dots$, none of which lie on the real axis. $kT$ is the Boltzmann constant multiplied by temperature. The semicircle lies in the upper half plane, and so all singularities at $\gamma i$ for $\gamma < 0$ are discarded. 
+has an infinite number of isolated singularities at $\varepsilon = \mu \pm (2m+1)kT\pi i$ for $m=0,1,2,\dots$, none of which lie on the real line. $kT$ is the Boltzmann constant multiplied by temperature. The semicircle lies in the upper half plane, and so all singularities at $\gamma i$ for $\gamma < 0$ are discarded. 
 The residues of $f(\varepsilon - \mu)$ lie at
 	\begin{flalign}
 		&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{1+e^{\omega}}=\\&\lim_{\omega \rightarrow(2m+1)\pi i}\frac{1}{\frac{\rm d}{{\rm d}\varepsilon}e^{\omega}}=-kT
@@ -1317,7 +1317,7 @@ postaction = {decorate}] (-1,0) arc (180:0:1.5) -- cycle ;
 \end{tikzpicture}
 \caption{\footnotesize
 	Summation of Matsubara frequencies. The integral $\int_{-\infty}^{+\infty}$ is replaced with a semi-circular contour of infinite radius. Since $f(\varepsilon - \mu)$ has residue $-kT$ at each of its poles $\mu + (2m+1)kT\pi i$, for $m=0,1\dots$ , and $\rm F$ is analytic throughout the domain and converges for $\sum_{m=0}^\infty {\rm F}(\mu{ + (2m+1)kT\pi i}, \rm\bf k_\parallel, \rm n)$, the integral may be replaced by the summation 
-	$2\pi i\Big(-kT\sum_{m=0}^\infty {\rm F}(\mu{ + (2m+1)kT\pi i}, \rm\bf k_\parallel, \rm n)\Big)$. The summation converges rapidly getting very good agreement at nine terms.
+	$2\pi i\Big(-kT\sum_{m=0}^\infty {\rm F}(\mu{ + (2m+1)kT\pi i}, \rm\bf k_\parallel, \rm n)\Big)$. The summation converges rapidly getting very good agreement at nine terms. The contour pictured contains six of these poles.
 	}\label{fig:4th}
 	
 \end{figure}
@@ -1332,14 +1332,14 @@ Thus, the final form Equation \eqref{exchange} takes in this setting is
 \end{equation}
 % The Green's function for the spacer layer are obtained by growing from the LHS lead using Equation \eqref{adlayer}. This is in order to maintain maximum numerical efficiency given that calculations of previous layers are stored in the process.
 	\subsection{Stationary Phase Approximation}
-	F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}, with periods given by $\left(2\pi/k_{\perp 1}, 2\pi/k_{\perp 2}, \dots, 2\pi/k_{\perp p}\right)$ where $\{k_{\perp 1}, k_{\perp 2}, \dots, k_{\perp p}\}$ are the values of the perpendicular wavevector $k_\perp$ that satisfy the bulk dispersion relation, $E({\bf k}_\parallel, k_\perp) = \varepsilon$. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded in a Fourier-type series (exactly a Fourier series in the one-band model)
+	F($\varepsilon, \rm \bf k_\parallel, \rm n)$ is a quasi-periodic function of the continuous thickness n\site{rev3}, with periods given by $\left(2\pi/k_{\perp 1}, 2\pi/k_{\perp 2}, \dots, 2\pi/k_{\perp p}\right)$ where $\{k_{\perp 1}, k_{\perp 2}, \dots, k_{\perp p}\}$ are the values of the perpendicular wave-vector $k_\perp$ that satisfy the bulk dispersion relation, $E({\bf k}_\parallel, k_\perp) = \varepsilon$. As such, F($\varepsilon, \rm \bf k_\parallel, \rm n)$ may be expanded in a Fourier-type series (exactly a Fourier series in the one-band model)
 % The \acrfull{spa} method relies on the fact that 
 \begin{equation}
 	\rm F(\varepsilon, \bf k_\parallel, \rm n) = \sum_{\bf s} \mathnormal{c_{\bf s}(\varepsilon, {\bf k}_\parallel) e^{i\rm n \phi_{\bf s}(\varepsilon, \bf k_\parallel)}}
 \end{equation}
 where $\phi_{\bf s} = (s_1k_{\perp 1} + s_2k_{\perp 2} + \dots + s_pk_{\perp p})$ with integers $\{s_1, s_2, \dots, s_p\}$ in ${\bf s}$, and $c_{\bf s}$ are the Fourier coefficients.
 \\\par
- When this is substituted back into Equation \eqref{exchange}, it can be observed that for large n, the imaginary component of the integrand oscillates rapidly as a function of $\rm \bf k_\parallel$ and $\varepsilon$. As such, the only non-zero contributions to the $\rm \bf k_\parallel$ integral come from the neighbourhood of points in k-space where $\phi_{\bf s}$ is stationary. Similarly, the only contributions to the $\varepsilon$ integral that don't cancel are those that arise near the sharp cut-off that occurs at the chemical potential $\mu$.
+ When this is substituted back into Equation \eqref{exchange}, it can be observed that for large n, the imaginary component of the integrand oscillates rapidly as a function of $\rm \bf k_\parallel$ and $\varepsilon$. As such, the only non-zero contributions to the $\rm \bf k_\parallel$ integral come from the neighbourhood of points in $k$-space where $\phi_{\bf s}$ is stationary. Similarly, the only contributions to the $\varepsilon$ integral that don't cancel are those that arise near the sharp cut-off that occurs at the chemical potential $\mu$.
 \\[3mm]
 $c_{\bf s}$ is complex, so may be expressed in polar form $c_{\bf s}(\varepsilon, {\bf k_\parallel)} = |c_{\bf s}(\varepsilon,{\bf k_\parallel)}|e^{i \psi_{\bf s} (\varepsilon)}$ thus
 \begin{equation}
@@ -1354,17 +1354,17 @@ where $\partial \phi_{\bf s}/\partial{\bf k}_\parallel,\,(\partial^2\phi_{\bf s}
 \begin{multline}\label{stationary}
 	{\rm J(n) = \frac{1}{\rm A_{\scriptscriptstyle BZ}}Im}\int_{-\infty}^{+\infty}d\varepsilon\;f(\varepsilon - \mu)\times \\ \sum_{\bf s}{|c_{\bf s}(\varepsilon,{\bf k}_\parallel^0)| e^{i{\rm (n} \phi_{\bf s}(\varepsilon, {\bf k}_\parallel^0)+ \psi_{\bf s}(\varepsilon))}}\int_{\bf k_\parallel}d^2 {\bf k}_\parallel \mathnormal e^{i(\frac{\rm n}{2}({\bf k}_\parallel - {\bf k}_\parallel^0)^T(\partial^2\phi_{\bf s}) ({\bf k}_\parallel - {\bf k}_\parallel^0))}
 \end{multline}
-Where all terms not depending on $\bf k_\parallel$ have been commuted to the left of the integral in k-space, and where the following conversion has been used
-\begin{equation}
-	\frac{1}{\rm n_\parallel}\sum_{\bf k_\parallel} \longrightarrow \frac{1}{\rm A_{\scriptscriptstyle BZ}} \int_{\bf k_\parallel}d^2 \bf k_\parallel
-\end{equation}	
+Where all terms not depending on $\bf k_\parallel$ have been commuted to the left of the integral in $k$-space, and where the conversion, Equation \eqref{sum} has been used. 
+% \begin{equation}
+% 	\frac{1}{\rm n_\parallel}\sum_{\bf k_\parallel} \longrightarrow \frac{1}{\rm A_{\scriptscriptstyle BZ}} \int_{\bf k_\parallel}d^2 \bf k_\parallel
+% \end{equation}	
 Using a standard matrix result from Gaussian integration{\color{blue}{\textsuperscript{\cite{gauss}}}}, it can be shown that
 \begin{equation}\label{multivariate}
-	\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\bf x^TAx}\right)d^2{\bf x}\equiv\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\sum_{j=1}^2 \lambda_j y_j^2}\right)d^n{\bf y}
+	\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\bf x^TAx}\right)d^2{\bf x}\equiv\int_{-\infty}^{+\infty} \exp\left(\frac{i}{2}{\sum_{j=1}^2 \lambda_j y_j^2}\right)d^2{\bf y}
 	% \sqrt{\frac{(2\pi i)^n}{{\rm det}A}}
 \end{equation}
-where $\lambda_j$ are the two eigenvalues of $\bf A$, and ${\bf y} = {\bf O}^T \bf x$ where $\bf O$ is an orthogonal matrix obtained by diagonalising the symmetrix matrix, $\bf A$ such that ${\bf D} = {\bf O}^T \bf AO$, where $\bf D$ is a diagonal matrix.
-\\\par Integrating independently each term on the RHS of Equation \eqref{multivariate} leads to the following result
+where $\lambda_j$ are the two eigenvalues of $\bf A$, and ${\bf y} = {\bf O}^T \bf x$ where $\bf O$ is an orthogonal matrix obtained by diagonalising the symmetric matrix, $\bf A$ such that ${\bf D} = {\bf O}^T \bf AO$, where $\bf D$ is a diagonal matrix.
+\\\par Integrating with respect to each of the independent variables on the RHS of Equation \eqref{multivariate} in turn, leads to the following result
 \begin{equation}\label{sqrts}
 	\sqrt{\frac{2\pi i}{\lambda_1}}\sqrt{\frac{2\pi i}{\lambda_2}}\equiv\sqrt{\frac{2\pi}{|\lambda_1|}}e^{i\pi\, {\rm sgn}(\lambda_1)/4}\sqrt{\frac{2\pi}{|\lambda_2|}} e^{i\pi \,{\rm sgn}(\lambda_2)/4}
 \end{equation}
@@ -1403,7 +1403,7 @@ thus the integral takes the form
 \begin{equation}
 	kT\int_{-\infty}^{+\infty}dx \frac{|c_{\bf s}(\varepsilon, {\bf k}_\parallel^0)|}{\left|{\rm det}\left(\partial^2\phi_{\bf s}(\varepsilon, {\bf k}_\parallel^0)\right)\right|^\frac{1}{2}} \rule{0cm}{0.8cm} \frac{e^{ixkT\left({\rm n}\phi_{\bf s}'(\mu, {\bf k}_\parallel^0)+\psi_{\bf s}'(\mu)\right)}}{1+e^x}
 \end{equation}
-whereupon inspection of the left hand term, given that it varies slowly with respect to $\varepsilon$ and lies entirely on the real line, $\varepsilon$ may be replaced by its first order term
+whereupon inspection of the left hand fraction within the integrand, given that it varies slowly with respect to $\varepsilon$ and lies entirely on the real line, $\varepsilon$ may be replaced by its first order term
 \begin{equation}\label{dodgy}
 	kT\frac{|c_{\bf s}(\mu, {\bf k}_\parallel^0)|}{\left|{\rm det}\left(\partial^2\phi_{\bf s}(\mu, {\bf k}_\parallel^0)\right)\right|^\frac{1}{2}}\rule{0cm}{0.8cm} \int_{-\infty}^{+\infty}dx \frac{e^{ixkT\left({\rm n}\phi_{\bf s}'(\mu, {\bf k}_\parallel^0)+\psi_{\bf s}'(\mu)\right)}}{1+e^x}
 \end{equation}
@@ -1449,7 +1449,7 @@ thus in full, the Stationary Phase Approximation of the \gls{iec} is
 	\end{equation}
 	is integrated by utilising Equation \eqref{frac}, since this method is capable of handling non-integer n. The choice of $\rm n_0$ may be arbitrary.
 	The Hessian matrix, $(\partial^2 \phi_s)$ is evaluated at the stationary point $\rm \bf k_\parallel^{\rm 0}$.
-	$\tau=i$ when both eigenvalues of the Hessian matrix are positive, $\tau=-i$ when they are negative, and $\tau=1$ when they differ in sign.
+	% $\tau=i$ when both eigenvalues of the Hessian matrix are positive, $\tau=-i$ when they are negative, and $\tau=1$ when they differ in sign.
 	With these simplifications, the \gls{spa} may be restated as follows
 \begin{equation}\label{SPA_2}
 	{\rm J(n)} = -\frac{kT}{2{\rm n}}\sum_s \sum_{{\bf k}_\parallel^0}{\rm Re}\left.\left(\frac{\tau c_se^{2i{\rm n}sk_\perp}}{2s\vert \det(\partial^2k_\perp)\vert^{1/2}\sinh(\pi kT[2{\rm n}sk_\perp '+\psi_s '])} \right) \right\vert_{\mu , {\bf k}_\parallel^0}
@@ -1466,7 +1466,7 @@ The Hessian matrix evaluates in this case to
 \end{equation}
 \normalsize
 \\[5mm]
-which is further simplified since $k_x, k_y = 0$. The results comparing the method of Matsubara, and \gls{spa} are presented in Figure \ref{fig:3rd}.
+which is further simplified since $k_x, k_z = 0$. The results comparing the method of Matsubara, and \gls{spa} are presented in Figure \ref{fig:3rd}.
 \\ [5mm]
 
 	\tikzset{external/export next=false}
@@ -1498,7 +1498,7 @@ which is further simplified since $k_x, k_y = 0$. The results comparing the meth
 \subsection{Phase of Interlayer Exchange Coupling}
 \par It is known that \gls{iec} oscillates as a function of spacer thickness, but it is not so well understood what governs the phase of these oscillations, or the potential commercial applications that can take advantage of manipulating the phase. As discussed in Section \ref{history}, manipulating this phase may be used as a mechanism to induce switching of the \gls{sm} making the system a good candidate for \gls{mram}. In order to aid understanding of the origin of the phase, 
 the \gls{spa} was analysed.
-\\\par By perturbing quantities during modelling, and isolating terms during certain summations within Equation \eqref{spa}, it became apparent the phase was dominated by the first Fourier term (using direct complex Fourier series expansion against \gls{sgf}s $\bf g$, this term is $c_{-1}$), in particular since this term is complex, it is the phase $\psi_s$ of the Fourier term that is of importance.
+\\\par By perturbing quantities during modelling, and isolating terms during certain summations within Equation \eqref{spa} in the one-band model, it became apparent the phase was dominated by the first Fourier term (using direct complex Fourier series expansion against \gls{sgf}s $\bf g$, this term is $c_{-1}$), in particular since this term is complex, it is the phase $\psi_s$ of the Fourier term that is of importance.
 \\\par In order to understand the origin of this term more fully, it would be beneficial to negate the need to integrate over the spacer period, which is required using standard Fourier series expansion.
 There are two alternative methods to obtain the Fourier components. The first involves taking an inverse \gls{fft}.
 The second method replaces the \gls{sgf} with the \gls{mtgf} 
@@ -1543,7 +1543,7 @@ and utilising Equation \eqref{SGF_AU} together with knowledge that
 \begin{equation}
 	{\bf O} = \begin{pmatrix} {\bf o}_1&{\bf o}_2\\{\bf \bm \tau o}_1\bm\Lambda_1&{\bf \bm \tau o}_2\bm\Lambda_2 \end{pmatrix}
 \end{equation}
-with ${\bf o}_1, {\bf o}_2$ denoting the upper-left and upper-right submatrices of $\bf O$, and $\bm \tau$ is the hopping matrix of the lead,
+with ${\bf o}_1, {\bf o}_2$ denoting the upper-left and upper-right sub-matrices of $\bf O$, and $\bm \tau$ is the hopping matrix of the lead,
 it is straightforward to show that 
 $\rm g =\tau^{-1}\lambda_1$ with $\lambda_1$ being the eigenvalue of the lead.
 This yields the following depending on whether the lead is an insulator or a conductor. In the case of a conductor
@@ -1645,7 +1645,7 @@ More details are given in the Appendix.
 	\appendix
 	\section{Numerical Integration}
 	\subsection{Cunningham's Special Points set}\label{points}
-	In his 1974 paper\textcolor{blue}{\textsuperscript{\cite{CP}}}, Cunningham describes the special points set that minimises the required function calls for converged integration of the \gls{2dbz}, for a number geometries. His work follows that of Chadi and Cohen\textcolor{blue}{\textsuperscript{\cite{CC}}}, where the integrable function is expanded as a Fourier series
+	In his 1974 paper\textcolor{blue}{\textsuperscript{\cite{CP}}}, Cunningham describes the special points set that minimises the required function calls for converged integration of the \acrfull{2dbz}, for a number geometries. His work follows that of Chadi and Cohen\textcolor{blue}{\textsuperscript{\cite{CC}}}, where the integrable function is expanded as a Fourier series
 	\begin{equation}\label{cp}
 		f({\bf k})=f_0 +\sum_{m=1}^\infty f_m A_m({\bf k})
 	\end{equation}
@@ -1660,7 +1660,7 @@ More details are given in the Appendix.
 	\begin{equation}
 	\sum_i \alpha = 1	
 	\end{equation}
-	where N is the number of functions $A_m({\bf k})$ that satisfy Equation \eqref{A}.\\
+	where $N$ is the number of functions $A_m({\bf k})$ that satisfy Equation \eqref{A}.\\
 	They found the most efficient means of integrating over the \gls{2dbz} was by
 	\begin{equation}
 		f_0 = \sum_i \alpha_i f({\bf k}_i) - \sum_{m> N}^\infty f_m \sum_i \alpha_i A_m({\bf k}_i)
@@ -1758,7 +1758,7 @@ The coded routine requires the following input parameters;
 \end{listliketab}
 \par
 The second more sophisticated technique, utilised in the {\tt cunningham\_spawn.h} header file is an adaptive routine which, in the case of a primitive rectangular lattice, calls the integrand at the mean value point\site{CP}. Then it calls the integrand at a further eight points, which together with the mean value point, forms a rectangular mesh with evenly spaced points such that if mirrored on the $k_x$ or $k_z$ axes, the mesh appears continuous. The routine then compares the initial point with the sum of the nine points scaled by $1/9$. If convergence is achieved, the function terminates. Otherwise, through recursion it samples each of these individual parent points and generates a sub-mesh of eight child points, with the parent point rescaled to form a ninth. The child points are positioned at a third of the distance to the next neighbour parent point, such that if each parent spawns children, again a continuous mesh is observed. The child points are summed and appropriately scaled to check for convergence against their corresponding parent. If convergence hasn't been met, the process repeats until convergence along all points is achieved, or the recursion limit has been reached.
-\\[2mm]\par It is easy to generalise this technique to the square lattice, where if a point is sampled on the line $k_x = k_z$ it is halved, and only the six points that lie within the irreducible segment are sampled. Two of these also lie on the line $k_x = k_z$, which means they are also weighted by a half. When spawning further points, only the parents that lie on the line $k_x = k_z$ spawn children that must also adhere to this special case. Otherwise the nine points as outlined in the previous paragraph are sampled.
+\\[2mm]\par It is easy to generalise this technique to the square lattice, where if a point is sampled on the line $k_x = k_z$ it is halved, and only five further child points are generated, since the further three do not lie within the irreducible segment. Two of these also lie on the line $k_x = k_z$, which means they are also weighted by a half. When spawning further points, only the parents that lie on the line $k_x = k_z$ spawn children that must also adhere to this special case. Otherwise the nine points as outlined in the previous paragraph are sampled.
 The routine requires the following input parameters;
 
 \storestyleof{itemize}
